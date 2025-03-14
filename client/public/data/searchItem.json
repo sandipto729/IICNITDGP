@@ -1,0 +1,43 @@
+[
+    {
+      "name": "Home",
+      "link": "/"
+    },
+    {
+      "name": "About Us",
+      "link": "/about"
+    },
+    {
+      "name": "Admissions",
+      "link": "/admissions"
+    },
+    {
+      "name": "Academics",
+      "link": "/academics"
+    },
+    {
+      "name": "News & Events",
+      "link": "/news-events"
+    },
+    {
+      "name": "Contact Us",
+      "link": "/contact"
+    },
+    {
+      "name": "Alumni",
+      "link": "/alumni"
+    },
+    {
+      "name": "Donation",
+      "link": "/donation"
+    },
+    {
+      "name": "Login",
+      "link": "/login"
+    },
+    {
+      "name": "Gallery",
+      "link": "/gallery"
+    }
+  ]
+  

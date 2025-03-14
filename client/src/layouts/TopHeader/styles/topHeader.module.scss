@@ -1,0 +1,88 @@
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #ffffff; // White background
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 50px;
+  
+    &Left {
+      display: flex;
+      align-items: center;
+  
+      img {
+        height: 4rem;
+        width: auto;
+      }
+    }
+  
+    &Right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+  
+      &Item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+  
+        a {
+          color: white;
+          text-decoration: none;
+          font-size: 16px;
+          display: block;
+        }
+      }
+  
+      // Search Bar
+      &Item:first-child {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #ebebeb;
+        padding: 6px 8px;
+        border-radius: 5px;
+
+        
+  
+        input {
+          border: none;
+          outline: none;
+          background: transparent;
+          font-size: 14px;
+          width: 150px;
+        }
+  
+        svg {
+          color: #333;
+          cursor: pointer;
+        }
+      }
+
+  
+      // Login (Blue)
+      &Item:nth-child(2) {
+        background-color: #007bff;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+  
+      // Contact Us (Green)
+      &Item:nth-child(3) {
+        background-color: #28a745;
+  
+        &:hover {
+          background-color: #1e7e34;
+        }
+      }
+    }
+  }
+  
