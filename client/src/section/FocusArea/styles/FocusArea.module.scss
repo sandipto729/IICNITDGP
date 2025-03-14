@@ -41,7 +41,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease-in-out;
-    height: 25rem;
+    min-height: 20rem;
 
     &:hover {
         transform: translateY(-5px);
