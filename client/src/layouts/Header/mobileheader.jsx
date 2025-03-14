@@ -12,7 +12,7 @@ const mobileheader = () => {
                 {!isDown&&<MenuIcon onClick={()=>{setIsDown(!isDown)}}/>}
                 {isDown&&<CloseIcon onClick={()=>{setIsDown(!isDown)}}/>}
             </ul>
-            {isDown && <ul>
+            {isDown && <ul onClick={()=>{setIsDown(!isDown)}}>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
