@@ -9,7 +9,7 @@ const DesktopHeader = () => {
     return (
         <div className={styles.desktopHeaderContainer}>
             <ul>
-                <img src={NITDGPLOGO} alt="Nit DGP Logo" />
+                <a href='https://nitdgp.ac.in/'><img src={NITDGPLOGO} alt="Nit DGP Logo" /></a>
             </ul>
             <ul>
                 <li>
