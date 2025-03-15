@@ -2,92 +2,84 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #f4f4f4;
 }
 
 .aboutHeader {
-  background-color: #3e6ee7;
-  border-radius: 0;
-  box-shadow: 0 4px 8px #0f0f0f33;
-  z-index: 2;
-  padding: 20px;
   text-align: center;
-  animation: slideInLeft 1s ease-out forwards;
-  animation-delay: 0.5s;
-
   h1 {
-    margin: 0;
-    font-size: 36px;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #fff;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+  }
+
+  h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #e67e22;
+    margin: 8px auto 0;
+    border-radius: 2px;
   }
 }
 
 .aboutDescription {
-  border-radius: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin: 1rem auto;
-  max-width: 800px;
-  opacity: 0;
-  padding: 1rem;
-  position: relative;
-  text-align: center;
-  width: 80%;
-  animation: slideInLeft 1s ease-out forwards;
-  animation-delay: 2s;
-  background-color: initial;
-  box-shadow: 0 4px 8px #df690733;
-  z-index: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 900px;
+}
 
-  p {
-    margin: 0;
-    font-size: 18px;
-    color: #333333;
+.Card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  transition: transform 0.3s linear;
+}
+
+.HeaderCard{
+  background: #f4f4f4;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  transition: transform 0.3s linear;
+}
+
+.Card:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .aboutHeader h1 {
+    font-size: 2rem;
+  }
+
+  .Card {
+    padding: 20px;
+    font-size: 1rem;
   }
 }
 
-/* Mobile View */
-@media (max-width: 786px) {
-  .aboutHeader {
-    padding: 10px;
-    h1 {
-      font-size: 24px;
-    }
+@media (max-width: 480px) {
+  .aboutHeader h1 {
+    font-size: 1.8rem;
   }
 
-  .aboutDescription {
-    margin: 0.5rem auto;
-    max-width: 600px;
-    padding: 0.5rem;
-    width: 90%;
-  }
-}
-
-/* Desktop View */
-@media (min-width: 787px) {
-  .aboutHeader {
-    padding: 30px;
-    h1 {
-      font-size: 48px;
-    }
-  }
-
-  .aboutDescription {
-    margin: 2rem auto;
-    max-width: 1000px;
-    padding: 2rem;
-    width: 80%;
-  }
-}
-
-/* Keyframe Animation */
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+  .Card {
+    font-size: 0.95rem;
   }
 }

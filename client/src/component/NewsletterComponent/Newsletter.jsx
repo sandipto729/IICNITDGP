@@ -1,29 +1,46 @@
-import React from 'react';
-
-import styles from './styles/newsletter.module.scss';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import styles from "./styles/newsletter.module.scss";
+import { toast } from "react-toastify";
 
 const Newsletter = () => {
-    const [email, setEmail] = React.useState('');
-
+    const [email, setEmail] = useState("");
 
     const handleSubscribe = () => {
-        // Handle subscription logic here
-        console.log(`Subscribed with email: ${email}`);
+        if (email === "") {
+            toast.error("Please enter your email.");
+        } else {
+            toast.success("Subscribed successfully!");
+            setEmail("");
+        }
     };
 
     return (
         <div className={styles.newsletterContainer}>
             <h2>Subscribe to our Newsletter</h2>
             <p>Stay updated with the latest news and events.</p>
-            <input
+
+            <motion.input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className={styles.emailInput}
+                whileInView={{ opacity: 1, x: 0 }} 
+                initial={{ opacity: 0, x: -50 }} 
+                transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
             />
 
-            <button onClick={handleSubscribe} className={styles.subscribeButton}>Subscribe</button>
+
+            <motion.button
+                onClick={handleSubscribe}
+                className={styles.subscribeButton}
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 50 }}
+                transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
+            >
+                Subscribe
+            </motion.button>
         </div>
     );
 };
