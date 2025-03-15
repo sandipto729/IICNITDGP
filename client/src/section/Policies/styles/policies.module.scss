@@ -1,0 +1,25 @@
+.policy-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.policy-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .policy-image {
+    width: 80%; /* Adjust image size for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .policy-container {
+    gap: 20px; /* Space between cards */
+  }
+}
