@@ -1,0 +1,179 @@
+[
+    {
+      "id": 1,
+      "name": "Sharuk Khan",
+      "img": "https://picsum.photos/300/300?random=1",
+      "type": "Final Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/amanjyoti",
+        "github": "https://github.com/amanjyoti",
+        "designation": "President"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Sandipto Roy",
+      "img": "https://picsum.photos/300/300?random=2",
+      "type": "Pre Final Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/sandipto",
+        "github": "https://github.com/sandipto",
+        "designation": "Vice President"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Ritam Vaskar",
+      "img": "https://picsum.photos/300/300?random=3",
+      "type": "Second Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/ritam",
+        "github": "https://github.com/ritam",
+        "designation": "Secretary"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Aniket Sharma",
+      "img": "https://picsum.photos/300/300?random=4",
+      "type": "Faculty Advisor",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/aniket",
+        "github": "https://github.com/aniket",
+        "designation": "Mentor"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Soumya Ghosh",
+      "img": "https://picsum.photos/300/300?random=5",
+      "type": "Final Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/soumya",
+        "github": "https://github.com/soumya",
+        "designation": "Treasurer"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Pritam Das",
+      "img": "https://picsum.photos/300/300?random=6",
+      "type": "Pre Final Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/pritam",
+        "github": "https://github.com/pritam",
+        "designation": "Event Coordinator"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Sourav Sen",
+      "img": "https://picsum.photos/300/300?random=7",
+      "type": "Second Year",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/sourav",
+        "github": "https://github.com/sourav",
+        "designation": "Technical Head"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Dr. Prakash Banerjee",
+      "img": "https://picsum.photos/300/300?random=8",
+      "type": "Faculty Advisor",
+      "extra": {
+        "linkedin": "https://linkedin.com/in/prakash",
+        "github": "https://github.com/prakash",
+        "designation": "Chief Advisor"
+      }
+    },
+    {
+        "id": 9,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Pre Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 10,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Pre Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 11,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Pre Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 12,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Pre Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 13,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 14,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 15,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      },
+      {
+        "id": 16,
+        "name": "Sandipto Roy",
+        "img": "https://picsum.photos/300/300?random=2",
+        "type": "Final Year",
+        "extra": {
+          "linkedin": "https://linkedin.com/in/sandipto",
+          "github": "https://github.com/sandipto",
+          "designation": "Vice President"
+        }
+      }
+  ]
+  

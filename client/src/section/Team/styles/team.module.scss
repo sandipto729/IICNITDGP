@@ -1,0 +1,62 @@
+.teamPage {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .teamTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .teamSection {
+    margin-bottom: 1rem;
+  }
+  
+  .teamSectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  .teamGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    // gap: 10px;
+    gap: 1rem;
+    // margin-bottom: 20px;
+    margin: 0 auto;
+    
+  }
+  
+  .filterButton {
+    padding: 10px 14px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    color: var(--primary-blue);
+    font-weight: 550;
+    font-size: large;
+  }
+  
+  .filterButton:hover {
+    background-color: #bbb;
+  }
+  
+  .active {
+    background-color: var(--primary-blue);
+    color: #fff;
+  }
+  
