@@ -1,0 +1,45 @@
+.policyCard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (min-width: 786px) {
+  .policyCard {
+    width: 200px; /* Fixed width for larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .policyCard {
+    flex: 1 1 calc(25% - 20px); /* Four cards in a row */
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .policyCard {
+    flex: 1 1 calc(33.33% - 20px); /* Three cards in a row */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .policyCard {
+    flex: 1 1 calc(50% - 20px); /* Two cards in a row */
+  }
+}
+
+@media (max-width: 767px) {
+  .policyCard {
+    flex: 1 1 100%; /* One card in a row */
+  }
+}
