@@ -26,7 +26,7 @@ const FocusArea = () => {
                 <motion.div
                     className={styles.FocusArea}
                     whileInView={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: 50 }} // Starts below
+                    initial={{ opacity: 0, y: 50 }} 
                     transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 >
                     <div className={styles.FocusAreaTitle}>Main Focus</div>
