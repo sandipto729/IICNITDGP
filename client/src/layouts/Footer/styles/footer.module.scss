@@ -1,0 +1,94 @@
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: black;
+  color: white; /* Added text color */
+
+  
+  text-align: center;
+}
+
+.address {
+  margin-bottom: 15px;
+}
+
+.quickLinks {
+  margin-bottom: 15px;
+}
+
+.quickLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quickLinks li {
+  margin: 5px 0;
+}
+
+.quickLinks a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.joinUs button {
+  padding: 10px 20px;
+  background-color: rgba(11, 45, 119, 0.73);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.joinUs button:hover {
+  background-color: #0056b3;
+}
+
+/* New styles for footer columns */
+.footerColumns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px; /* Decreased margin */
+}
+
+.column {
+  flex: 1;
+  padding: 5px; /* Decreased padding */
+  text-align: center;
+}
+
+/* Updated styles for footer text */
+.footerContainer p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .footerContainer p {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footerContainer p {
+        font-size: 12px;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .footerContainer {
+    padding: 10px;
+  }
+
+  .joinUs button {
+    width: 100%;
+  }
+
+  .footerColumns {
+    flex-direction: column;
+  }
+}
