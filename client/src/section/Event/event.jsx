@@ -3,6 +3,7 @@ import EventCard from './../../component/ReadMore/readmore';
 // import newsData from '../../data/SchoolMedia.json';
 import Events from './../../../public/data/events.json';
 import styles from './styles/events.module.scss';
+import GradientText from '../../component/Core/TextStyle';
 
 const NewsEvent = () => {
     const [newsList, setNewsList] = useState([]);
@@ -25,7 +26,7 @@ const NewsEvent = () => {
 
     return (
         <>
-            <center className={styles.newsTitle}>Events</center>
+            <center className={styles.newsTitle}>Our <GradientText text="Events"></GradientText></center>
             <div className={styles.newsContainer}>
 
                 {newsList.map((news, index) => (

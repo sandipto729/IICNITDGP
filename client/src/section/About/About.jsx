@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles/about.module.scss';
 import { motion } from 'framer-motion';
+import GradientText from '../../component/Core/TextStyle';
 
 
 const About = () => {
@@ -13,7 +14,7 @@ const About = () => {
           initial={{ opacity: 0, x: 50 }}
           transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
         >
-          <h1>Institute Innovation Council (IIC)</h1>
+          <h1>Institute Innovation Council (<GradientText text={"IIC"}></GradientText>)</h1>
         </motion.div>
 
       </div>
