@@ -2,16 +2,16 @@
   {
     "name": "NITDGP LOGO",
     "url": "https://www.vecteezy.com/free-vector/poster-logo",
-    "img": "../../src/assets/carouselImages/abstract-design-geometric-cover-collection_23-2148446541.jpeg"
+    "img": "./../../src/assets/carouselImages/abstract-design-geometric-cover-collection_23-2148446541.jpeg"
   },
   {
     "name": "ABC LOGO",
     "url": "https://www.nitdgp.ac.in",
-    "img": "../../src/assets/carouselImages/fluid-concept-abstract-background-poster-set_1754-86.jpeg"
+    "img": "./../../src/assets/carouselImages/fluid-concept-abstract-background-poster-set_1754-86.jpeg"
   },
   {
     "name": "NITDGP LOGO",
     "url": "https://www.vecteezy.com/vector-art/117350-vintag",
-    "img" : "../../src/assets/carouselImages/wings-logo-design-illustration-vector.jpg"
+    "img" : "./../../src/assets/carouselImages/wings-logo-design-illustration-vector.jpg"
   }
 ]
