@@ -30,16 +30,23 @@
   }
 
   .filterButtons {
-    display: flex;
-    flex-wrap: wrap;
-    // gap: 10px;
-    gap: 1rem;
-    // margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+    gap: 12px;
+    justify-content: center;
     margin: 0 auto;
-    
-  }
-  
-  .filterButton {
+    width: 100%;
+    max-width: 800px; /* Prevents stretching too wide on large screens */
+}
+
+/* Mobile: Stack buttons vertically */
+@media (max-width: 600px) {
+    .filterButtons {
+        grid-template-columns: 0.8fr;
+    }
+}
+
+.filterButton {
     padding: 10px 14px;
     border: none;
     background-color: #ddd;
@@ -49,8 +56,10 @@
     color: var(--primary-blue);
     font-weight: 550;
     font-size: large;
-  }
-  
+    text-align: center;
+    min-width: 120px;
+}
+
   .filterButton:hover {
     background-color: #bbb;
   }
@@ -60,3 +69,21 @@
     color: #fff;
   }
   
+
+/* Show All Button */
+.showAllButton {
+  padding: 12px 16px;
+  border: none;
+  background-color: var(--primary-blue);
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 550;
+  transition: background-color 0.3s ease;
+  margin-bottom: 16px;
+}
+
+.showAllButton:hover {
+  background-color: darkblue;
+}
