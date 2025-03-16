@@ -22,18 +22,33 @@ const TeamCard = ({ member, customStyles = {} }) => {
         }
     };
 
+    const [isFlipped, setIsFlipped] = useState(false);
+
     return (
         <motion.div
             className={`${styles.teamMember} ${customStyles.teamMember || ""}`}
             whileInView={{ opacity: 1, x: 0 }}
             initial={{ opacity: 0, x: -50 }}
-            transition={{ type: "spring", stiffness: 100, duration: 0.5}}
+            transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
         >
-            <motion.div
+            {/* <motion.div
                 className={`${styles.teamMemberInner}`}
                 initial={{ rotateY: 0 }}
                 whileHover={{ rotateY: 180 }}
+                whileFocus={{rotateY:180}}
                 transition={{ duration: 0.4 }}
+            > */}
+            <motion.div
+                className={`${styles.teamMemberInner}`}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.4 }}
+                onClick={() => setIsFlipped((prev) => !prev)}
+                onMouseEnter={() => {
+                    if (window.innerWidth > 768) setIsFlipped(true); 
+                }}
+                onMouseLeave={() => {
+                    if (window.innerWidth > 768) setIsFlipped(false);
+                }}
             >
                 {/* Front Side */}
                 <motion.div
