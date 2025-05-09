@@ -1,86 +1,188 @@
+@import "../../../assets/styles/Global.scss";
+
+.aboutContainer {
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .head {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+
+    span {
+      font-weight: 800;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
+
+
+.bottomLine {
+  width: 12rem;
+  height: 0.3125rem;
+  background: var(--primary);
+  color: transparent;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+  @keyframes expandLine {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+
+    to {
+      width: 80px;
+      opacity: 1;
+    }
+  }
+
+}
+
 .aboutSection {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  background-color: #f4f4f4 ;
-  
-}
+  // background-color: #f4f4f4;
 
-.aboutHeader {
-  text-align: center;
-  h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #2c3e50;
-    position: relative;
-    display: inline-block;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  .LeftDiv,
+  .RightDiv {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  h1::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: #e67e22;
-    margin: 8px auto 0;
-    border-radius: 2px;
+  .LeftDiv {
+    .aboutImage {
+      // margin-top: 7rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    }
   }
-}
 
-.aboutDescription {
-  display: flex;
-  justify-content: center;
-  max-width: 900px;
-}
+  .RightDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-.Card {
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  text-align: justify;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-  transition: transform 0.3s linear;
-}
 
-.HeaderCard{
-  background: #f4f4f4;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  text-align: justify;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-  transition: transform 0.3s linear;
-}
+    .aboutHeader {
+      text-align: center;
 
-.Card:hover {
-  transform: scale(1.02);
+      h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffffff;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 60px;
+          height: 4px;
+          background: #e67e22;
+          margin: 8px auto 0;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    .aboutDescription {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+
+      .Card {
+        // background: #fff;
+        background-color: rgba(255, 255, 255, 0.113);
+        color: white;
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        text-align: justify;
+        font-size: 1rem;
+        line-height: 1.6;
+        // color: #555;
+        transition: transform 0.3s ease-in-out;
+        border: 1px solid #ffffff;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .aboutHeader h1 {
-    font-size: 2rem;
-  }
+@media (max-width: 900px) {
+  .aboutSection {
+    flex-direction: column;
 
-  .Card {
-    padding: 20px;
-    font-size: 1rem;
+    .LeftDiv,
+    .RightDiv {
+      width: 90%;
+    }
+
+    .aboutHeader h1 {
+      font-size: 2rem;
+    }
+
+    .Card {
+      font-size: 1rem;
+      padding: 20px;
+    }
   }
 }
 
 @media (max-width: 480px) {
-  .aboutHeader h1 {
-    font-size: 1.8rem;
-  }
+  .aboutSection {
+    padding: 40px 10px;
 
-  .Card {
-    font-size: 0.95rem;
+    .aboutHeader h1 {
+      font-size: 1.6rem;
+    }
+
+    .Card {
+      font-size: 0.95rem;
+    }
   }
 }

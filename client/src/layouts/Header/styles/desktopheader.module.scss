@@ -5,6 +5,25 @@
     justify-content: space-between;
     padding: 10px 30px;
     box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+
+    .logo{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff; // White text
+      font-size: 24px;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+      gap: 1.5rem;
+
+      &:hover {
+        color: #ffcc00; // Yellow on hover
+      }
+      
+    }
   
     img {
       height: 4rem;
