@@ -1,6 +1,6 @@
 import React from 'react'
 import IICLOGO from '../../assets/iiclogo.png';
-import NITDGPLOGO from '../../assets/NITLogo.jpeg';
+import NITDGPLOGO from '../../assets/NITLogo2.png';
 
 import styles from './styles/mobiletopHeader.module.scss';
 const mobiletopHeader = () => {

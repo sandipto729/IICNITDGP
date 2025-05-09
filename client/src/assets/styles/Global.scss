@@ -1,0 +1,22 @@
+// Global styles
+
+
+$page-color: #1C1C1C;
+$text-color: green;
+
+//EventCard
+$border-color:rgb(143, 139, 139);
+$orange-color: orange;
+$back-glass: rgba(255,255,255,0.1);
+$text-color: white;
+//EventCardModal
+$bg-color: rgb(46, 44, 44);
+
+//text color
+:root{
+    --primary: linear-gradient(
+    260deg,
+    rgba(255, 190, 11, 0.84) -29.7%,
+    rgba(244, 43, 3, 0.84) 128.34%
+  );
+}

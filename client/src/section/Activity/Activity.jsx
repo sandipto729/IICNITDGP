@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './styles/Activity.module.scss';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import GradientText from '../../component/Core/TextStyle';
 
 const activities = [
     {
@@ -19,27 +20,44 @@ const activities = [
 ];
 
 const Activity = () => {
-  return (
-    <div className={styles.activityContainer}>
-        <div className={styles.Title}>IIC'S ACTIVITIES</div>
-        <div className={styles.details}>The following are key activities involved in the Institution's Innovation Council (IIC):</div>
-        <div className={styles.Activity}>
-            {activities.map((activity, index) => (
-                <motion.div 
-                    key={index} 
-                    className={styles.Card}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    initial={{ opacity: 0, x: -50 }}
-                    transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }}
-                >
-                    <LightbulbIcon className={styles.icon} />
-                    <div className={styles.CardTitle}>{activity.title}</div>
-                    <div className={styles.CardDetails}>{activity.details}</div>
-                </motion.div>
-            ))}
+    return (
+        <div className={styles.mainAcitivity}>
+            <div className={styles.heading}>
+                <p className={styles.head}>
+                    IIC'S{" "}
+                    <span
+                        style={{
+                            background: "var(--primary)",
+                            WebkitBackgroundClip: "text",
+                            color: "transparent",
+                        }}
+                    >
+                        Activity
+                    </span>
+                </p>
+                <div className={styles.bottomLine}></div>
+            </div>
+            <div className={styles.activityContainer}>
+                <div className={styles.details}>The following are key activities involved in the Institution's Innovation Council (IIC):</div>
+                <div className={styles.Activity}>
+                    {activities.map((activity, index) => (
+                        <motion.div
+                            key={index}
+                            className={styles.Card}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, x: -50 }}
+                            transition={{ type: "spring", stiffness: 100, duration: 0.5, delay: index * 0.2 }}
+                        >
+                            <LightbulbIcon className={styles.icon} />
+                            <div className={styles.CardTitle}>{activity.title}</div>
+                            <div className={styles.CardDetails}>{activity.details}</div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
         </div>
-    </div>
-  );
+
+    );
 };
 
 export default Activity;

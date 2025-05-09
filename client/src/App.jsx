@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div>
       <ToastContainer />
-      <TopHeader />
+      {/* <TopHeader /> */}
       <Header />
       {/* <Event /> */}
 

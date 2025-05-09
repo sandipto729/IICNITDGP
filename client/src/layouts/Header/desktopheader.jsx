@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import styles from './styles/desktopheader.module.scss';
 import { Link } from 'react-router-dom';
-import NITDGPLOGO from '../../assets/NITLogo.jpeg';
+import NITDGPLOGO from '../../assets/NITLogo2.png';
+import IICLOGO from '../../assets/iiclogo.png';
 
 const DesktopHeader = () => {
     const [isDown, setIsDown] = useState(false);
 
     return (
         <div className={styles.desktopHeaderContainer}>
-            <ul>
+            <ul className={styles.logo}>
                 <a href='https://nitdgp.ac.in/'><img src={NITDGPLOGO} alt="Nit DGP Logo" /></a>
+                <Link to='/'><img src={IICLOGO} alt="IIC Logo" /></Link>
             </ul>
+            
             <ul>
                 <li>
                     <Link to="/">Home</Link>

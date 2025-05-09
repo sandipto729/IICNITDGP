@@ -7,22 +7,24 @@ import Search from '../../component/SearchComponent/search';
 
 const TopHeader = () => {
   return (
-    <div className={styles.topHeader}>
-      <Link to="/" className={styles.topHeaderLeft}>
-        <img src={IICLOGO} alt="IIC Logo" />
-      </Link>
-      <div className={styles.topHeaderRight}>
-        <div className={styles.topHeaderRightItem}>
-          <Search />
-        </div>
-        <div className={styles.topHeaderRightItem}>
-          <Link to="/login">Login</Link>
-        </div>
-        <div className={styles.topHeaderRightItem}>
-          <Link to="/contact">Contact Us</Link>   
-        </div>
-      </div>
-    </div>
+    // <div className={styles.topHeader}>
+    //   <Link to="/" className={styles.topHeaderLeft}>
+    //     <img src={IICLOGO} alt="IIC Logo" />
+    //   </Link>
+    //   <div className={styles.topHeaderRight}>
+    //     <div className={styles.topHeaderRightItem}>
+    //       <Search />
+    //     </div>
+    //     <div className={styles.topHeaderRightItem}>
+    //       <Link to="/login">Login</Link>
+    //     </div>
+    //     <div className={styles.topHeaderRightItem}>
+    //       <Link to="/contact">Contact Us</Link>   
+    //     </div>
+    //   </div>
+    // </div>
+    <>
+    </>
   );
 }
 
