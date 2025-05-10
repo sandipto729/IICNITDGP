@@ -12,7 +12,7 @@ const Idea = ({ image, title, date, time, content }) => {
 
     // Toggle modal visibility
     const handleReadMore = () => {
-        setShowModal(!showModal);
+        setShowModal(!showModal)
     };
 
     const stripHtml = (html) => {
