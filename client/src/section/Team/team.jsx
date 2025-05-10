@@ -87,7 +87,12 @@ const Team = () => {
     return (
         <div className={styles.teamPage}>
             <h2 className={styles.teamTitle}>
-                Meet Our <GradientText text="Team" gradient="linear-gradient(to right, #4facfe, rgb(81,99,150))" />
+                <div>Meet Our <span style={{
+                    background: "var(--primary)",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                }}>Team</span></div>
+                <div className={styles.bottomLine}></div>
             </h2>
 
             {/* Show Filters Button */}
@@ -123,7 +128,11 @@ const Team = () => {
                 (selectedType === "All" || selectedType === type) && (
                     <div key={type} className={styles.teamSection}>
                         <h3 className={styles.teamSectionTitle}>
-                            <GradientText text={type} gradient="linear-gradient(to right, rgb(26, 69, 106), rgb(77, 123, 249))" />
+                            <span style={{
+                                background: "var(--primary)",
+                                WebkitBackgroundClip: "text",
+                                color: "transparent",
+                            }}>{type}</span>
                         </h3>
                         <div className={styles.teamGrid}>
                             {groupedMembers[type].map((member) => (

@@ -1,80 +1,94 @@
 .teamPage {
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .teamTitle {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .teamSection {
-    margin-bottom: 1rem;
-  }
-  
-  .teamSectionTitle {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  .teamGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-  }
+.teamTitle {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
 
-  .filterButtons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
-    gap: 12px;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 800px; /* Prevents stretching too wide on large screens */
+  .bottomLine {
+    width: 12rem;
+    height: 0.3125rem;
+    background: var(--primary);
+    color: transparent;
+    border-radius: 5px;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+.teamSection {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.teamSectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.teamGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  gap: 12px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  /* Prevents stretching too wide on large screens */
 }
 
 /* Mobile: Stack buttons vertically */
 @media (max-width: 600px) {
-    .filterButtons {
-        grid-template-columns: 0.8fr;
-    }
+  .filterButtons {
+    grid-template-columns: 0.8fr;
+  }
 }
 
 .filterButton {
-    padding: 10px 14px;
-    border: none;
-    background-color: #ddd;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    color: var(--primary-blue);
-    font-weight: 550;
-    font-size: large;
-    text-align: center;
-    min-width: 120px;
+  padding: 5px 7px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  color: black;
+  font-weight: 550;
+  font-size: large;
+  text-align: center;
+  min-width: 120px;
 }
 
-  .filterButton:hover {
-    background-color: #bbb;
-  }
-  
-  .active {
-    background-color: var(--primary-blue);
-    color: #fff;
-  }
-  
+.filterButton:hover {
+  background-color: #bbb;
+}
+
+.active {
+  background: var(--primary);
+  color: white;
+}
+
 
 /* Show All Button */
 .showAllButton {
   padding: 12px 16px;
   border: none;
-  background-color: var(--primary-blue);
+  background: var(--primary);
+  color: transparent;
   color: white;
   cursor: pointer;
   border-radius: 6px;
@@ -85,5 +99,6 @@
 }
 
 .showAllButton:hover {
-  background-color: darkblue;
+  background: var(--primary);
+  color: white;
 }

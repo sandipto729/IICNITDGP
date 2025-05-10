@@ -1,100 +1,107 @@
 .desktopHeaderContainer {
-    background: #000; // Black background
+  background: #000; // Black background
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+
+  .logo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
-    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff; // White text
+    font-size: 24px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    gap: 1.5rem;
 
-    .logo{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &:hover {
+      color: #ffcc00; // Yellow on hover
+    }
+
+  }
+
+  img {
+    height: 4rem;
+    width: auto;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    li {
+      position: relative;
+      padding: 12px 18px;
+      font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
-      text-decoration: none;
-      color: #fff; // White text
-      font-size: 24px;
-      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+
+      a {
+        text-decoration: none;
+        color: #fff; // White text
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          background: var(--primary);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+      }
+    }
+
+    .dropdown {
+      position: relative;
+      color: #fff; // White text for dropdown
       transition: color 0.3s ease-in-out;
-      gap: 1.5rem;
+      cursor: pointer;
 
       &:hover {
-        color: #ffcc00; // Yellow on hover
+        background: var(--primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
-      
-    }
-  
-    img {
-      height: 4rem;
-      width: auto;
-    }
-  
-    ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      padding: 0;
-      margin: 0;
-  
-      li {
-        position: relative;
-        padding: 12px 18px;
-        font-size: 16px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-  
-        a {
-          text-decoration: none;
-          color: #fff; // White text
-          transition: color 0.3s ease-in-out;
-  
-          &:hover {
-            color: #ffcc00; // Yellow on hover
-          }
-        }
+
+      &:hover .dropdownContent {
+        display: block;
       }
-  
-      .dropdown {
-        position: relative;
-        color: #fff; // White text for dropdown
-        transition: color 0.3s ease-in-out;
-        cursor: pointer;
-  
+    }
+
+    .dropdownContent {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #222; // Dark gray dropdown background
+      box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      min-width: 150px;
+      z-index: 10;
+
+      a {
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+        color: #fff; // White text
+        transition: background 0.3s ease-in-out;
+
         &:hover {
-          color: #ffcc00; // Yellow on hover
-        }
-  
-        &:hover .dropdownContent {
-          display: block;
-        }
-      }
-  
-      .dropdownContent {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #222; // Dark gray dropdown background
-        box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
-        min-width: 150px;
-        z-index: 10;
-  
-        a {
-          display: block;
-          padding: 10px;
-          font-size: 14px;
-          color: #fff; // White text
-          transition: background 0.3s ease-in-out;
-  
-          &:hover {
-            background: #ffcc00; // Yellow background on hover
-            color: #000; // Black text when hovered
-          }
+          background: var(--primary);
+          WebkitBackgroundClip: text;
+          color: transparent;
+          color: #fff;
         }
       }
     }
   }
-  
+}
