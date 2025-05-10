@@ -67,13 +67,13 @@
     },
     {
       "id": 7,
-      "name": "Sourav Sen",
+      "name": "Shivam Roy",
       "img": "https://picsum.photos/300/300?random=7",
       "type": "Second Year",
       "extra": {
         "linkedin": "https://linkedin.com/in/sourav",
         "github": "https://github.com/sourav",
-        "designation": "Technical Head"
+        "designation": "Technical Member"
       }
     },
     {

@@ -11,8 +11,8 @@ const NewsEvent = () => {
     const fetchNewsData = async () => {
         try {
             const data = Events;
-            
-            const newsdata=data.events;
+
+            const newsdata = data.events;
 
             setNewsList(newsdata.reverse());
 
@@ -26,7 +26,15 @@ const NewsEvent = () => {
 
     return (
         <>
-            <center className={styles.newsTitle}>Our <GradientText text="Events"></GradientText></center>
+            <center className={styles.newsTitle}>
+                <h2>
+                    <div >Our <span style={{
+                        background: "var(--primary)",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                    }}>Events</span></div>
+                </h2>
+            </center>
             <div className={styles.newsContainer}>
 
                 {newsList.map((news, index) => (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles/readmore.module.scss';
 import Button from '../Core/Button';
 import { Blurhash } from "react-blurhash";
+import GradientText from "../../component/Core/TextStyle";
 
 const NewsCard = ({ image, title, date, time, content }) => {
     const [showModal, setShowModal] = useState(false);
@@ -52,7 +53,8 @@ const NewsCard = ({ image, title, date, time, content }) => {
                 />
             </div>
             <div className={styles.newsCardContent}>
-                <h4 className={styles.schoolName}>National Institute of Technology, Durgapur</h4> {/* Constant school name */}
+                <h4 className={styles.schoolName}>National Institute Of Technology, Durgapur</h4> {/* Constant school name */}
+                <h4 className={styles.schoolName}></h4> {/* Constant school name */} 
                 <h3 className={styles.newsTitle}>{title}</h3>
                 <p className={styles.newsDateTime}>
                     {date} - {time}
@@ -229,5 +231,5 @@ export default NewsCard;
 //         </div>
 //     );
 // };
-
+// <GradientText text={"National Institute of Technology, Durgapur"} gradient={"linear-gradient(to right, #ffbe0b, #c55a44)"}/>
 // export default NewsCard;

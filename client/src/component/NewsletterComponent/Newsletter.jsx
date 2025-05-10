@@ -13,7 +13,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div className={styles.newsletterContainer}>
+        <div className={styles.newsletterContainer} id="contact">
             <div className={styles.newsletterTitle}>
                 <div className={styles.head}>CONTACT <span
                     style={{
