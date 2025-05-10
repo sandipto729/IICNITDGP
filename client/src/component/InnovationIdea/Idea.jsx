@@ -38,7 +38,7 @@ const Idea = ({ image, title, date, time, content }) => {
             {/* <img src={image} alt={title} className={styles.IdeaCardImage} /> */}
 
             <div className={styles.IdeaCardContent}>
-                <p >Do you have new ideas? We welcome innovative suggestions and creative thoughts that can help us build a brighter future together. Share your ideas, and let's make an impact!</p>
+                <div>Do you have new ideas? We welcome innovative suggestions and creative thoughts that can help us build a brighter future together. Share your ideas, and let's make an impact!</div>
 
                 <Button className={styles.readMoreBtn} onClick={handleReadMore} style={{
                     background: "var(--primary)",

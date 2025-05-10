@@ -4,7 +4,7 @@
     margin: 10px;
     width: 350px;
     /* height: 350px; */
-    background-color: #dfdfdf4f;
+    background-color: #e4dede4f;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -28,7 +28,7 @@
 
 .schoolName {
     font-size: 14px;
-    color: #777;
+    color: #999;
 }
 
 .newsTitle {
@@ -53,7 +53,9 @@
 }
 
 .readMoreBtn {
-    background-color: #007BFF;
+    
+    background: var(--primary);
+    color: transparent;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -78,7 +80,7 @@
 }
 
 .modalContent {
-    background-color: #fff;
+    background-color: rgb(80, 78, 78);
     padding: 20px;
     width: 65vw;
     height: 90vh;
