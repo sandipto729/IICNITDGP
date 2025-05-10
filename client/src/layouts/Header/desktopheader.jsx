@@ -45,9 +45,9 @@ const DesktopHeader = () => {
                 <li>
                     <Link to="/thinkinglab">Thinking Lab</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link to="/asokesen">AsokeSen</Link>
-                </li>
+                </li> */}
             </ul>
         </div>
     );

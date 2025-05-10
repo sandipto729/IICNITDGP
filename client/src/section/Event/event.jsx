@@ -27,13 +27,14 @@ const NewsEvent = () => {
     return (
         <>
             <center className={styles.newsTitle}>
-                <h2>
+               
                     <div >Our <span style={{
                         background: "var(--primary)",
                         WebkitBackgroundClip: "text",
                         color: "transparent",
                     }}>Events</span></div>
-                </h2>
+                    <div className={styles.bottomLine}></div>
+              
             </center>
             <div className={styles.newsContainer}>
 

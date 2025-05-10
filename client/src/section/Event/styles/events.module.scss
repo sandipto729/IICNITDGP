@@ -8,7 +8,20 @@
 /* styles.module.css */
 .newsTitle {
     text-align: center;
-    font-size: 2rem; /* Adjust size as needed */
-    font-weight: bold;
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: 700;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bottomLine {
+  width: 12rem;
+  height: 0.3125rem;
+  background: var(--primary);
+  color: transparent;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+
 }

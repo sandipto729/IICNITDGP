@@ -16,9 +16,9 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 10px solid transparent; 
-  border-top-color:  #ffbe0b;
-  border-bottom-color: #ffbe0b;
+  border: 10px solid transparent;
+  border-top-color: #ff7d0b;
+  border-bottom-color: #ff7d0b;
   animation: spin 1.5s linear infinite;
   display: flex;
   justify-content: center;
@@ -28,27 +28,35 @@
 }
 
 .loadingText {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight: 700;
   text-align: center;
   letter-spacing: 1px;
   animation: fadeInOut 2s ease-in-out infinite;
-  color: #f42b03;
+  // color: #f42b03;
+  background: var(--primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 @keyframes fadeInOut {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }

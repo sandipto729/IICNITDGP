@@ -14,6 +14,7 @@ const Policies = () => {
           WebkitBackgroundClip: "text",
           color: "transparent",
         }}>Policies</span></div>
+        <div className={styles.bottomLine}></div>
       </h1>
 
 
