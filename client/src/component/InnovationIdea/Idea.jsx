@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './styles/Idea.module.scss';
+import styles from './Styles/Idea.module.scss';
 import Button from '../Core/Button';
 import { Blurhash } from "react-blurhash";
 import { useForm } from "react-hook-form"
