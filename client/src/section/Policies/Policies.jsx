@@ -8,7 +8,14 @@ import policyImage from '../../assets/policy.jpg'; // Importing the image
 const Policies = () => {
   return (
     <div>
-      <img src={policyImage} alt="Policies" className={styles['policy-image']} />
+      <h1 className={styles.policyPage}>
+        <div className={styles.policyTitle}>IIC <span style={{
+          background: "var(--primary)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}>Policies</span></div>
+      </h1>
+
 
       <div className={styles["policy-container"]}>
 

@@ -1,3 +1,27 @@
+.policyPage {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.policyTitle {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+
+  .bottomLine {
+    width: 12rem;
+    height: 0.3125rem;
+    background: var(--primary);
+    color: transparent;
+    border-radius: 5px;
+    margin: 0 auto 1rem auto;
+  }
+}
+
 .policy-container {
   display: flex;
   flex-wrap: wrap;
