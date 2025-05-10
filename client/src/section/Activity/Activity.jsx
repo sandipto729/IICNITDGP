@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styles from './styles/Activity.module.scss';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import GradientText from '../../component/Core/TextStyle';
+import InnovationApply from '../../component/InnovationIdea/Idea';
 
 const activities = [
     {
@@ -54,6 +55,7 @@ const Activity = () => {
                         </motion.div>
                     ))}
                 </div>
+                <InnovationApply />
             </div>
         </div>
 

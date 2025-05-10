@@ -1,78 +1,123 @@
+$primary: #007bff;
+$bg-dark: #111;
+$input-bg: #1e1e1e;
+$text-color: #fff;
+$error-color: #ff4d4f;
+
 .newsletterContainer {
-  width: 90%;
-  max-width: 500px;
-  background-color: white;
-  text-align: center;
-  padding: 30px 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin: 20px auto;
+  background-color: $bg-dark;
+  color: $text-color;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-/* Header Text */
 .newsletterTitle {
-  color: #001f3f;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.newsletterText {
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-/* ✅ Input + Button Wrapper */
-.inputWrapper {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-}
 
-/* ✅ Email Input */
-.emailInput {
-  padding: 10px;
-  width: 70%;
-  max-width: 300px;
-  border: 2px solid #001f3f;
+  .bottomLine {
+  width: 12rem;
+  height: 0.3125rem;
+  background: var(--primary);
+  color: transparent;
   border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
-  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 1rem;
+}
 }
 
-/* ✅ Subscribe Button */
-.subscribeButton {
-  max-width: 328px;
-  padding: 10px 16px;
-  background-color: #001f3f;
-  color: white;
+.newsletterDescription {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.leftContainer {
+  flex: 1;
+  min-width: 300px;
+}
+
+.rightContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+
+  .newsletterImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+
+  input,
+  textarea {
+    background-color: rgba(255, 255, 255, 0.153);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: $text-color;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &:focus {
+      outline: 2px solid $primary;
+    }
+  }
+
+  span {
+    color: $error-color;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.submitButton {
+  background-color: $primary;
+  color: $text-color;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
 }
 
-.subscribeButton:hover {
-  background-color: #003366;
-  box-shadow: 0 4px 10px rgba(0, 31, 63, 0.3);
-}
-
-/* ✅ Mobile Responsive */
-@media screen and (max-width: 600px) {
-  .inputWrapper {
-      flex-direction: column;
-      gap: 10px;
+// Optional: responsive tweaks
+@media (max-width: 768px) {
+  .newsletterDescription {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .emailInput {
-      width: 100%;
-  }
-
-  .subscribeButton {
-      width: 100%;
+  .newsletterTitle {
+    font-size: 1.5rem;
   }
 }
