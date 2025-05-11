@@ -2,17 +2,30 @@ import React from 'react'
 import { AnimatedBox } from '../../assets/animation/AnimatedBox'
 import styles from './styles/UpcomingEvent.module.scss'
 import Data from './../../../public/data/events.json'
+import API from '../../common/api'
 
 const UpcomingEvent = () => {
   const [upcomingEvent, setUpcomingEvent] = React.useState(null)
 
-  React.useEffect(() => {
-    // Directly use imported JSON
-    console.log("Upcoming Event", Data.events)
-    if (Data.events.length > 0) {
-      setUpcomingEvent(Data.events[0])
+  const fetchUpcomingEvent = async () => {
+    const response= await fetch(API.WebinarFetch.url, {
+        method: API.WebinarFetch.method,
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (response.ok) {
+        const data = await response.json();
+        setUpcomingEvent(data[data.length - 1]);
+    } else {
+        console.error("Failed to fetch news data");
     }
-  }, [])
+  }
+
+  React.useEffect(() => {
+    fetchUpcomingEvent()
+  })
 
   return (
     <div>
@@ -32,7 +45,7 @@ const UpcomingEvent = () => {
             </p>
             <div className={styles.boxinnertext}>
               <p className={styles.boxinnertitle}>{upcomingEvent ? upcomingEvent.name : "Coming Soon"}</p>
-              <p className={styles.boxinnersubtitle}>{upcomingEvent ? upcomingEvent.details : ""}</p>
+              {/* <p className={styles.boxinnersubtitle}>{upcomingEvent ? upcomingEvent.details : ""}</p> */}
             </div>
           </div>
         </div>

@@ -4,20 +4,24 @@ import EventCard from './../../component/ReadMore/readmore';
 import Events from './../../../public/data/events.json';
 import styles from './styles/events.module.scss';
 import GradientText from '../../component/Core/TextStyle';
+import API from '../../common/api';
 
 const NewsEvent = () => {
     const [newsList, setNewsList] = useState([]);
 
     const fetchNewsData = async () => {
-        try {
-            const data = Events;
-
-            const newsdata = data.events;
-
-            setNewsList(newsdata.reverse());
-
-        } catch (error) {
-            console.error('Error fetching news data:', error);
+        const response= await fetch(API.WebinarFetch.url, {
+            method: API.WebinarFetch.method,
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            const data = await response.json();
+            setNewsList(data);
+        } else {
+            console.error("Failed to fetch news data");
         }
     }
     useEffect(() => {

@@ -1,0 +1,20 @@
+const BACKENDURI=import.meta.env.VITE_BACKEND_URI
+
+const BASE_URL = `${BACKENDURI}/api`;
+
+const Api={
+    IdeaSubmission:{
+        url:`${BASE_URL}/ideasubmission`,
+        method:"POST"
+    },
+    EnquirySubmission:{
+        url:`${BASE_URL}/enquirysubmission`,
+        method:"POST"
+    },
+    WebinarFetch:{
+        url:`${BASE_URL}/webinardetails`,
+        method:"GET"
+    }
+}
+
+export default Api

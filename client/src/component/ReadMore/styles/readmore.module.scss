@@ -14,12 +14,16 @@
     border-radius: 1rem;
 }
 
-.newsCardImage {
+.newsCardImage,.newsCardImage1 {
     width: 100%;
-    height: 150px;
+    height: 12rem;
     object-fit: cover;
 }
-
+.newsCardImage1{
+    height: 30rem;
+    margin: auto;
+    // object-fit:none;
+}
 .newsCardContent {
     margin-top: 10px;
     flex-grow: 1;
@@ -96,7 +100,7 @@
 
 .modalImage {
     width: 100%;
-    height: 300px;
+    height: 500px;
     object-fit: cover;
     margin-bottom: 15px;
 }
@@ -134,4 +138,18 @@
     top: 10px;
     right: 10px;
     border-radius: 5px;
+}
+
+.HTML_content{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d0cccc;
+    p{
+        font-family: 'Courier New', Courier, monospace;
+    }
+    a{
+        text-decoration: none;
+        color: #007bff;
+    }
 }

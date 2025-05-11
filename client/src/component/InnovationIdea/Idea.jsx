@@ -3,8 +3,10 @@ import styles from './Styles/Idea.module.scss';
 import Button from '../Core/Button';
 import { Blurhash } from "react-blurhash";
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
+import API from '../../common/api';
 
-const Idea = ({ image, title, date, time, content }) => {
+const Idea = () => {
     const [showModal, setShowModal] = useState(false);
     // useEffect(()=>{
     //     console.log('date',date)
@@ -31,7 +33,25 @@ const Idea = ({ image, title, date, time, content }) => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async(data)=>{
+        console.log("Form submitted:", data);
+        const response = await fetch(API.IdeaSubmission.url, {
+            method: API.IdeaSubmission.method,
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            toast.success("Idea submitted successfully!");
+            setShowModal(false);
+            reset();
+        } else {
+            toast.error("Failed to submit idea.");
+        }
+    }
 
     return (
         <div className={styles.IdeaCard}>
