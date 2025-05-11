@@ -1,15 +1,40 @@
 import { useForm } from "react-hook-form";
 import styles from "./styles/newsletter.module.scss";
+import API from "../../common/api";
+import { toast } from "react-toastify";
 
 export default function ContactForm() {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
+        reset
     } = useForm();
 
     const onSubmit = (data) => {
         console.log("Form submitted:", data);
+        const response = fetch(API.EnquirySubmission.url, {
+            method: API.EnquirySubmission.method,
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        response
+            .then((res) => {
+                if (res.ok) {
+                    toast.success("Enquiry submitted successfully!");
+                    reset();
+                } else {
+                    toast.error("Failed to submit enquiry.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                toast.error("An error occurred while submitting the enquiry.");
+            });
     };
 
     return (

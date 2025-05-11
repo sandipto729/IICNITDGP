@@ -80,13 +80,13 @@ const NewsCard = ({ image, title, date, time, content }) => {
                                     resolutionX={32}
                                     resolutionY={32}
                                     punch={1}
-                                    className={styles.newsCardImage}
+                                    className={styles.newsCardImage1}
                                 />
                             )}
                             <img
                                 src={image}
                                 alt={title}
-                                className={styles.newsCardImage}
+                                className={styles.newsCardImage1}
                                 onLoad={() => setImageLoaded(true)}
                                 style={{ display: imageLoaded ? "block" : "none" }} // Hide image until loaded
                             />
@@ -98,9 +98,9 @@ const NewsCard = ({ image, title, date, time, content }) => {
                         </div>
 
                         {/* Title and content */}
-                        <h3>{title}</h3>
+                        <h3 style={{ textAlign: "center" , fontSize:"20px", fontWeight:"bold", margin:'1rem'}}>{title}</h3>
                         {/* <p>{content}</p> */}
-                        <div dangerouslySetInnerHTML={{ __html: content }} />
+                        <div dangerouslySetInnerHTML={{ __html: content }} className={styles.HTML_content}/>
 
                         {/* Date at the bottom */}
                         <p className={styles.modalDate}>
