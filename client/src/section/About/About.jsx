@@ -7,7 +7,7 @@ import UtkarshBhavan from '../../assets/96143214_1612367168919627_60020974476087
 
 const About = () => {
   return (
-    <div className={styles.aboutContainer}>
+    <div className={styles.aboutContainer} id="about">
       <div className={styles.heading}>
         <p className={styles.head}>
           ABOUT{" "}

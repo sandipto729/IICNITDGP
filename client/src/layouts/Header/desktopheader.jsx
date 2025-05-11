@@ -3,6 +3,7 @@ import styles from './styles/desktopheader.module.scss';
 import { Link } from 'react-router-dom';
 import NITDGPLOGO from '../../assets/NITLogo2.png';
 import IICLOGO from '../../assets/iiclogo.png';
+import {HashLink} from 'react-router-hash-link';
 
 const DesktopHeader = () => {
     const [isDown, setIsDown] = useState(false);
@@ -26,25 +27,25 @@ const DesktopHeader = () => {
                     About
                     {isDown && (
                         <div className={styles.dropdownContent}>
-                            <Link to="/about">About Us</Link>
+                            <HashLink smooth to="/#about">About Us</HashLink>
                             <Link to="/team">Team</Link>
-                            <Link to="/facilities">Facilities</Link>
+                            {/* <Link to="/facilities">Facilities</Link> */}
                             <Link to="/faq">FAQ</Link>
                         </div>
                     )}
                 </li>
-                <li>
+                {/* <li>
                     <Link to="/program">Program</Link>
-                </li>
+                </li> */}
                 <li>
                     <Link to="/guidelines">Guidelines</Link>
                 </li>
                 <li>
                     <Link to="/event">Events</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link to="/thinkinglab">Thinking Lab</Link>
-                </li>
+                </li> */}
                 {/* <li>
                     <Link to="/asokesen">AsokeSen</Link>
                 </li> */}

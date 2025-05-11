@@ -54,3 +54,21 @@
     gap: 20px; /* Space between cards */
   }
 }
+
+
+
+@media (max-width: 1200px){
+  .policyTitle{
+    font-size: 3rem;
+  }
+}
+@media (max-width: 768px) {
+.policyTitle{
+  font-size: 2.5rem;
+}
+@media (max-width:480px){
+  .policyTitle{
+    font-size: 2rem;
+  }
+}
+}
