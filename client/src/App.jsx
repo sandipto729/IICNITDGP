@@ -1,24 +1,28 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopHeader from './layouts/TopHeader/topHeader.jsx'
 import Header from './layouts/Header/header.jsx'
 import { Outlet } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './layouts/Footer/Footer.jsx';
 import Loading from './layouts/Loading/Loading.jsx';
 
-
-
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const hasRotated = sessionStorage.getItem('rotationDone');
 
-    return () => clearTimeout(timer);
+    if (!hasRotated) {
+      setIsLoading(true);
+
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem('rotationDone', 'true'); 
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -27,19 +31,15 @@ const App = () => {
         <Loading />
       ) : (
         <div>
-        <ToastContainer />
-        {/* <TopHeader />*/}
-        <Header />
-        {/* <Event /> */}
-
-        <Outlet />
-        <Footer />
+          <ToastContainer />
+          {/* <TopHeader /> */}
+          <Header />
+          <Outlet />
+          <Footer />
         </div>
       )}
     </div>
+  );
+};
 
-
-  )
-}
-
-export default App
+export default App;
