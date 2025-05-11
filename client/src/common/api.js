@@ -1,6 +1,8 @@
 const BACKENDURI=import.meta.env.VITE_BACKEND_URI
 
 const BASE_URL = `${BACKENDURI}/api`;
+console.log("BACKENDURI:", BACKENDURI);
+console.log("BASE_URL:", BASE_URL);
 
 const Api={
     IdeaSubmission:{
