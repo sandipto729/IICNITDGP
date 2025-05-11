@@ -28,7 +28,7 @@ const UpcomingEvent = () => {
   })
 
   return (
-    <div>
+    <div id='upcoming'>
       <AnimatedBox direction="left">
         <div className={`${styles.box2} ${styles.boxflex}`}>
           <img

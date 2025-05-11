@@ -1,14 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-body {
-  font-family: 'Arial', sans-serif;
-}
+// body {
+//   font-family: 'Arial', sans-serif;
+// }
 
 .footer {
+  border-top: 1px solid #474a4d;
   background-color: black;
   color: white;
   padding: 20px 20px;
@@ -19,12 +20,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  // display: grid;
   gap: 15px;
 }
 
 .footerColumn {
-  flex: 1;
-  min-width: 230px;
+  // flex: 1;
+  // min-width: 230px;
   max-width: 19%;
 }
 

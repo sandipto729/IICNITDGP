@@ -4,6 +4,8 @@ import Event from './../pages/Events/Events.jsx';
 import Home from './../pages/Home/Home.jsx';
 import Guidelines from './../pages/Guidelines/Guidelines.jsx';
 import Team from './../pages/Team/Team.jsx';
+import FAQ from './../pages/FAQ/FAQ.jsx';
+import Error from './../layouts/Error/Error.jsx';
 
 const router = createBrowserRouter([
     {
@@ -25,8 +27,17 @@ const router = createBrowserRouter([
             {
                 path: '/team',
                 element: <Team />
+            },
+            {
+                path: '/faq',
+                element: <FAQ />
+            },
+            {
+                path: '*',
+                element: <Error />
             }
-        ]
+        ],
+        
     }
 ]);
 

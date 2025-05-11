@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from './styles/footer.module.scss'; // Import SCSS styles
 import GradientText from "../../component/Core/TextStyle";
 import { motion } from "framer-motion";
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   return (
@@ -17,7 +18,7 @@ const Footer = () => {
           <h3><GradientText text={"Address"}/></h3>
           <p className={styles.footerText}>National Institute of Technology, Durgapur</p>
           <p className={styles.footerText}>Address</p>
-          <p className={styles.footerText}>West Bengal , PIN 721111</p>
+          <p className={styles.footerText}>West Bengal , PIN 713209</p>
         </div>
 
         {/* Column 2 */}
@@ -41,8 +42,8 @@ const Footer = () => {
           <ul className={styles.footerLinks}>
             <li><Link className={styles.footerLink} to="/">Home</Link></li>
             <li><Link className={styles.footerLink} to="/team">Team</Link></li>
-            <li><Link className={styles.footerLink} to="/guidelines">Guidelines</Link></li>
-            <li><Link className={styles.footerLink} to="/#contact">Contact</Link></li>
+            {/* <li><Link className={styles.footerLink} to="/guidelines">Guidelines</Link></li> */}
+            <li><HashLink smooth className={styles.footerLink} to="/#contact">Contact</HashLink></li>
           </ul>
           <Link to="/#contact">
             <button className={styles.joinBtn}>Join Us</button>
