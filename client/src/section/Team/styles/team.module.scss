@@ -42,8 +42,11 @@
 }
 
 .filterButtons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   justify-content: center;
   margin: 0 auto;
