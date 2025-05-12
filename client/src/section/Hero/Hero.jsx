@@ -56,7 +56,12 @@ function Hero() {
           <AnimatedBox direction="left">
             <div className={styles.largeContent}>
               <p>
-                Inspiring Progress with Bold and Imaginative Approaches{" "}
+                INSTITUTE INNOVATION COUNCIL
+                <p style={{fontSize: "1.5rem",}}>Innovation &<span style={{
+                  background: "var(--primary)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}> Incubation</span> Cell</p>
                 <span
                   className={styles.dynamicText}
                   style={{
@@ -71,36 +76,27 @@ function Hero() {
             </div>
             <div className={styles.smallContainer}>
               <div className={styles.smallContent}>
-                {/* Empowering visionaries to cultivate excellence while guiding future generations toward sustainable growth and innovation.
 
- */}          <div>
-                  <p>
-                    Empowering{" "}
-                    <span
-                      style={{
-                        background: "var(--primary)",
-                        WebkitBackgroundClip: "text",
-                        color: "transparent",
-                      }}
-                    >
-                      visionaries
-                    </span>{" "}
-                    to cultivate excellence while guiding future generations toward sustainable growth and innovation.
-                    <p>Motto of <span style={{
+                <p>
+                  Empowering{" "}
+                  <span
+                    style={{
+                      background: "var(--primary)",
+                      WebkitBackgroundClip: "text",
+                      color: "transparent",
+                    }}
+                  >
+                    visionaries
+                  </span>{" "}
+                  to cultivate excellence while guiding future generations toward sustainable growth and innovation.
+                  <div><p>Motto <span style={{
                     background: "var(--primary)",
                     WebkitBackgroundClip: "text",
                     color: "transparent",
-                  }}>IIC </span>: : 3I : Innovation – IPR – Incubation</p>
-                  </p>
-                </div>
+                  }}>Of </span>IIC : : 3I : <span style={{ color: "#FF8000" }}>Innovation</span> IPR <span style={{ color: "green" }}>Incubation</span>
+                  </p></div>
 
-                {/* <div>
-                  <p>Motto of <span style={{
-                    background: "var(--primary)",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}>IIC </span>: : 3I : Innovation – IPR – Incubation</p>
-                </div> */}
+                </p>
 
               </div>
             </div>
