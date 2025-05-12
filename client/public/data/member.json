@@ -89,6 +89,17 @@
     }
   },
   {
+    "id": 30,
+    "name": "Puja Kumari",
+    "img": "https://iili.io/385bbRV.jpg",
+    "type": "Final-Year",
+    "extra": {
+      "linkedin": "https://www.linkedin.com/in/puja-kumari-4711642b1/?originalSubdomain=in",
+      "github": "",
+      "designation": "Student Convenor"
+    }
+  },
+  {
     "id": 29,
     "name": "Mohd Shoeb",
     "img": "https://iili.io/38x4FyB.md.jpg",
@@ -99,17 +110,7 @@
       "designation": "Innovation Coordinator"
     }
   },
-  {
-    "id": 30,
-    "name": "Puja Kumari",
-    "img": "https://iili.io/38TquZN.md.jpg",
-    "type": "Final-Year",
-    "extra": {
-      "linkedin": "https://www.linkedin.com/in/puja-kumari-4711642b1/?originalSubdomain=in",
-      "github": "",
-      "designation": "Student Convenor"
-    }
-  },
+  
   {
     "id": 31,
     "name": "Ekta Singh",

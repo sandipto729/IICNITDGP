@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/Hero.module.scss";
 import CarouselImg from "../../data/Carousel.json";
 import Carousel from "../../component/Carousel/Carousel";
-import {AnimatedBox} from "../../assets/animation/AnimatedBox";
+import { AnimatedBox } from "../../assets/animation/AnimatedBox";
 
 const titles = [
-  "Entrepreneurship.",
-  "Innovation.",
-  "Leadership.",
-  "Collaboration.",
-  "Community.",
-  "Impact.",
-  "Opportunity.",
-  "Development.",
-  "Transformation.",
-  "Inspiration.",
-  "Motivation.",
+  "Creativity.",
+  "Progress.",
+  "Vision.",
+  "Teamwork.",
+  "Connection.",
+  "Change.",
+  "Growth.",
+  "Empowerment.",
+  "Evolution.",
+  "Ambition.",
+  "Drive.",
 ];
+
 
 function Hero() {
   const [currentTitle, setCurrentTitle] = useState("");
@@ -55,7 +56,7 @@ function Hero() {
           <AnimatedBox direction="left">
             <div className={styles.largeContent}>
               <p>
-                Nurturing Using Innovative & Creative strategies{" "}
+                Inspiring Progress with Bold and Imaginative Approaches{" "}
                 <span
                   className={styles.dynamicText}
                   style={{
@@ -70,20 +71,37 @@ function Hero() {
             </div>
             <div className={styles.smallContainer}>
               <div className={styles.smallContent}>
-                <p>
-                  Inspiring{" "}
-                  <span
-                    style={{
-                      background: "var(--primary)",
-                      WebkitBackgroundClip: "text",
-                      color: "transparent",
-                    }}
-                  >
-                    visionaries
-                  </span>{" "}
-                  towards cultivating excellence and enrouting future
-                  generations towards growth.
-                </p>
+                {/* Empowering visionaries to cultivate excellence while guiding future generations toward sustainable growth and innovation.
+
+ */}          <div>
+                  <p>
+                    Empowering{" "}
+                    <span
+                      style={{
+                        background: "var(--primary)",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                      }}
+                    >
+                      visionaries
+                    </span>{" "}
+                    to cultivate excellence while guiding future generations toward sustainable growth and innovation.
+                    <p>Motto of <span style={{
+                    background: "var(--primary)",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}>IIC </span>: : 3I : Innovation – IPR – Incubation</p>
+                  </p>
+                </div>
+
+                {/* <div>
+                  <p>Motto of <span style={{
+                    background: "var(--primary)",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}>IIC </span>: : 3I : Innovation – IPR – Incubation</p>
+                </div> */}
+
               </div>
             </div>
           </AnimatedBox>
