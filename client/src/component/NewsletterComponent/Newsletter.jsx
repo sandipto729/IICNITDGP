@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import styles from "./styles/newsletter.module.scss";
 import API from "../../common/api";
 import { toast } from "react-toastify";
+import FormSubmitLoading from "../../layouts/FormSubmitLoading/Loading";
 
 export default function ContactForm() {
     const {
@@ -12,8 +14,11 @@ export default function ContactForm() {
         reset
     } = useForm();
 
+    const [loading, setLoading] = useState(false);
+
     const onSubmit = (data) => {
         console.log("Form submitted:", data);
+        setLoading(true);
         const response = fetch(API.EnquirySubmission.url, {
             method: API.EnquirySubmission.method,
             mode: "cors",
@@ -34,6 +39,9 @@ export default function ContactForm() {
             .catch((error) => {
                 console.error("Error:", error);
                 toast.error("An error occurred while submitting the enquiry.");
+            })
+            .finally(() => {
+                setLoading(false);
             });
     };
 
@@ -102,7 +110,7 @@ export default function ContactForm() {
                             {errors.message && <span>{errors.message.message}</span>}
                         </div>
 
-                        <button type="submit" className={styles.submitButton} style={{background: "var(--primary)"}}>Submit</button>
+                        {loading ? <FormSubmitLoading styles={{display: "flex", justifyContent: "center"}}/> : <button type="submit" className={styles.submitButton} style={{background: "var(--primary)"}}>Submit</button>}
                     </form>
                 </div>
                 <div className={styles.rightContainer}>

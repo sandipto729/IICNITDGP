@@ -5,11 +5,14 @@ import Events from './../../../public/data/events.json';
 import styles from './styles/events.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 import API from '../../common/api';
+import PageLoading from '../../layouts/PageLoading/Loading';
 
 const NewsEvent = () => {
     const [newsList, setNewsList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchNewsData = async () => {
+        setLoading(true);
         const response= await fetch(API.WebinarFetch.url, {
             method: API.WebinarFetch.method,
             mode: "cors",
@@ -23,10 +26,12 @@ const NewsEvent = () => {
         } else {
             console.error("Failed to fetch news data");
         }
+        setLoading(false);
     }
     useEffect(() => {
         fetchNewsData();
     }, []);
+    
 
     return (
         <>
@@ -40,7 +45,7 @@ const NewsEvent = () => {
                     <div className={styles.bottomLine}></div>
               
             </center>
-            <div className={styles.newsContainer}>
+            {loading ? <PageLoading /> : <div className={styles.newsContainer}>
 
                 {newsList.map((news, index) => (
                     <EventCard
@@ -52,7 +57,7 @@ const NewsEvent = () => {
                         content={news.details}
                     />
                 ))}
-            </div>
+            </div>}
         </>
     );
 };

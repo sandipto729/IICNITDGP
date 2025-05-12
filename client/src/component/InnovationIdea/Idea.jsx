@@ -5,6 +5,7 @@ import { Blurhash } from "react-blurhash";
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
 import API from '../../common/api';
+import FormSubmitLoading from '../../layouts/FormSubmitLoading/Loading';
 
 const Idea = () => {
     const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,7 @@ const Idea = () => {
     const handleReadMore = () => {
         setShowModal(!showModal)
     };
+    const [loading, setLoading] = useState(false);
 
     const stripHtml = (html) => {
         const doc = new DOMParser().parseFromString(html, "text/html");
@@ -35,6 +37,7 @@ const Idea = () => {
 
     const onSubmit = async(data)=>{
         console.log("Form submitted:", data);
+        setLoading(true);
         const response = await fetch(API.IdeaSubmission.url, {
             method: API.IdeaSubmission.method,
             mode: "cors",
@@ -48,6 +51,7 @@ const Idea = () => {
             toast.success("Idea submitted successfully!");
             setShowModal(false);
             reset();
+            setLoading(false);
         } else {
             toast.error("Failed to submit idea.");
         }
@@ -152,11 +156,11 @@ const Idea = () => {
                                     {errors.teamLeaderEmail && <p className={styles.error}>This field is required</p>}
                                 </div>
 
-                                <button type="submit" className={styles.submitBtn} style={{
+                                {loading?<FormSubmitLoading/>:<button type="submit" className={styles.submitBtn} style={{
                                     background: "var(--primary)",
                                     // WebkitBackgroundClip: "text",
                                     // color: "transparent",
-                                }}>Submit</button>
+                                }}>Submit</button>}
                             </form>
                         </div>
 
