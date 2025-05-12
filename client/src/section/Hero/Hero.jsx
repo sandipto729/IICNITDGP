@@ -57,11 +57,11 @@ function Hero() {
             <div className={styles.largeContent}>
               <p>
                 INSTITUTE INNOVATION COUNCIL
-                <p style={{fontSize: "1.5rem",}}>Innovation &<span style={{
+                <div className={styles.largeContent_naming}>Innovation &<span style={{
                   background: "var(--primary)",
                   WebkitBackgroundClip: "text",
                   color: "transparent",
-                }}> Incubation</span> Cell</p>
+                }}> Incubation</span> Cell</div>
                 <span
                   className={styles.dynamicText}
                   style={{

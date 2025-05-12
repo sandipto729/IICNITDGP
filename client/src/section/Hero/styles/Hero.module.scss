@@ -126,7 +126,7 @@
   
   @media (max-width: 1025px) {
   .largeContent p{
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
   
   .smallContainer strong{
@@ -155,6 +155,10 @@
       padding-left: 25px;
       padding-right: 30px;
     }
+    .largeContent p {
+      font-size: 1.8rem;
+      // text-align: center;
+    }
   }
   
   
@@ -162,7 +166,7 @@
   @media screen and (max-width: 480px) {
   
     .largeContent p{
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       text-align: center;
       
     }
@@ -215,5 +219,26 @@
       opacity: 50%;
       height: 100vw;
       background-color: rgba(255, 92, 0, 0.3);
+    }
+  }
+  @media screen and (max-width: 1600px) {
+    .largeContent_naming{
+      font-size: 1.5rem;
+    }
+  
+  
+  }
+  @media screen and (max-width: 760px) {
+    .largeContent_naming{
+      font-size: 1.2rem;
+      // text-align: center;
+      
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .largeContent_naming{
+      font-size: 1rem;
+      text-align: center;
+      
     }
   }
