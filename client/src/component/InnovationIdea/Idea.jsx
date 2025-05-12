@@ -54,6 +54,7 @@ const Idea = () => {
             setLoading(false);
         } else {
             toast.error("Failed to submit idea.");
+            setLoading(false);
         }
     }
 
