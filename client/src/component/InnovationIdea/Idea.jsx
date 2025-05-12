@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
 import API from '../../common/api';
 import FormSubmitLoading from '../../layouts/FormSubmitLoading/Loading';
-import { set } from 'mongoose';
 
 const Idea = () => {
     const [showModal, setShowModal] = useState(false);
