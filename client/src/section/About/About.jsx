@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles/about.module.scss';
 import { motion } from 'framer-motion';
 import GradientText from '../../component/Core/TextStyle';
-import UtkarshBhavan from '../../assets/96143214_1612367168919627_6002097447608778752_n.jpg';
+import UtkarshBhavan from '../../assets/iicAbout.jpg';
 
 
 const About = () => {

@@ -69,7 +69,7 @@ import GradientText from "../../component/Core/TextStyle";
 
 const Team = () => {
     const [selectedType, setSelectedType] = useState("All");
-    const [showFilters, setShowFilters] = useState(false); // State for showing filters
+    const [showFilters, setShowFilters] = useState(true); // State for showing filters
 
     // Group members by type
     const groupedMembers = teamData.reduce((acc, member) => {
@@ -96,7 +96,7 @@ const Team = () => {
             </h2>
 
             {/* Show Filters Button */}
-            {!showFilters && (
+            {/* {!showFilters && (
                 <button className={styles.showAllButton} onClick={() => setShowFilters(true)}>
                     Show All Filters
                 </button>
@@ -106,7 +106,7 @@ const Team = () => {
                 <button className={styles.showAllButton} onClick={() => setShowFilters(false)}>
                     Hide Filters
                 </button>
-            )}
+            )} */}
 
             {/* Filter buttons */}
             {showFilters && (

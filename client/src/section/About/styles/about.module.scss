@@ -83,10 +83,19 @@
 
   .LeftDiv {
     .aboutImage {
-      // margin-top: 7rem;
-      width: 100%;
+      // margin-top: 4rem;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 40vw;
+      height: 22.5rem;
       display: flex;
       justify-content: center;
+
+      @media screen and (max-width: 768px) {
+        width: 80vw;
+        height: 20rem;
+        
+      }
 
       img {
         width: 100%;

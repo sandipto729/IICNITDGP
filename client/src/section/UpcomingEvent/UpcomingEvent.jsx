@@ -6,8 +6,10 @@ import API from '../../common/api'
 
 const UpcomingEvent = () => {
   const [upcomingEvent, setUpcomingEvent] = React.useState(null)
+  const [loading, setLoading] = React.useState(true)
 
   const fetchUpcomingEvent = async () => {
+    setLoading(true)
     const response= await fetch(API.WebinarFetch.url, {
         method: API.WebinarFetch.method,
         mode: "cors",
@@ -18,14 +20,16 @@ const UpcomingEvent = () => {
     if (response.ok) {
         const data = await response.json();
         setUpcomingEvent(data[data.length - 1]);
+        setLoading(false)
     } else {
         console.error("Failed to fetch news data");
     }
+    
   }
 
   React.useEffect(() => {
     fetchUpcomingEvent()
-  })
+  },[])
 
   return (
     <div id='upcoming'>
@@ -44,7 +48,7 @@ const UpcomingEvent = () => {
               Event
             </p>
             <div className={styles.boxinnertext}>
-              <p className={styles.boxinnertitle}>{upcomingEvent ? upcomingEvent.name : "Coming Soon"}</p>
+              {loading? <p className={styles.boxinnertitle}>Loading...</p>:<p className={styles.boxinnertitle}>{upcomingEvent ? upcomingEvent.name : "Coming Soon"}</p>}
               {/* <p className={styles.boxinnersubtitle}>{upcomingEvent ? upcomingEvent.details : ""}</p> */}
             </div>
           </div>
