@@ -9,28 +9,28 @@ import TestimonialCard from "../../component/TestimonialCard/Card";
 const testimonialData = [
     {
         description: "This is a great platform for learning and growth.",
-        name: "John Doe",
-        degree: "Software Engineer",
+        name: "Ananya Nath",
+        degree: "2022, ME",
     },
     {
         description: "I had an amazing experience with the team.",
-        name: "Jane Smith",
-        degree: "Product Manager",
+        name: "Dhrubajyoti Gupta",
+        degree: "2021, ME",
     },
     {
         description: "The community is very supportive and helpful.",
-        name: "Alice Johnson",
-        degree: "UX Designer",
+        name: "Adrija Biswas",
+        degree: "2022, ME",
     },
     {
         description: "Helped me land my dream job with confidence.",
-        name: "Raj Patel",
-        degree: "Data Scientist",
+        name: "Tiasa Das",
+        degree: "2020, ME",
     },
     {
         description: "The resources and mentorship are top-notch.",
-        name: "Sara Khan",
-        degree: "Frontend Developer",
+        name: "Dr. Shibendu Shekhar Roy",
+        degree: "Professor, Department of Mechanical Engineering & Chairperson, Institution’s Innovation Council",
     },
 ];
 
