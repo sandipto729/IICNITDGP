@@ -44,7 +44,7 @@ const About = () => {
               initial={{ opacity: 0, x: 50 }}
               transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
             >
-              <h1>Institute <span style={{
+              <h1>Institution's <span style={{
                 background: "var(--primary)",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
@@ -61,7 +61,7 @@ const About = () => {
               transition={{ type: "spring", stiffness: 100, duration: 0.5 }}
             >
               <p>
-                The Institute Innovation Council (IIC) is dedicated to fostering a vibrant culture of innovation and incubation among faculty and students at NITDGP. Our mission is to drive creativity and entrepreneurial spirit, resulting in the establishment of successful startups. These ventures, promoted and owned by our talented faculty and students, showcase the innovative potential and collaborative efforts within our community. By fostering collaboration and a proactive mindset, the IIC is dedicated to making NITDGP a hub of innovation, where ideas are turned into reality, and the next generation of entrepreneurs is born.
+                The Institution's Innovation Council (IIC) is dedicated to fostering a vibrant culture of innovation and incubation among faculty and students at NIT Durgapur. Our mission is to drive creativity and entrepreneurial spirit, resulting in the establishment of successful startups. These ventures, promoted and owned by our talented faculty and students, showcase the innovative potential and collaborative efforts within our community. By fostering collaboration and a proactive mindset, the IIC is dedicated to making NIT Durgapur a hub of innovation, where ideas are turned into reality, and the next generation of entrepreneurs is born.
               </p>
             </motion.div>
 

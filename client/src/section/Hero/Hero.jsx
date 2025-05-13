@@ -56,7 +56,7 @@ function Hero() {
           <AnimatedBox direction="left">
             <div className={styles.largeContent}>
               <p>
-                INSTITUTE INNOVATION COUNCIL
+                INSTITUTION'S INNOVATION COUNCIL
                 <div className={styles.largeContent_naming}>Innovation &<span style={{
                   background: "var(--primary)",
                   WebkitBackgroundClip: "text",
