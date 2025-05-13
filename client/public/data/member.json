@@ -173,12 +173,23 @@
     "type": "Pre-Final Year",
     "extra": {
       "linkedin": "http://linkedin.com/in/sandipto-roy-675600277/",
-      "github": "",
+      "github": "https://github.com/sandipto729",
       "designation": "Student Volunteer"
     }
   },
   {
     "id": 37,
+    "name": "Shivam Roy",
+    "img": "https://iili.io/38mnvHX.jpg",
+    "type": "Pre-Final Year",
+    "extra": {
+      "linkedin": "https://www.linkedin.com/in/-shivamroy/",
+      "github": "https://github.com/mrshivamroy",
+      "designation": "Student Volunteer"
+    }
+  },
+  {
+    "id": 38,
     "name": "Debarghya Roy",
     "img": "https://iili.io/38ufEPt.jpg",
     "type": "Pre-Final Year",
