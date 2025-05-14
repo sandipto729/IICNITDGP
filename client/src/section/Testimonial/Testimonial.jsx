@@ -29,8 +29,8 @@ const testimonialData = [
     },
     {
         description: "The resources and mentorship are top-notch.",
-        name: "Dr. Shibendu Shekhar Roy",
-        degree: "Professor, Department of Mechanical Engineering & Chairperson, Institution’s Innovation Council",
+        name: "Anuj Mazumdar",
+        degree: "1999, CHE",
     },
 ];
 
