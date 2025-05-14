@@ -22,7 +22,7 @@ const NewsEvent = () => {
         });
         if (response.ok) {
             const data = await response.json();
-            setNewsList(data);
+            setNewsList(data.reverse());
         } else {
             console.error("Failed to fetch news data");
         }
