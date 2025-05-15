@@ -6,6 +6,7 @@ import Guidelines from './../pages/Guidelines/Guidelines.jsx';
 import Team from './../pages/Team/Team.jsx';
 import FAQ from './../pages/FAQ/FAQ.jsx';
 import Error from './../layouts/Error/Error.jsx';
+import Galary from '../pages/Galary/Galary.jsx';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: '/faq',
                 element: <FAQ />
+            },
+            {
+                path: '/galary',
+                element: <Galary />
             },
             {
                 path: '*',
