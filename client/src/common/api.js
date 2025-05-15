@@ -16,6 +16,14 @@ const Api={
     WebinarFetch:{
         url:`${BASE_URL}/webinardetails`,
         method:"GET"
+    },
+    WebsiteVisit:{
+        url:`${BASE_URL}/website_count`,
+        method:"GET"
+    },
+    Update_count:{
+        url:`${BASE_URL}/update_count`,
+        method:"GET"
     }
 }
 

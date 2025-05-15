@@ -1,0 +1,83 @@
+.galleryContainer {
+    // position: relative;
+    padding: 1rem;
+    overflow-x: hidden;
+
+
+    .galleryGrid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .galleryThumb {
+        width: 25rem;
+        height: 20rem;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: transform 0.2s;
+    }
+
+    .galleryThumb:hover {
+        transform: scale(1.05);
+    }
+
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        flex-direction: column;
+    }
+
+    .lightboxImg {
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 8px;
+    }
+
+    .navBtn,
+    .closeBtn {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 10px 20px;
+        cursor: pointer;
+        z-index: 1000;
+        border-radius: 4px;
+    }
+
+    .navBtn:hover,
+    .closeBtn:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .left {
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .right {
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .closeBtn {
+        top: 20px;
+        right: 20px;
+    }
+
+}
+
