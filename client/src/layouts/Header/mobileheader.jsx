@@ -33,7 +33,7 @@ const MobileHeader = () => {
                     {/* <li><Link to="/program">Program</Link></li> */}
                     <li><Link to="/guidelines">Guidelines</Link></li>
                     <li><Link to="/event">Events</Link></li>
-                    <li><Link to='/galary'>Galary</Link></li>
+                    <li><Link to='/gallery'>Gallery</Link></li>
                     {/* <li><Link to="/thinkinglab">Thinking Lab</Link></li> */}
                     {/* <li><Link to="/asokesen">AsokeSen</Link></li>
                     <li><Link to="/login">Login</Link></li>

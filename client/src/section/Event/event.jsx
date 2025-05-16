@@ -100,9 +100,13 @@ const NewsEvent = () => {
     }, []);
 
     const now = new Date();
+    now.setHours(0, 0, 0, 0);
 
     const filteredNews = newsList.filter((news) => {
         const eventDate = new Date(news.date);
+        eventDate.setHours(0, 0, 0, 0);
+        console.log('Event Date:', eventDate, "Current Date:", now);
+
         return filter === 'upcoming' ? eventDate >= now : eventDate < now;
     });
 
