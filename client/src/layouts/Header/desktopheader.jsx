@@ -50,7 +50,7 @@ const DesktopHeader = () => {
                     <Link to="/asokesen">AsokeSen</Link>
                 </li> */}
                 <li>
-                    <Link to="/galary">Galary</Link>
+                    <Link to="/gallery">Gallery</Link>
                 </li>
             </ul>
         </div>
