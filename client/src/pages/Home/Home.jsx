@@ -7,12 +7,14 @@ import NewsLetter from './../../component/NewsletterComponent/Newsletter';
 import Hero from './../../section/Hero/Hero';
 import UpcomingEvent from '../../section/UpcomingEvent/UpcomingEvent';
 import Testimonial from '../../section/Testimonial/Testimonial';
+import EventApplication from '../../component/EventApplication/Event';
 
 const Home = () => {
   return (
     <div>
 
       <Hero />
+      <EventApplication />
       <UpcomingEvent id="upcoming"/>
       <About id="about"/>
       <Activity />

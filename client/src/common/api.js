@@ -24,6 +24,10 @@ const Api={
     Update_count:{
         url:`${BASE_URL}/update_count`,
         method:"GET"
+    },
+    EventRegistration:{
+        url:`${BASE_URL}/eventregistration`,
+        method:"POST"
     }
 }
 
