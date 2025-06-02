@@ -98,13 +98,13 @@ const Idea = () => {
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label>Institute E-Mail (must end with @nitdgp.ac.in) *</label>
+                                    <label>Institute E-Mail (must end with nitdgp.ac.in) *</label>
                                     <input
                                         type="email"
                                         {...register("email", {
                                             required: true,
                                             pattern: {
-                                                value: /^[a-zA-Z0-9._%+-]+@nitdgp\.ac\.in$/,
+                                                value: /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)*nitdgp\.ac\.in$/,
                                                 message: "Please enter a valid NIT Durgapur email"
                                             }
                                         })}

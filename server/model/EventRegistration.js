@@ -9,7 +9,7 @@ const RegistrationSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    match: /^[a-zA-Z0-9._%+-]+@nitdgp\.ac\.in$/,
+    match: /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)*nitdgp\.ac\.in$/,
     unique: true, 
   },
   phone: {
