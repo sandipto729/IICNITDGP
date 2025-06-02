@@ -14,7 +14,7 @@ const Home = () => {
     <div>
 
       <Hero />
-      <EventApplication />
+      <EventApplication id='application'/>
       <UpcomingEvent id="upcoming"/>
       <About id="about"/>
       <Activity />
