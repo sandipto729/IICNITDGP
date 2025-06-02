@@ -66,7 +66,7 @@ const Idea = () => {
     };
 
     return (
-        <div className={styles.EventCard}>
+        <div className={styles.EventCard} id='application'>
             {/* <img src={image} alt={title} className={styles.IdeaCardImage} /> */}
 
             <div className={styles.IdeaCardContent}>
