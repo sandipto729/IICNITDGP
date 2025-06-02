@@ -7,6 +7,7 @@ import Team from './../pages/Team/Team.jsx';
 import FAQ from './../pages/FAQ/FAQ.jsx';
 import Error from './../layouts/Error/Error.jsx';
 import Gallery from '../pages/Gallery/Gallery.jsx';
+import Login from '../authentication/Login/Login.jsx';
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
                 path: '/gallery',
                 element: <Gallery />
             },
+            // {
+            //     path: '/login',
+            //     element: <Login />
+            // },
             {
                 path: '*',
                 element: <Error />
