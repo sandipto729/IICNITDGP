@@ -1,122 +1,86 @@
 [
   {
     "id": 1,
-    "name": "Sandipto Roy",
-    "img": "https://iili.io/JR7d4Yu.jpg",
-    "type": "prefinal",
-    "branch": "Computer Science and Engineering",
+    "name": "Pavan Kumar Pulipaka",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "6th Semester",
+    "branch": "Mechanical Engg.",
     "extra": {
-      "linkedin": "http://linkedin.com/in/sandipto-roy-675600277/",
-      "github": "https://github.com/sandipto729",
-      "designation": "Intern at IIT Bombay"
+      "linkedin": "",
+      "github": "",
+      "designation": "Intern at IIT Kharagpur",
+      "organisation": "CoE in Advanced Manufacturing Technology, IIT Kharagpur",
+      "remarks": "20000/-"
     }
   },
   {
     "id": 2,
-    "name": "Aditi Sharma",
-    "img": "https://iili.io/JR7d4Yu.jpg",
-    "type": "second",
-    "branch": "Electronics and Communication Engineering",
+    "name": "Sourodeep Halder",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "6th Semester",
+    "branch": "Mechanical Engg.",
     "extra": {
-      "linkedin": "https://linkedin.com/in/aditi-sharma-2314a/",
-      "github": "https://github.com/aditisharma01",
-      "designation": "Intern at IIT Kharagpur"
+      "linkedin": "",
+      "github": "",
+      "designation": "Intern at IIT Kharagpur",
+      "organisation": "",
+      "remarks": "20000/-"
     }
   },
   {
     "id": 3,
-    "name": "Rohan Mehta",
-    "img": "https://iili.io/JR7dGQ9.jpg",
-    "type": "final",
-    "branch": "Electrical Engineering",
+    "name": "Shagupta Paul",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "4th Semester",
+    "branch": "Mechanical Engg.",
     "extra": {
-      "linkedin": "https://linkedin.com/in/rohan-mehta-1123b/",
-      "github": "https://github.com/rohanmehta23",
-      "designation": "Intern at IIT Delhi"
+      "linkedin": "",
+      "github": "",
+      "designation": "Intern at IIT Kharagpur",
+      "organisation": "",
+      "remarks": "20000/-"
     }
   },
   {
     "id": 4,
-    "name": "Sneha Das",
-    "img": "https://iili.io/JR7d3hs.jpg",
-    "type": "second",
-    "branch": "Information Technology",
+    "name": "Debraj Mukherjee",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "4th Semester",
+    "branch": "Mechanical Engg.",
     "extra": {
-      "linkedin": "https://linkedin.com/in/sneha-das-9042c/",
-      "github": "https://github.com/sneha-das",
-      "designation": "Intern at IIT Kanpur"
+      "linkedin": "",
+      "github": "",
+      "designation": "Intern at IIT Kharagpur",
+      "organisation": "",
+      "remarks": "20000/-"
     }
   },
   {
     "id": 5,
-    "name": "Arjun Rao",
-    "img": "https://iili.io/JR7dEDx.jpg",
-    "type": "prefinal",
-    "branch": "Mechanical Engineering",
+    "name": "Puja Kumari",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "6th Semester",
+    "branch": "Mechanical Engg.",
     "extra": {
-      "linkedin": "https://linkedin.com/in/arjun-rao-8884e/",
-      "github": "https://github.com/arjunrao99",
-      "designation": "Intern at IIT Madras"
-    }
-  },
-  {
-    "id": 6,
-    "name": "Priya Verma",
-    "img": "https://iili.io/JR7dOP7.jpg",
-    "type": "final",
-    "branch": "Computer Science and Engineering",
-    "extra": {
-      "linkedin": "https://linkedin.com/in/priya-verma-7632f/",
-      "github": "https://github.com/priyavcodes",
-      "designation": "Intern at IIT Bombay"
+      "linkedin": "",
+      "github": "",
+      "designation": "",
+      "organisation": "",
+      "remarks": ""
     }
   },
   {
     "id": 7,
-    "name": "Aman Gupta",
-    "img": "https://iili.io/JR7dKmj.jpg",
-    "type": "second",
-    "branch": "Civil Engineering",
+    "name": "Krishiv Ghosal",
+    "img": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    "type": "4th Semester",
+    "branch": "Electrical Engg.",
     "extra": {
-      "linkedin": "https://linkedin.com/in/aman-gupta-5174g/",
-      "github": "https://github.com/amangpt",
-      "designation": "Intern at IIT Roorkee"
-    }
-  },
-  {
-    "id": 8,
-    "name": "Ishita Roy",
-    "img": "https://iili.io/JR7dqMv.jpg",
-    "type": "prefinal",
-    "branch": "Electronics and Instrumentation Engineering",
-    "extra": {
-      "linkedin": "https://linkedin.com/in/ishita-roy-1452h/",
-      "github": "https://github.com/ishitaroy",
-      "designation": "Intern at IIT Kharagpur"
-    }
-  },
-  {
-    "id": 9,
-    "name": "Devansh Jain",
-    "img": "https://iili.io/JR7dfxe.jpg",
-    "type": "final",
-    "branch": "Artificial Intelligence and Data Science",
-    "extra": {
-      "linkedin": "https://linkedin.com/in/devansh-jain-3210i/",
-      "github": "https://github.com/devanshj",
-      "designation": "Intern at IIT Hyderabad"
-    }
-  },
-  {
-    "id": 10,
-    "name": "Megha Sen",
-    "img": "https://iili.io/JR7dA4R.jpg",
-    "type": "prefinal",
-    "branch": "Computer Science and Engineering",
-    "extra": {
-      "linkedin": "https://linkedin.com/in/megha-sen-4425j/",
-      "github": "https://github.com/meghasen",
-      "designation": "Intern at IIT Guwahati"
+      "linkedin": "",
+      "github": "",
+      "designation": "Intern at Seth Automobile Pvt. Ltd., Kolkata",
+      "organisation": "Seth Automobile Pvt. Ltd., Kolkata",
+      "remarks": ""
     }
   }
 ]

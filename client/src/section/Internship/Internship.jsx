@@ -22,7 +22,7 @@ const Internship = () => {
 
             <div className={styles.teamContainer}>
                 {InternData.map((item, index) => (
-                    <TeamCard key={index} member={item} />
+                    <TeamCard key={index} member={item} intern={true}/>
                 ))}
             </div>
         </div>

@@ -5,7 +5,7 @@ import styles from "./styles/Card.module.scss";
 import { motion } from "framer-motion";
 
 
-const TeamCard = ({ member, customStyles = {} }) => {
+const TeamCard = ({ member,intern, customStyles = {} }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const extraData = member?.extra || {
@@ -135,6 +135,19 @@ const TeamCard = ({ member, customStyles = {} }) => {
                                 style={{ color: "#fff" }}
                             >
                                 {member.branch}
+                            </motion.p>
+                        )
+                    }
+                    {
+                        intern&&member.type && (
+                            <motion.p
+                                className={`${styles.type} ${customStyles.type || ""}`}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                                style={{ color: "#fff" }}
+                                
+                            >
+                                {member.type}
                             </motion.p>
                         )
                     }
