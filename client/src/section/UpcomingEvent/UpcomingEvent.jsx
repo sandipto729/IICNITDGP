@@ -21,9 +21,9 @@ const UpcomingEvent = () => {
       if (response.ok) {
         const data = await response.json()
         // Fetch last 3 events and reverse the order
-        const lastThree = data.slice(-3).reverse()
+        const lastThree = data.slice(-3)
         console.log("Upcoming Events:", lastThree)
-        setUpcomingEvents(lastThree)
+        setUpcomingEvents(lastThree.reverse())  // Store as an array of events
       } else {
         console.error("Failed to fetch upcoming events")
       }
