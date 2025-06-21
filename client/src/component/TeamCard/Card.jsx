@@ -44,7 +44,7 @@ const TeamCard = ({ member, customStyles = {} }) => {
                 transition={{ duration: 0.4 }}
                 onClick={() => setIsFlipped((prev) => !prev)}
                 onMouseEnter={() => {
-                    if (window.innerWidth > 768) setIsFlipped(true); 
+                    if (window.innerWidth > 768) setIsFlipped(true);
                 }}
                 onMouseLeave={() => {
                     if (window.innerWidth > 768) setIsFlipped(false);
@@ -124,7 +124,20 @@ const TeamCard = ({ member, customStyles = {} }) => {
                                 <FaGithub />
                             </motion.a>
                         )}
+
                     </div>
+                    {
+                        member.branch && (
+                            <motion.p
+                                className={`${styles.branch} ${customStyles.branch || ""}`}
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                                style={{ color: "#fff" }}
+                            >
+                                {member.branch}
+                            </motion.p>
+                        )
+                    }
                 </motion.div>
             </motion.div>
         </motion.div>

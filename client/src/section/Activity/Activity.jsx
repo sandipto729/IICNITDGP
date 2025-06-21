@@ -22,7 +22,7 @@ const activities = [
 
 const Activity = () => {
     return (
-        <div className={styles.mainAcitivity}>
+        <div className={styles.mainAcitivity} id="activity">
             <div className={styles.heading}>
                 <p className={styles.head}>
                     IIC'S{" "}

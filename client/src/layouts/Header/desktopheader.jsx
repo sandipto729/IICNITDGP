@@ -43,6 +43,9 @@ const DesktopHeader = () => {
                 <li>
                     <Link to="/event">Events</Link>
                 </li>
+                <li>
+                    <Link to="/activity">Activity</Link>
+                </li>
                 {/* <li>
                     <Link to="/thinkinglab">Thinking Lab</Link>
                 </li> */}

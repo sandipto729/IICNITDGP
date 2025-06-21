@@ -14,10 +14,10 @@ const Home = () => {
     <div>
 
       <Hero />
-      <EventApplication id='application'/>
+      {/* <EventApplication id='application'/> */}
       <UpcomingEvent id="upcoming"/>
       <About id="about"/>
-      <Activity />
+      <Activity id="activity" />
       <Testimonial />
       <NewsLetter id="contact"/>
       {/* <Check /> */}

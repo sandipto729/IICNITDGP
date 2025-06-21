@@ -1,0 +1,53 @@
+// :root {
+//   --primary: linear-gradient(90deg, #6f86ff, #b56fff); // Update based on your theme
+// }
+
+.teamPage {
+  padding: 4rem 2rem;
+  background: #121212;
+  min-height: 100vh;
+  color: #e0e0e0;
+
+
+
+.teamTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.highlightedText {
+  background: var(--primary);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+  .bottomLine {
+    width: 12rem;
+    height: 0.3125rem;
+    background: var(--primary);
+    color: transparent;
+    border-radius: 5px;
+    margin: 0 auto 1rem auto;
+  }
+
+.subHeading {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #aaaaaa;
+  line-height: 1.6;
+}
+
+.teamContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+}

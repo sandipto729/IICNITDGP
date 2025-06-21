@@ -112,6 +112,40 @@
     height: 353px;
 }
 
+.boxinnertext {
+    margin: 0.5rem;
+  background-color: #1c1c1e; // or var(--dark-bg)
+//   padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(180, 173, 173, 0.5);
+}
+
+.eventList {
+  list-style: none;
+//   padding: 0;
+//   margin: 0;
+}
+
+.boxinnertitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.eventTitle {
+  font-weight: 600;
+  color: #f1f1f1; // light gray for readability
+}
+
+.eventDate {
+  font-size: 0.9rem;
+  color: #aaa; // soft contrast for date
+  margin-left: 10px;
+}
+
+
 
 @media screen and (max-width: 1046px){
     .head{

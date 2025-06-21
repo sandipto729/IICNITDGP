@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Team Innovators",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "Multi-Disciplinary",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-innovators",
+      "github": "https://github.com/team-innovators",
+      "designation": "Ideathon 2025 Winner"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Team Alpha",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "CSE & ECE",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-alpha",
+      "github": "https://github.com/team-alpha",
+      "designation": "Runner-up - Ideathon 2025"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Team Synergy",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "IT & Mechanical",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-synergy",
+      "github": "https://github.com/team-synergy",
+      "designation": "Best Innovation Award"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Team Nexus",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "Electronics and Instrumentation",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-nexus",
+      "github": "https://github.com/team-nexus",
+      "designation": "Best Presentation"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Team Quantum",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "Physics & AI",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-quantum",
+      "github": "https://github.com/team-quantum",
+      "designation": "Tech Impact Award"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Team Phoenix",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "AI & Robotics",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-phoenix",
+      "github": "https://github.com/team-phoenix",
+      "designation": "Audience Choice"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Team Orbit",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "EEE & Aerospace",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-orbit",
+      "github": "https://github.com/team-orbit",
+      "designation": "Special Mention"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Team Zenith",
+    "img": "https://media.istockphoto.com/id/1363405922/photo/big-data-concept-digital-neural-network-business-woman-hand-touching-introduction-of.jpg?s=1024x1024&w=is&k=20&c=ZSh24cWuGOygdLKPruGZIMjAkyOAP4LwkGJHoZyZQAE=",
+    "type": "Team",
+    "branch": "CSE & Design",
+    "extra": {
+      "linkedin": "https://linkedin.com/in/team-zenith",
+      "github": "https://github.com/team-zenith",
+      "designation": "Design Excellence Award"
+    }
+  }
+]

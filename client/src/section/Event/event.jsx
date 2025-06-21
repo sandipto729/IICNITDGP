@@ -31,19 +31,19 @@
 //     useEffect(() => {
 //         fetchNewsData();
 //     }, []);
-    
+
 
 //     return (
 //         <>
 //             <center className={styles.newsTitle}>
-               
+
 //                     <div >Our <span style={{
 //                         background: "var(--primary)",
 //                         WebkitBackgroundClip: "text",
 //                         color: "transparent",
 //                     }}>Events</span></div>
 //                     <div className={styles.bottomLine}></div>
-              
+
 //             </center>
 //             {loading ? <PageLoading /> : <div className={styles.newsContainer}>
 
@@ -123,35 +123,21 @@ const NewsEvent = () => {
                 <div className={styles.bottomLine}></div>
             </center>
 
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <div className={styles.filterTabs}>
                 <button
                     onClick={() => setFilter('upcoming')}
-                    style={{
-                        marginRight: '10px',
-                        padding: '10px 20px',
-                        backgroundColor: filter === 'upcoming' ? '#0070f3' : '#ccc',
-                        color: filter === 'upcoming' ? 'white':'black',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
-                    }}
+                    className={filter === 'upcoming' ? styles.active : ''}
                 >
                     Upcoming Events
                 </button>
                 <button
                     onClick={() => setFilter('past')}
-                    style={{
-                        padding: '10px 20px',
-                        backgroundColor: filter === 'past' ? '#0070f3' : '#ccc',
-                        color: filter === 'past' ? 'white':'black',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
-                    }}
+                    className={filter === 'past' ? styles.active : ''}
                 >
                     Past Events
                 </button>
             </div>
+
 
             {loading ? (
                 <PageLoading />
@@ -169,7 +155,7 @@ const NewsEvent = () => {
                             />
                         ))
                     ) : (
-                        <p style={{ textAlign: 'center', width: '100%' }}>
+                        <p style={{ textAlign: 'center', width: '100%', margin: 'auto' }}>
                             No {filter} events found.
                         </p>
                     )}

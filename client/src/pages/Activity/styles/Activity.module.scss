@@ -1,0 +1,93 @@
+.activityWrapper {
+    padding: 3rem 2rem;
+    background-color: #121212;
+    color: #e0e0e0;
+
+
+
+    .tabHeader {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        button {
+            background: #1f1f1f;
+            border: 2px solid transparent;
+            color: #aaa;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: #fff;
+                border-color: #6f86ff;
+            }
+        }
+
+        .active {
+            background: linear-gradient(90deg, #6f86ff, #b56fff);
+            color: #fff;
+            border-color: transparent;
+        }
+    }
+
+    .tabContent {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    // Optional: subtle fade-in effect
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+}
+
+.newsTitle {
+    text-align: center;
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: 700;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bottomLine {
+  width: 12rem;
+  height: 0.3125rem;
+  background: var(--primary);
+  color: transparent;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+
+}
+
+
+
+@media (max-width: 1200px){
+  .newsTitle{
+    font-size: 3rem;
+  }
+}
+@media (max-width: 768px) {
+.newsTitle{
+  font-size: 2.5rem;
+}
+@media (max-width:480px){
+  .newsTitle{
+    font-size: 2rem;
+  }
+}
+}

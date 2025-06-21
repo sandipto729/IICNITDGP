@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
+    min-height: 50vh;
     
 }
 /* styles.module.css */
@@ -42,4 +43,32 @@
     font-size: 2rem;
   }
 }
+}
+
+.filterTabs {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  button {
+    background: #1f1f1f;
+    color: #aaa;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #fff;
+      border-color: #6f86ff;
+    }
+  }
+
+  .active {
+    background: linear-gradient(90deg, #6f86ff, #b56fff);
+    color: #fff;
+    border-color: transparent;
+  }
 }
