@@ -1,0 +1,27 @@
+[
+  {
+    "name": "i-Hub IIT Roorkee",
+    "photo": "https://tih.iitr.ac.in/assets/img/logo.png",
+    "link": "https://tih.iitr.ac.in/"
+  },
+  {
+    "name": "IHFC IIT Delhi",
+    "photo": "https://home.iitd.ac.in/public/storage/uploads/IHFC-CISCE_1652784462.jpg",
+    "link": "https://www.ihfc.co.in/"
+  },
+  {
+    "name": "Robotics Society India",
+    "photo": "https://rs-india.org/TRS/wp-content/uploads/2018/10/RSI_logo.png",
+    "link": "https://rs-india.org/"
+  },
+  {
+    "name": "Ministry of MSME",
+    "photo": "https://msme.gov.in/sites/all/themes/msme/images/logo.png",
+    "link": "https://msme.gov.in/"
+  },
+  {
+    "name": "CoE AMT IIT Kharagpur",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3VaBQeOAzSMYoPRVL6OB_HrtksYOBemEqBw&s",
+    "link": "https://coeamt.iitkgp.ac.in/index.html"
+  }
+]

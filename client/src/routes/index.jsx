@@ -9,6 +9,7 @@ import Error from './../layouts/Error/Error.jsx';
 import Gallery from '../pages/Gallery/Gallery.jsx';
 import Login from '../authentication/Login/Login.jsx';
 import Activity from '../pages/Activity/Activity.jsx';
+import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: '/activity',
                 element: <Activity />
+            },
+            {
+                path: '/collaboration',
+                element: <Collaboration />
             },
             // {
             //     path: '/login',
