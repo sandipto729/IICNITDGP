@@ -14,6 +14,7 @@
     z-index: 1;
     text-align: center;
 
+<<<<<<< HEAD
     span {
       font-weight: 800;
       background: var(--primary);
@@ -22,6 +23,14 @@
       color: transparent;
     }
   }
+=======
+span {
+  font-weight: 800;
+  background-image: linear-gradient(45deg, #ffcc00, #ff6f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+>>>>>>> c61af4f (Update Activity component and add new common JS file)
 
 
 .bottomLine {
@@ -111,18 +120,23 @@
     font-size: 40px;
     color: #ffcc00;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .CardTitle {
     font-size: 21px;
     font-weight:500;
-    // color: #fff;
+     color: #ffffff;
     margin-bottom: 10px;
+
 }
 
 .CardDetails {
     font-size: 18px;
     color: rgba(255, 255, 255, 0.9);
+    line-height :1.5;
 }
 
 
@@ -140,4 +154,4 @@
     font-size: 2rem;
   }
 }
-}
+}}

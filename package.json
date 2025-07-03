@@ -1,0 +1,20 @@
+{
+  "name": "iicnitdgp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarbesh709/IICNITDGP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sarbesh709/IICNITDGP/issues"
+  },
+  "homepage": "https://github.com/Sarbesh709/IICNITDGP#readme"
+}
