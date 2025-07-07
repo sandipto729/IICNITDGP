@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles/Objectives.module.scss'
+import styles from './styles/objectives.module.scss'
 import { motion } from 'framer-motion';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
