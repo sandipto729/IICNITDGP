@@ -1,0 +1,82 @@
+[
+  {
+    "name": "MSME (Gol & WB)",
+    "img": "https://i.ibb.co/3mLjWMJh/MSME.png",
+    "link": "https://wbmsme.gov.in/"
+  },
+  {
+    "name": "Tata Steel",
+    "img": "https://i.ibb.co/pv2f7jD9/Tata-Steel.jpg",
+    "link": "https://www.tatasteel.com/"
+  },
+  {
+    "name": "ONGC",
+    "img": "https://i.ibb.co/x83XDS91/ONGC-Logo.png",
+    "link": "https://ongcindia.com/"
+  },
+  {
+    "name": "Power Grid",
+    "img": "https://i.ibb.co/zhNq3kw7/Power-Grid.png",
+    "link": "https://www.powergrid.in/"
+  },
+  {
+    "name": "ITC",
+    "img": "https://i.ibb.co/9HgMxX2H/ITC-Limited.png",
+    "link": "https://www.itcportal.com/"
+  },
+  {
+    "name": "SBI",
+    "img": "https://i.ibb.co/mCpXyKj4/SBI.png",
+    "link": "https://www.onlinesbi.sbi/"
+  },
+  {
+    "name": "HDFC",
+    "img": "https://i.ibb.co/j14NJR8/HDFC.png",
+    "link": "https://www.hdfcbank.com/"
+  },
+  {
+    "name": "PNB",
+    "img": "https://i.ibb.co/rG0xnFD7/PNB.png",
+    "link": "https://www.pnbindia.in/"
+  },
+  {
+    "name": "ICICI",
+    "img": "https://i.ibb.co/jk69Z66k/ICICI.jpg",
+    "link": "https://www.icicibank.com/"
+  },
+  {
+    "name": "TCS",
+    "img": "https://i.ibb.co/m5ZmJNqL/images-2.jpg",
+    "link": "https://www.tcs.com/"
+  },
+  {
+    "name": "Wipro",
+    "img": "https://i.ibb.co/Kzmvymkb/Wipro.jpg",
+    "link": "https://www.wipro.com/"
+  },
+  {
+    "name": "Accenture",
+    "img": "https://i.ibb.co/q391c0sr/accenture.png",
+    "link": "https://www.accenture.com/in-en"
+  },
+  {
+    "name": "Neogen",
+    "img": "https://i.ibb.co/pvNkwnsd/Neogen.png",
+    "link": "https://www.neogen.com/en/"
+  },
+  {
+    "name": "AKM Corporation",
+    "img": "https://i.ibb.co/0ymjvDcm/AKM-corp.png",
+    "link": "https://akmcorporation.com/"
+  },
+  {
+    "name": "Intersoft",
+    "img": "https://i.ibb.co/LX6G3Dns/intersoft.jpg",
+    "link": "https://intsof.com/"
+  },
+  {
+    "name": "A-Laser",
+    "img": "https://i.ibb.co/zjG3M6s/A-laser.png",
+    "link": "https://a-laser.com/"
+  }
+]

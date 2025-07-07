@@ -1,0 +1,161 @@
+
+
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*margin-top: 40px;*/
+  margin-bottom: 1rem;
+}
+
+.head {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  /*text-transform: uppercase;*/
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  span {
+    font-weight: 600;
+    background: var(--primary);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+
+.bottomLine {
+width: 12rem;
+height: 0.3125rem;
+background: var(--primary);
+color: transparent;
+border-radius: 5px;
+margin-bottom: 1rem;
+}
+
+.heading{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+
+
+@keyframes expandLine {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 80px;
+    opacity: 1;
+  }
+}
+.objectivesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  padding: 50px 20px;
+  min-height: 300px;
+
+}
+
+.Title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border-bottom: #ffcc00 2px solid;
+}
+
+.details {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin-bottom: 30px;
+  font-weight: 500;
+  @media (max-width: 768px){
+    font-size: 1rem;
+  }
+}
+
+.Objective {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Card {
+  /*background: rgba(4, 0, 0, 0.31);*/
+  background: rgb(41, 40, 40);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  @media (max-width:768px){
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 200px;
+  }
+}
+
+.icon {
+  font-size: 40px;
+  color: #ffcc00;
+  margin-bottom: 10px;
+  @media (max-width:768px){
+    font-size: 25px;
+  }
+}
+
+.CardTitle {
+  font-size: 21px;
+  font-weight:500;
+  // color: #fff;
+  margin-bottom: 10px;
+}
+
+.CardDetails {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  @media (max-width: 768px){
+    font-size: 16px;
+  }
+}
+
+
+@media (max-width: 1200px){
+.head{
+  font-size: 2.5rem;
+}
+}
+@media (max-width: 768px) {
+.head{
+font-size: 2rem;
+}
+@media (max-width:480px){
+.head{
+  font-size: 1.7rem;
+}
+}
+}
