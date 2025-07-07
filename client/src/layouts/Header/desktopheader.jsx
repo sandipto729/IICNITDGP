@@ -58,6 +58,9 @@ const DesktopHeader = () => {
                 <li>
                     <Link to="/gallery">Gallery</Link>
                 </li>
+                <li>
+                    <Link to="/ai2summit">AI2 Summit</Link>
+                </li>
             </ul>
         </div>
     );
