@@ -1,0 +1,221 @@
+/*
+.overviewContainer{
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bottomLine {
+  width: 12rem;
+  height: 0.3125rem;
+  background: var(--primary);
+  color: transparent;
+  border-radius: 5px;
+  // margin-bottom: 1rem;
+}
+.overviewTitle {
+  font-size: 3rem;
+  // margin-bottom: 1.5rem;
+  font-weight: 700;
+
+  .bottomLine {
+    width: 12rem;
+    height: 0.3125rem;
+    background: var(--primary);
+    color: transparent;
+    border-radius: 5px;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+.themeTitle {
+  text-align: center;
+  font-size: 1.5 rem;
+  font-weight: bold;
+}
+
+.venueDetails {
+  text-align: center;
+
+  h1 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #e67e22;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+  }
+}
+.dateDetails {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #e67e22;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+.themeDetails{
+  color: rgb(108, 106, 106);
+}
+
+@media (max-width: 1200px){
+  .overviewTitle{
+    font-size: 3rem;
+  }
+  .themeTitle{
+    font-size: 1.5rem;
+  }
+  .venueDetails{
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 768px) {
+  .overviewTitle{
+    font-size: 2.5rem;
+  }
+  .themeTitle{
+    font-size: 1.4rem;
+  }
+  .venueDetails{
+    font-size: 1.1rem;
+  }
+  @media (max-width:480px){
+    .overviewTitle{
+      font-size: 2rem;
+    }
+  }
+}
+@media (max-width:480px){
+  .themeTitle,.venueDetails{
+    font-size: 1 rem;
+  }
+}
+
+*/
+
+.container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.poster {
+  width: 100%;
+  height: auto; // Maintain aspect ratio
+}
+
+.theme {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(193, 24, 2), rgb(207, 130, 24));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 20px 0;
+}
+
+.industry {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: #6d6b6b; // Ash color
+  margin: 10px 0;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.venue, .date {
+  background-color: #5d5959; // Ash color
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px; // Fixed width for details
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+  h4{
+    font-size: 1.4rem;
+  }
+  font-size: 1.2rem;
+  @media (max-width: 768px){
+    padding: 15px;
+    width: 200px;
+    h4{
+      font-size: 1.2rem;
+    }
+    font-size: 1rem;
+  }
+}
+
+.venue:hover, .date:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1200px){
+  .theme{
+    font-size: 2.5rem;
+  }
+  .industry{
+    font-size: 3rem;
+  }
+  .tagline{
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .theme{
+    font-size: 2.0rem;
+  }
+  .industry{
+    font-size: 2.5rem;
+  }
+  .tagline{
+    font-size: 1.2rem;
+  }
+}
+@media (max-width:480px){
+  .theme{
+    font-size: 1.5rem;
+  }
+  .industry{
+    font-size: 2rem;
+  }
+  .tagline{
+    font-size: 1rem;
+  }
+}

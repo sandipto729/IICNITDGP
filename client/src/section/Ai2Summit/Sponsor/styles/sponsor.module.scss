@@ -1,0 +1,213 @@
+.Wrapper {
+  background-color: #0d0d0d;
+  padding: 4rem 2rem;
+  color: white;
+  
+}
+
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*margin-top: 40px;*/
+  margin-bottom: 1rem;
+}
+
+.head {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  /*text-transform: uppercase;*/
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  span {
+    font-weight: 600;
+    background: var(--primary);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+.swiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+// Card.module.scss
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 55, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(156, 163, 175, 0.1);
+
+  // Subtle dot pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Animated gradient overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.1) 50%, rgba(6, 182, 212, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(147, 51, 234, 0.5);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 40px rgba(147, 51, 234, 0.2),
+      0 0 0 1px rgba(147, 51, 234, 0.3);
+
+    &::after {
+      opacity: 1;
+    }
+
+    .image {
+      transform: scale(1.1);
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .name {
+      background: linear-gradient(45deg, #c084fc, #ffffff, #67e8f9);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .link {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+    }
+  }
+}
+
+.image {
+  position: relative;
+  width: 196px;
+  height: 96px;
+  object-fit: contain;
+  margin: 0 auto 20px;
+  //border-radius: ;
+  border: 3px solid rgba(75, 85, 99, 0.5);
+  transition: all 0.3s ease;
+  z-index: 3;
+/*
+  // Gradient ring effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, #9333ea, #3b82f6, #06b6d4, #9333ea);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: rotate 3s linear infinite;
+  }
+
+  // Glow effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -2;
+    filter: blur(15px);
+  }
+*/
+  .card:hover &::after {
+    opacity: 1;
+  }
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+  color: #f9fafb;
+  transition: all 0.3s ease;
+  z-index: 3;
+  position: relative;
+}
+
+.sponsorLink{
+  text-decoration: none;
+}
+.type{
+  color: white;
+}
+
+.SponsorShipContainer {
+  align-items: center;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+//Media Query
+@media (max-width: 1200px){
+  .head{
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .head{
+    font-size: 2rem;
+  }
+  @media (max-width:480px){
+    .head{
+      font-size: 1.5rem;
+    }
+  }
+}
