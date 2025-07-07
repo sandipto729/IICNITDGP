@@ -55,7 +55,7 @@ const Activity = () => {
                         </motion.div>
                     ))}
                 </div>
-                <InnovationApply />
+                {/* <InnovationApply /> */}
             </div>
         </div>
 
