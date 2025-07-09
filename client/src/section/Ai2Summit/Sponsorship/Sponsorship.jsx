@@ -28,13 +28,13 @@ const sponsorshipData = [
   {
     name: "Silver",
     color: "#C0C0C0", // Silver
-    amount: 150000,
+    amount: 250000,
     benefits: ["Logo in Brochure", "Logo in Acknowledgment"]
   },
   {
     name: "Bronze",
     color: "#CD7F32", // Bronze
-    amount: 75000,
+    amount: 100000,
     benefits: ["Mention in Program Booklet"]
   }
 ];
