@@ -25,12 +25,14 @@
   width: 100%;
   height: 180px;
   overflow: hidden;
+
 }
 
 .image {
+  width: fit-content;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .content {
