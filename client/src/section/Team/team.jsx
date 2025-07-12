@@ -69,7 +69,7 @@ import GradientText from "../../component/Core/TextStyle";
 
 const Team = () => {
     const [selectedType, setSelectedType] = useState("All");
-    const [showFilters, setShowFilters] = useState(true); // State for showing filters
+    const [showFilters] = useState(true); // State for showing filters
 
     // Group members by type
     const groupedMembers = teamData.reduce((acc, member) => {
