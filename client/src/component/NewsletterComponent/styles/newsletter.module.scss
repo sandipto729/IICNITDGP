@@ -5,6 +5,9 @@ $text-color: #fff;
 $error-color: #ff4d4f;
 
 .newsletterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: $bg-dark;
   color: $text-color;
   padding: 2rem;
@@ -36,8 +39,11 @@ $error-color: #ff4d4f;
 
 .newsletterDescription {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  // gap: 2rem;
+  // flex-wrap: wrap;
 }
 
 .leftContainer {
