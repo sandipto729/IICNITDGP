@@ -84,6 +84,22 @@ const Overview = () => {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.overviewContainer}>
+        <div className={styles.overviewTitle}>{""} <span style={{
+          background: "var(--primary)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}> Academic – Industry </span>
+          and
+          <span style={{
+            background: "var(--primary)",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }}> Alumni Interaction </span>
+          Summit
+        </div>
+        <div className={styles.bottomLine}></div>
+      </h1>
       {/* Uncomment the line below to add a poster image */}
       {/* <img src="poster-link.jpg" alt="Poster" className={styles.poster} /> */}
       
@@ -94,7 +110,7 @@ const Overview = () => {
       <div className={styles.details}>
         <div className={styles.venue}>
           <h4>Venue:</h4>
-          <p onClick={handleInfoClick}>National Institute Of Technonlogy, Durgapur</p>
+          <p onClick={handleInfoClick}>National Institute Of Technonlogy Durgapur</p>
         </div>
         <div className={styles.date}>
           <h4>Date:</h4>

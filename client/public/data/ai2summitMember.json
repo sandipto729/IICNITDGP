@@ -1,99 +1,134 @@
 [
   
   {
-    "name":"Prof. Arvind Chaubey",
+    "name":"Prof. A Chaubey",
     "designation":"Director, Patron",
     "img": "https://i.ibb.co/9Hc9xR3B/Prof-Arvind-Choubey.jpg"
   },
   {
-    "name":"Prof. A.K. Banik",
-    "designation":"Chairperson",
+    "name":"Prof. A K Banik",
+    "designation":"Chairperson, Dean (Planning and Development)",
     "img": "https://i.ibb.co/qLYwn3Hz/atul-Banik.jpg"
   },
   {
-    "name":"Prof. S.S. Roy",
-    "designation":"Organizing Secretary (IIC President)",
+    "name":"Prof. S S Roy",
+    "designation":"Organizing Secretary, Chairperson,IIC",
     "img": "https://i.ibb.co/j9XYg85D/SS-Roy.jpg"
   },
   {
-    "name":"Dr. Aniruddha Bhattacharya",
-    "designation":"Joint Organizing Secretary (IIC Convenor)",
+    "name":"Dr. A Bhattacharya",
+    "designation":"Joint Organizing Secretary, Convenor,IIC",
     "img": "https://i.ibb.co/Vpxdj5G2/Aniruddha-Bhattacharya.jpg"
   },
   {
     "name":"Dr. Amlan Ghosh",
-    "designation":"Deputy Organizing Secretary",
+    "designation":"Assistant Organizing Secretary",
     "img": "https://i.ibb.co/YTFs0yTP/Amlan-Ghosh.jpg"
   },
   {
-    "name":"Dr. Anupam De",
-    "designation":"Assistant Organizing Secretary",
-    "img": "https://i.ibb.co/VpDxqMvf/Anupam-De.jpg"
-  },
-  {
     "name":"Dr. Jaya  Sikder",
-    "designation":"Assistant Organizing Secretary",
+    "designation":"Assistant Professor Dept. of CHE, Assistant Organizing Secretary",
     "img": "https://i.ibb.co/fsSpLWg/Jaya-Sikder.jpg"
   },
   {
     "name":"Dr. Aritro Dey",
-    "designation":"Treasurer",
+    "designation":"Assistant Professor Dept. of EE, Treasurer",
     "img": "https://i.ibb.co/CKKJymGD/Aritro-dey.jpg"
   },
   {
     "name":"Dr. Shyantani Maiti",
-    "designation":"Joint Treasurer",
+    "designation":"Assistant Professor Dept. of CSE, Joint Treasurer",
     "img": "https://i.ibb.co/RG5V4SGG/Shyantani-maiti.jpg"
   },
   {
-    "name":"Dr. Anirudhha Mondal",
-    "designation":"Coordinator,T & P , Member",
-    "img": "https://i.ibb.co/PGTX8ftC/Aniruddha-Mondal.jpg"
+    "name":"Dr. Deepak Kumar",
+    "designation":"Associate Dean (Student Welfare), Joint Treasurer",
+    "img": "https://i.ibb.co/YT3LpK4N/Deepak-Kumar.jpg"
   },
   {
-    "name":"Prof. G.K. Mahanti",
-    "designation":"Dean (Faculty Welfare), Member",
+    "name":"Prof. G K Mahanti",
+    "designation":"Dean (Faculty Welfare)",
     "img": "https://i.ibb.co/kgXBGp4t/GK-Mahanti.jpg"
   },
   {
-    "name":"Prof. K. C. Ghanta",
-    "designation":"Dean (Research & Consultancy), Member",
+    "name":"Prof. K C Ghanta",
+    "designation":"Dean (Research & Consultancy)",
     "img": "https://i.ibb.co/NnLgrd01/KC-Ghanta.jpg"
   },
   {
-    "name":"Prof. P. Acharjee",
-    "designation":"Dean (Alumni Affairs & Outreach), Member",
+    "name":"Prof. P Acharjee",
+    "designation":"Dean (Alumni Affairs & Outreach)",
     "img": "https://i.ibb.co/wFV37vZR/Parimal-Acharjee.jpg"
   },
   {
+    "name":"Prof. K Adhikari",
+    "designation":"Dean (Student Welfare)",
+    "img": "https://i.ibb.co/1YtSzb2v/Kalyan-Adikari.jpg"
+  },
+  {
     "name":"Dr. Nilanjan Biswas",
-    "designation":"Member",
+    "designation":"Member, IIC",
     "img": "https://i.ibb.co/mrQc3Tzj/Nilanjan-Biswas.jpg"
   },
   {
-    "name":"Dr. S. Karmakar",
+    "name":"Dr. Sujit Karmakar",
     "designation":"Associate Dean (Faculty Welfare), Member",
     "img": "https://i.ibb.co/p6m8FfSK/Sujit-Karmakar.jpg"
   },
   {
-    "name":"Dr. M. M. Ghosh",
-    "designation":"Member",
+    "name":"Dr. M M Ghosh",
+    "designation":"Member,IIC",
     "img": "https://i.ibb.co/MyFrLG14/MM-Ghosh.jpg"
   },
   {
-    "name":"Dr. R. N. Barman",
-    "designation":"FIC, Guest House, Member",
+    "name":"Dr. R N Barman",
+    "designation":"Guest House Faculty In-Charge",
     "img": "https://i.ibb.co/FbN9JspF/RN-Barman.jpg"
   },
   {
     "name":"Dr. Amita Barik",
-    "designation":"Member",
+    "designation":"Member,IIC",
     "img": "https://i.ibb.co/0pwPMPV7/Amita-Barik.jpg"
   },
   {
-    "name":"Dr. Pronab Roy",
-    "designation":"FIC, Maintenance, Member",
-    "img": "https://i.ibb.co/RT1wndZk/Pronab-Roy.jpg"
+    "name":"Prof. Tanmay De",
+    "designation":"HOD of CSE Dept.",
+    "img": "https://i.ibb.co/Z6JXDPSp/Tanmoy-dey.jpg"
+  },
+  {
+    "name":"Dr. Sanjay Dhar Roy",
+    "designation":"HOD of ECE Dept.",
+    "img": "https://i.ibb.co/FkrzWxgr/Sanjay-dhar-roy.jpg"
+  },
+  {
+    "name":"Dr. Jayati Dey",
+    "designation":"HOD of EE Dept.",
+    "img": "https://i.ibb.co/CKg389XC/Jayati-dey.jpg"
+  },
+  {
+    "name":"Dr. Asit Baran Puri",
+    "designation":"HOD of ME Dept.",
+    "img": "https://i.ibb.co/H8YpWgN/Asit-Baran-Puri.jpg"
+  },
+  {
+    "name":"Dr. Pijush Topdar",
+    "designation":"HOD of CE Dept.",
+    "img": "https://i.ibb.co/VRL5b35/Pijush-topdar.jpg"
+  },
+  {
+    "name":"Prof. Parimal Pal",
+    "designation":"HOD of CHE Dept.",
+    "img": "https://i.ibb.co/wh5rkLWB/Parimal-pal.jpg"
+  },
+  {
+    "name":"Dr. B K Show",
+    "designation":"HOD of MME Dept.",
+    "img": "https://i.ibb.co/kgCfccLQ/Bijay-Show.jpg"
+  },
+  {
+    "name":"Dr. K S Khannam",
+    "designation":"HOD of BioTechnology Dept.",
+    "img": "https://i.ibb.co/wrZwW5Gg/Kazy-Sufia-Khannam.jpg"
   }
   
 ]

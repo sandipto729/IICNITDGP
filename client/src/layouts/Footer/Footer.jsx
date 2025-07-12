@@ -37,8 +37,10 @@ const Footer = () => {
         {/* Column 1 */}
         <div className={styles.footerColumn}>
           <h3><GradientText text={"Address"} /></h3>
+
           <p className={styles.footerText}>Room no- 402, Utkarsh Bhavan</p>
           <p className={styles.footerText}>National Institute of Technology Durgapur</p>
+
         </div>
 
         {/* Column 2 */}
