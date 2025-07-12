@@ -41,11 +41,7 @@ const UpcomingEvent = () => {
     <div id='upcoming'>
       <AnimatedBox direction="left">
         <div className={`${styles.box2} ${styles.boxflex}`}>
-          <img
-            className={styles.howfedimg}
-            src="https://uploads-ssl.webflow.com/663d299655b46de106de40d7/6657309f141df2159c9ffd32_vecteezy_3d-masculino-personaje-brazo-cruzado_24387905%202%20(1).svg"
-            alt="event"
-          />
+          
           <div className={`${styles.howfed} ${styles.box}`}>
             <p className={styles.boxhead}>
               <span style={{ background: "var(--primary)", WebkitBackgroundClip: "text", color: "transparent" }}>

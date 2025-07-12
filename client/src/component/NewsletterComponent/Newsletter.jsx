@@ -58,6 +58,7 @@ export default function ContactForm() {
                     US
                 </span></div>
                 <div className={styles.bottomLine}></div></div>
+                
             <div className={styles.newsletterDescription}>
                 <div className={styles.leftContainer}>
                     <form className={styles.contactForm} onSubmit={handleSubmit(onSubmit)}>
@@ -110,15 +111,11 @@ export default function ContactForm() {
                             {errors.message && <span>{errors.message.message}</span>}
                         </div>
 
-                        {loading ? <FormSubmitLoading styles={{display: "flex", justifyContent: "center"}}/> : <button type="submit" className={styles.submitButton} style={{background: "var(--primary)"}}>Submit</button>}
+                        {loading ? <FormSubmitLoading styles={{ display: "flex", justifyContent: "center" }} /> : <button type="submit" className={styles.submitButton} style={{ background: "var(--primary)" }}>Submit</button>}
                     </form>
                 </div>
                 <div className={styles.rightContainer}>
-                    <img
-                        src="https://i.ibb.co/fGXhCRrg/confident-3d-male-character-with-crossed-arms-free-png.png"
-                        alt="Newsletter"
-                        className={styles.newsletterImage}
-                    />
+
                 </div>
             </div>
 
