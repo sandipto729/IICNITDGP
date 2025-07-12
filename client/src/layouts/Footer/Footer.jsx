@@ -37,16 +37,17 @@ const Footer = () => {
         {/* Column 1 */}
         <div className={styles.footerColumn}>
           <h3><GradientText text={"Address"} /></h3>
-          <p className={styles.footerText}>National Institute of Technology, Durgapur</p>
+          <p className={styles.footerText}>Room No 402, Utkarsh Bhawan</p>
+          <p className={styles.footerText}>National Institute of Technology Durgapur</p>
           <p className={styles.footerText}>Mahatma Gandhi Avenue, Durgapur</p>
-          <p className={styles.footerText}>West Bengal , PIN 713209</p>
+          <p className={styles.footerText}>West Bengal, PIN 713209</p>
         </div>
 
         {/* Column 2 */}
         <div className={styles.footerColumn}>
           <h3><GradientText text={"President"} /></h3>
           <p className={styles.footerText}>Dr. Shibendu Shekhar Roy</p>
-          <p className={styles.footerText}>IIC NITDGP</p>
+          <p className={styles.footerText}>IIC NIT Durgpur</p>
           <p className={styles.footerText}>Email : <a href="mailto:ssroy.me@nitdgp.ac.in" style={{ color: "var(--primary)", textDecoration: "none" }}>ssroy.me@nitdgp.ac.in</a></p>
         </div>
 

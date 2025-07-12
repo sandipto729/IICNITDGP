@@ -110,7 +110,7 @@ const Overview = () => {
       <div className={styles.details}>
         <div className={styles.venue}>
           <h4>Venue:</h4>
-          <p onClick={handleInfoClick}>National Institute Of Technonlogy, Durgapur</p>
+          <p onClick={handleInfoClick}>National Institute Of Technonlogy Durgapur</p>
         </div>
         <div className={styles.date}>
           <h4>Date:</h4>
