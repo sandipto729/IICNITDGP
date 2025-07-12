@@ -84,6 +84,11 @@ const TeamCard = ({ member,intern, customStyles = {} }) => {
                         <h4 className={styles.memName} style={{ color: "#fff" }}>
                             {member?.name}
                         </h4>
+                        {member.role && (
+                            <p className={styles.roleText} style={{ color: "#ddd", margin: "0.2rem 0 0.5rem" }}>
+                                {member.role}
+                            </p>
+                        )}
                     </div>
                 </motion.div>
 

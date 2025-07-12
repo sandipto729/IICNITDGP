@@ -3,6 +3,7 @@
   {
     "id": 21,
     "name": "Dr. Shibendu Shekhar Roy",
+    "role": "President and IPR Activity Coordinator",
     "img": "https://iili.io/38xJyKl.md.jpg",
     "type": "Faculty",
     "extra": {
@@ -14,6 +15,7 @@
   {
     "id": 22,
     "name": "Dr. Aniruddha Bhattacharya",
+    "role": "Convener",
     "img": "https://iili.io/38xxDxV.jpg",
     "type": "Faculty",
     "extra": {
@@ -23,30 +25,9 @@
     }
   },
   {
-    "id": 23,
-    "name": "Dr. Madan Mohan Ghosh",
-    "img": "https://iili.io/38xRVV4.md.jpg",
-    "type": "Faculty",
-    "extra": {
-      "linkedin": "https://www.linkedin.com/in/madan-mohan-ghosh-a862561a6/?originalSubdomain=in",
-      "github": "",
-      "designation": "Vice-President"
-    }
-  },
-  {
-    "id": 24,
-    "name": "Dr. Shyantani Maiti",
-    "img": "https://iili.io/38xaMk7.md.jpg",
-    "type": "Faculty",
-    "extra": {
-      "linkedin": "https://www.linkedin.com/in/shyantani-maiti-8a3b1721/?originalSubdomain=in",
-      "github": "",
-      "designation": "Internship Activity Coordinator"
-    }
-  },
-  {
     "id": 25,
     "name": "Dr. Aritro Dey",
+    "role": "Innovation Activity",
     "img": "https://iili.io/38xGT74.md.jpg",
     "type": "Faculty",
     "extra": {
@@ -56,8 +37,21 @@
     }
   },
   {
+    "id": 24,
+    "name": "Dr. Shyantani Maiti",
+    "role": "Internship Activity Coordinator",
+    "img": "https://iili.io/38xaMk7.md.jpg",
+    "type": "Faculty",
+    "extra": {
+      "linkedin": "https://www.linkedin.com/in/shyantani-maiti-8a3b1721/?originalSubdomain=in",
+      "github": "",
+      "designation": "Internship Activity Coordinator"
+    }
+  },
+  {
     "id": 26,
     "name": "Dr. Amita Barik",
+    "role": "Social Media",
     "img": "https://iili.io/3gTkC3Q.md.jpg",
     "type": "Faculty",
     "extra": {
@@ -67,8 +61,21 @@
     }
   },
   {
+    "id": 23,
+    "name": "Dr. Madan Mohan Ghosh",
+    "role": "Member",
+    "img": "https://iili.io/38xRVV4.md.jpg",
+    "type": "Faculty",
+    "extra": {
+      "linkedin": "https://www.linkedin.com/in/madan-mohan-ghosh-a862561a6/?originalSubdomain=in",
+      "github": "",
+      "designation": "Member"
+    }
+  },
+  {
     "id": 27,
     "name": "Dr. Nilanjan Biswas",
+    "role": "Start-Up Activity Coordinator",
     "img": "https://iili.io/38xwotR.md.jpg",
     "type": "Faculty",
     "extra": {
@@ -79,18 +86,20 @@
   },
   {
     "id": 28,
-    "name": "Dr. Anupam De",
-    "img": "https://iili.io/38xe2P2.jpg",
+    "name": "Dr. Jaya Sikder",
+    "role": "Assistant Organizing Secretary",
+    "img": "https://i.ibb.co/fsSpLWg/Jaya-Sikder.jpg",
     "type": "Faculty",
     "extra": {
       "linkedin": "",
       "github": "",
-      "designation": "NIRF Coordinator"
+      "designation": "Assistant Organizing Secretary"
     }
   },
   {
     "id": 30,
     "name": "Puja Kumari",
+    "role": "Student Convenor",
     "img": "https://iili.io/3SFZc3F.md.jpg",
     "type": "Student Council",
     "extra": {
@@ -102,6 +111,7 @@
   {
     "id": 29,
     "name": "Mohd Shoeb",
+    "role": "Innovation Coordinator",
     "img": "https://iili.io/38x4FyB.md.jpg",
     "type": "Student Council",
     "extra": {
@@ -114,6 +124,7 @@
   {
     "id": 31,
     "name": "Ekta Singh",
+    "role": "Internship Coordinator",
     "img": "https://iili.io/38TWuDv.md.jpg",
     "type": "Student Council",
     "extra": {
@@ -125,6 +136,7 @@
   {
     "id": 32,
     "name": "Ritu Raj",
+    "role": "IPR Coordinator",
     "img": "https://iili.io/38TNtob.jpg",
     "type": "Student Council",
     "extra": {
@@ -136,6 +148,7 @@
   {
     "id": 33,
     "name": "Jyotirmoy Paul",
+    "role": "Social Media Coordinator",
     "img": "https://iili.io/38T8E4j.md.jpg",
     "type": "Student Council",
     "extra": {
@@ -147,6 +160,7 @@
   {
     "id": 34,
     "name": "Subhajit Ghosh",
+    "role": "Start-Up Coordinator",
     "img": "https://iili.io/38T6zG9.md.jpg",
     "type": "Student Council",
     "extra": {
