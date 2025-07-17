@@ -1,32 +1,123 @@
 [
   {
-    "name": "MSME (Gol & WB)",
-    "img": "https://i.ibb.co/3mLjWMJh/MSME.png",
-    "link": "https://wbmsme.gov.in/"
+    "name": "SAIL",
+    "img": "https://i.ibb.co/PGLJM09Z/Steel-Authority-of-India-logo-svg.png",
+    "link": "https://www.sail.co.in/en"
   },
   {
-    "name": "Tata Steel",
-    "img": "https://i.ibb.co/pv2f7jD9/Tata-Steel.jpg",
-    "link": "https://www.tatasteel.com/"
+    "name": "MSME",
+    "img": "https://i.ibb.co/LXKP0Mr0/MSME.jpg",
+    "link": "https://msme.gov.in/"
   },
   {
-    "name": "ONGC",
-    "img": "https://i.ibb.co/x83XDS91/ONGC-Logo.png",
-    "link": "https://ongcindia.com/"
+    "name": "TATA",
+    "img": "https://i.ibb.co/1ffm8TvH/Tata-logo-svg.png",
+    "link": "https://www.tata.com/"
+  },
+  {
+    "name": "CIL",
+    "img": "https://i.ibb.co/rGYjVn67/CIL.png",
+    "link": "https://www.coalindia.in/"
   },
   {
     "name": "Power Grid",
-    "img": "https://i.ibb.co/zhNq3kw7/Power-Grid.png",
+    "img": "https://i.ibb.co/23p4tGY7/Power-Grid-Crop.jpg",
     "link": "https://www.powergrid.in/"
   },
   {
-    "name": "ITC",
-    "img": "https://i.ibb.co/9HgMxX2H/ITC-Limited.png",
-    "link": "https://www.itcportal.com/"
+    "name": "BCC",
+    "img": "https://i.ibb.co/C3f7KWLD/BBC.jpg",
+    "link": "https://www.bengalbusinesscouncil.com/"
+  },
+  {
+    "name": "BBCI",
+    "img": "https://i.ibb.co/RGBYGHMT/BBCI.jpg",
+    "link": "https://bengalchamber.com/"
+  },
+  {
+    "name": "CII",
+    "img": "https://i.ibb.co/rfw2XKJ2/CII.jpg",
+    "link": "https://www.cii.in/"
+  },
+  {
+    "name": "RIL",
+    "img": "https://i.ibb.co/bTVz9S8/Reliance-Industries-svg.png",
+    "link": "https://www.ril.com/"
+  },
+  {
+    "name": "Paytm",
+    "img": "https://i.ibb.co/MkgBYsfv/paytm.webp",
+    "link": "https://paytm.com/"
+  },
+  {
+    "name": "Adani",
+    "img": "https://i.ibb.co/gbrtP7hn/Adani-2012-logo.png",
+    "link": "http://www.adani.com/"
+  },
+  {
+    "name": "Essar",
+    "img": "https://i.ibb.co/y9CLXdP/essar.png",
+    "link": "https://www.essar.com/"
+  },
+  {
+    "name": "Intersoft",
+    "img": "https://i.ibb.co/SXcp5t6R/intersoft.jpg",
+    "link": "https://intersoftkk.com/"
+  },
+  {
+    "name": "Krypton",
+    "img": "https://i.ibb.co/gFLBw6vT/krypton-industries-ltd-logo.jpg",
+    "link": "http://www.kryptongroup.com/"
+  },
+  {
+    "name": "AKM Corporation",
+    "img": "https://i.ibb.co/k6x5B3QG/AKM.jpg",
+    "link": "https://akmcorporation.com/"
+  },
+  {
+    "name": "Aura Laserfab",
+    "img": "https://i.ibb.co/HTdkZwJz/image25.gif",
+    "link": "https://www.auralaser.in/"
+  },
+  {
+    "name": "Neogen",
+    "img": "https://i.ibb.co/sJHHWrz2/neogen.png",
+    "link": ""
+  },
+  {
+    "name": "Deem Roll",
+    "img": "https://i.ibb.co/gZtSKsZT/image27.jpg",
+    "link": "https://www.deemrolls.com/"
+  },
+  {
+    "name": "North Techno",
+    "img": "https://i.ibb.co/5XbYkWrn/image28.jpg",
+    "link": "http://www.northtechnoprojects.com/"
+  },
+  {
+    "name": "Yancha",
+    "img": "https://i.ibb.co/sXhmJpK/image29.jpg",
+    "link": "https://www.yancha.in/"
+  },
+  {
+    "name": "Seth Automobile",
+    "img": "https://i.ibb.co/Xf9YRpbf/seth.jpg",
+    "link": ""
+  },
+
+  {
+    "name": "Shell N Tube",
+    "img": "https://i.ibb.co/Z1wFFS69/image2.jpg",
+    "link": "https://www.shell-n-tube.com/"
+  },
+  {
+    "name": "ADS",
+    "img": "https://i.ibb.co/rNt1RPs/image15.png",
+    "link": ""
   },
   {
     "name": "SBI",
-    "img": "https://i.ibb.co/mCpXyKj4/SBI.png",
+    "img": "https://i.ibb.co/9QBG59v/sbi.png",
     "link": "https://www.onlinesbi.sbi/"
   },
   {
@@ -41,42 +132,17 @@
   },
   {
     "name": "ICICI",
-    "img": "https://i.ibb.co/jk69Z66k/ICICI.jpg",
+    "img": "https://i.ibb.co/JRPSfmf9/icici.jpg",
     "link": "https://www.icicibank.com/"
   },
   {
-    "name": "TCS",
-    "img": "https://i.ibb.co/m5ZmJNqL/images-2.jpg",
-    "link": "https://www.tcs.com/"
+    "name": "Bhandhan Bank",
+    "img": "https://i.ibb.co/HDfwTzcj/bndhan.jpg",
+    "link": "https://bandhanbank.com/"
   },
   {
-    "name": "Wipro",
-    "img": "https://i.ibb.co/Kzmvymkb/Wipro.jpg",
-    "link": "https://www.wipro.com/"
-  },
-  {
-    "name": "Accenture",
-    "img": "https://i.ibb.co/q391c0sr/accenture.png",
-    "link": "https://www.accenture.com/in-en"
-  },
-  {
-    "name": "Neogen",
-    "img": "https://i.ibb.co/pvNkwnsd/Neogen.png",
-    "link": "https://www.neogen.com/en/"
-  },
-  {
-    "name": "AKM Corporation",
-    "img": "https://i.ibb.co/0ymjvDcm/AKM-corp.png",
-    "link": "https://akmcorporation.com/"
-  },
-  {
-    "name": "Intersoft",
-    "img": "https://i.ibb.co/LX6G3Dns/intersoft.jpg",
-    "link": "https://intsof.com/"
-  },
-  {
-    "name": "A-Laser",
-    "img": "https://i.ibb.co/zjG3M6s/A-laser.png",
-    "link": "https://a-laser.com/"
+    "name": "Canara",
+    "img": "https://i.ibb.co/CRXNkBp/image4.png",
+    "link": "https://canarabank.com/"
   }
 ]
