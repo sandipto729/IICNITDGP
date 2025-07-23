@@ -5,16 +5,16 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 const objectives = [
   {
-      details: "Forge strong academia–industry–alumni partnerships"
+      details: "Strengthen collaboration between industry and academia to drive future innovation and growth"
   },
   {
-      details: "Facilitate focused discussions on emerging Industry 4.0 technologies"
+      details: "Provide cutting-edge research and technological solutions to address real-world industrial problems"
   },
   {
-      details: "Showcase student innovations through Idea Pitch and prototype displays"
+      details: "Design indutry-aligned academic programs and establish shared infrastructure and resources"
   },
   {
-    details: "Initiate MoUs and collaborative projects with industries and PSUs"
+    details: "Foster entrepreneurial initiatives through mentorship, startup incubation and access to funding opportunities"
   }
 ];
 
