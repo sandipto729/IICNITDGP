@@ -101,7 +101,7 @@ const Overview = () => {
         <div className={styles.bottomLine}></div>
       </h1>
       {/* Uncomment the line below to add a poster image */}
-      {/* <img src="poster-link.jpg" alt="Poster" className={styles.poster} /> */}
+      <img src="assets/poster.jpg" alt="Poster" className={styles.poster} />
       
       <h1 className={styles.theme}>Theme{/*: <span className={styles.industry}>INDUSTRY 4.0</span>*/}</h1>
       <h2 className={styles.industry}>INDUSTRY 4.0</h2>
