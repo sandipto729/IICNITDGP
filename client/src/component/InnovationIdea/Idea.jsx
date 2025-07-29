@@ -62,7 +62,7 @@ const Idea = () => {
         <div className={styles.IdeaCard}>
             {/* <img src={image} alt={title} className={styles.IdeaCardImage} /> */}
             <div className={styles.announcementSection}>
-                Apply for Distinguished Innovation Idea Award <a href="https://nitd-nomination.onrender.com" target="_blank" rel="noopener noreferrer">here</a>
+                Apply for Distinguished Alumni Award 2025 <a href="https://nitd-nomination.onrender.com" target="_blank" rel="noopener noreferrer">here</a>
             </div>
 
             <div className={styles.IdeaCardContent}>
