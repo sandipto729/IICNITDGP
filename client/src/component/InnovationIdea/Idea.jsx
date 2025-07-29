@@ -61,6 +61,9 @@ const Idea = () => {
     return (
         <div className={styles.IdeaCard}>
             {/* <img src={image} alt={title} className={styles.IdeaCardImage} /> */}
+            <div className={styles.announcementSection}>
+                Apply for Distinguished Innovation Idea Award <a href="https://nitd-nomination.onrender.com" target="_blank" rel="noopener noreferrer">here</a>
+            </div>
 
             <div className={styles.IdeaCardContent}>
                 <div>Do you have new ideas? We welcome innovative suggestions and creative thoughts that can help us build a brighter future together. Share your ideas, and let's make an impact!</div>

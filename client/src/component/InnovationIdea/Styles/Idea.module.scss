@@ -17,6 +17,74 @@
     border-radius: 1rem;
 }
 
+.announcementSection {
+    background: linear-gradient(135deg, rgba(255, 190, 11, 0.1) 0%, rgba(244, 43, 3, 0.1) 100%);
+    border: 2px solid;
+    border-image: linear-gradient(135deg, rgba(255, 190, 11, 0.8) 0%, rgba(244, 43, 3, 0.8) 100%) 1;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 190, 11, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 190, 11, 0.3);
+        
+        &::before {
+            left: 100%;
+        }
+    }
+
+    a {
+        color: #ffbe0b;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 12px;
+        background: rgba(255, 190, 11, 0.2);
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 190, 11, 0.5);
+
+        &:hover {
+            background: rgba(255, 190, 11, 0.3);
+            border-color: #ffbe0b;
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255, 190, 11, 0.5);
+        }
+    }
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 12px 16px;
+        
+        a {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 10px;
+        }
+    }
+}
+
 .IdeaCardContent{
   // max-width: 90vw;
     div{
