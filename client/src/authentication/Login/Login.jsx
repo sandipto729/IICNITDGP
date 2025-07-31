@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginStart, loginSuccess, loginFailure } from '../../store/slices/authSlice';
 import apiService from '../../services/apiService';
-import styles from './styles/login.module.scss';
+import styles from './styles/Login.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
 const Login = () => {
