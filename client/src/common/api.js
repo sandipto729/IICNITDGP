@@ -28,6 +28,15 @@ const Api={
     EventRegistration:{
         url:`${BASE_URL}/eventregistration`,
         method:"POST"
+    },
+    // New webinar/event management endpoints
+    WebinarUpdate:{
+        url:`${BASE_URL}/webinars/:id`,
+        method:"PUT"
+    },
+    WebinarDelete:{
+        url:`${BASE_URL}/webinars/:id`,
+        method:"DELETE"
     }
 }
 

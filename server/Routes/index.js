@@ -6,7 +6,34 @@ const IdeaController=require('../Controller/Innovation')
 const WebinarController=require('../Controller/Webinar')
 const Website_countController=require('../Controller/Website_count')
 const EventRegistrationController=require('../Controller/EventRegistration')
+const authRoutes = require('./auth')
+const UserController = require('../Controller/User')
+const authMiddleware = require('../middleware/auth');
 
+// Authentication routes
+router.use('/auth', authRoutes);
+
+// User routes (protected)
+router.get('/user/profile', authMiddleware, UserController.getUserProfile);
+router.put('/user/profile', authMiddleware, UserController.updateUserProfile);
+router.post('/user/change-password', authMiddleware, UserController.changePassword);
+
+// Admin user management routes
+router.post('/admin/users', authMiddleware, UserController.createUser);
+router.get('/admin/users', authMiddleware, UserController.getAllUsers);
+router.get('/admin/users/:id', authMiddleware, UserController.getUserById);
+router.put('/admin/users/:id', authMiddleware, UserController.updateUser);
+router.delete('/admin/users/:id', authMiddleware, UserController.deleteUser);
+
+// Webinar/Event routes (using Webinar schema)
+router.post('/webinars', authMiddleware, WebinarController.createWebinar);
+router.get('/webinars', WebinarController.WebinarFetch);
+router.get('/webinars/categories', WebinarController.getWebinarCategories);
+router.get('/webinars/:id', WebinarController.getWebinarById);
+router.put('/webinars/:id', authMiddleware, WebinarController.updateWebinar);
+router.delete('/webinars/:id', authMiddleware, WebinarController.deleteWebinar);
+
+// Legacy routes
 router.post("/enquirysubmission",EnquiryController.sendEnquiry);
 router.post("/ideasubmission",IdeaController.IdeaSubmission);
 router.get("/webinardetails",WebinarController.WebinarFetch);

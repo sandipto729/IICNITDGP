@@ -1,0 +1,192 @@
+@import "../../../assets/styles/Global.scss";
+
+// Inherit base modal styles
+@import "../../EditProfileModal/styles/editProfileModal.module.scss";
+
+// Override modal size for event upload
+.modal {
+  max-width: 800px;
+  max-height: 95vh;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $border-color;
+  
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  
+  input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+  }
+  
+  label {
+    margin: 0;
+    font-weight: 500;
+    color: $text-color;
+    cursor: pointer;
+  }
+}
+
+.uploadSection {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.uploadHint {
+  margin: 0.5rem 0 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.imagePreview {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 2px solid $border-color;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.removeImageButton {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #dc3545;
+    transform: scale(1.1);
+  }
+}
+
+.uploadProgress {
+  margin-top: 1rem;
+  text-align: center;
+  
+  p {
+    margin: 0.5rem 0 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: $border-color;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: $orange-color;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+// Specific input styles for datetime-local and number inputs
+.formGroup input[type="datetime-local"],
+.formGroup input[type="number"] {
+  color-scheme: dark; // Better styling for date/time pickers in dark mode
+}
+
+.formGroup select {
+  padding: 0.75rem 1rem;
+  border: 2px solid $border-color;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: $text-color;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+    border-color: $orange-color;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.1);
+  }
+  
+  option {
+    background: $bg-color;
+    color: $text-color;
+    padding: 0.5rem;
+  }
+}
+
+.successMessage {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(40, 167, 69, 0.2);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .modal {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .imageGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+}

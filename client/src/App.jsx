@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadUserFromStorage } from './store/slices/authSlice';
 import TopHeader from './layouts/TopHeader/topHeader.jsx'
 import Header from './layouts/Header/header.jsx'
 import { Outlet } from 'react-router-dom';
@@ -10,6 +12,12 @@ import API from './common/api.js';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  // Load authentication state on app initialization
+  useEffect(() => {
+    dispatch(loadUserFromStorage());
+  }, [dispatch]);
 
   const response = async () => {
     const res = await fetch(API.Update_count.url, {

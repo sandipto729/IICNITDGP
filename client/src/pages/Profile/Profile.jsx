@@ -1,0 +1,236 @@
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loadUserFromStorage } from '../../store/slices/authSlice';
+import apiService from '../../services/apiService';
+import EditProfileModal from '../../components/EditProfileModal/EditProfileModal';
+import AddUserModal from '../../components/AddUserModal/AddUserModal';
+import EventUploadModal from '../../components/EventUploadModal/EventUploadModal';
+import EventsManager from '../../components/EventsManager/EventsManager';
+import styles from './styles/profile.module.scss';
+import GradientText from '../../component/Core/TextStyle';
+
+const Profile = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated, user, accessToken, refreshToken } = useSelector((state) => state.auth);
+  
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
+  const [isEventModalOpen, setIsEventModalOpen] = useState(false);
+  const [isEditEventsModalOpen, setIsEditEventsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Load user data from localStorage on component mount
+    dispatch(loadUserFromStorage());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // Redirect to login if not authenticated
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
+
+  const handleLogout = async () => {
+    try {
+      await apiService.logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Even if logout fails, redirect to home
+      navigate('/');
+    }
+  };
+
+  const handleUserAdded = (newUser) => {
+    console.log('New user added:', newUser);
+    // You can add logic here to refresh user list or show notification
+  };
+
+  const handleEventAdded = (newEvent) => {
+    console.log('New event added:', newEvent);
+    // Refresh will be handled by EventsManager if needed
+  };
+
+  const handleEventUpdated = () => {
+    console.log('Event updated/deleted');
+    // Additional logic can be added here if needed
+  };
+
+  if (!isAuthenticated || !user) {
+    return (
+      <div className={styles.loadingContainer}>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  const isAdmin = user.role === 'admin';
+
+  return (
+    <div className={styles.profileContainer}>
+      <div className={styles.profileCard}>
+        <div className={styles.profileHeader}>
+          <div className={styles.profileImageContainer}>
+            <img 
+              src={user.photo || 'https://via.placeholder.com/150'} 
+              alt={user.name}
+              className={styles.profileImage}
+            />
+          </div>
+          <div className={styles.profileInfo}>
+            <h1><GradientText text={user.name} /></h1>
+            <p className={styles.userEmail}>{user.email}</p>
+            {isAdmin && (
+              <span className={styles.adminBadge}>Admin</span>
+            )}
+          </div>
+        </div>
+
+        <div className={styles.profileDetails}>
+          <div className={styles.detailSection}>
+            <h3><GradientText text="Personal Information" /></h3>
+            <div className={styles.detailGrid}>
+              <div className={styles.detailItem}>
+                <label>Full Name</label>
+                <p>{user.name}</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Email Address</label>
+                <p>{user.email}</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Phone Number</label>
+                <p>{user.phone || 'Not provided'}</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Address</label>
+                <p>{user.address || 'Not provided'}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.detailSection}>
+            <h3><GradientText text="Account Information" /></h3>
+            <div className={styles.detailGrid}>
+              <div className={styles.detailItem}>
+                <label>User ID</label>
+                <p>{user._id || user.id}</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Role</label>
+                <p className={isAdmin ? styles.roleAdmin : styles.roleUser}>
+                  {user.role || 'user'}
+                </p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Account Status</label>
+                <p className={styles.statusActive}>Active</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Last Login</label>
+                <p>{user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : 'N/A'}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Token Information - Only show if user is admin */}
+          {isAdmin && (
+            <div className={styles.detailSection}>
+              <h3><GradientText text="Token Information" /></h3>
+              <div className={styles.detailGrid}>
+                <div className={styles.detailItem}>
+                  <label>Access Token</label>
+                  <p className={styles.tokenText}>
+                    {accessToken ? `${accessToken.substring(0, 20)}...` : 'Not available'}
+                  </p>
+                </div>
+                <div className={styles.detailItem}>
+                  <label>Refresh Token</label>
+                  <p className={styles.tokenText}>
+                    {refreshToken ? `${refreshToken.substring(0, 20)}...` : 'Not available'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className={styles.profileActions}>
+          <div className={styles.actionRow}>
+            <button 
+              className={styles.editButton}
+              onClick={() => setIsEditModalOpen(true)}
+            >
+              Edit Profile
+            </button>
+            <button 
+              className={styles.logoutButton}
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+          
+          {/* Admin Actions */}
+          {isAdmin && (
+            <div className={styles.adminActions}>
+              <h4><GradientText text="Admin Actions" /></h4>
+              <div className={styles.actionRow}>
+                <button 
+                  className={styles.addUserButton}
+                  onClick={() => setIsAddUserModalOpen(true)}
+                >
+                  Add User
+                </button>
+                <button 
+                  className={styles.uploadEventButton}
+                  onClick={() => setIsEventModalOpen(true)}
+                >
+                  Upload Event
+                </button>
+                <button 
+                  className={styles.editEventsButton}
+                  onClick={() => setIsEditEventsModalOpen(true)}
+                >
+                  Edit Events
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Modals */}
+      <EditProfileModal 
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+      />
+      
+      {isAdmin && (
+        <>
+          <AddUserModal 
+            isOpen={isAddUserModalOpen}
+            onClose={() => setIsAddUserModalOpen(false)}
+            onUserAdded={handleUserAdded}
+          />
+          
+          <EventUploadModal 
+            isOpen={isEventModalOpen}
+            onClose={() => setIsEventModalOpen(false)}
+            onEventAdded={handleEventAdded}
+          />
+
+          <EventsManager
+            isOpen={isEditEventsModalOpen}
+            onClose={() => setIsEditEventsModalOpen(false)}
+            onEventUpdated={handleEventUpdated}
+          />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Profile;

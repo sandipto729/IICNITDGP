@@ -8,6 +8,8 @@ import FAQ from './../pages/FAQ/FAQ.jsx';
 import Error from './../layouts/Error/Error.jsx';
 import Gallery from '../pages/Gallery/Gallery.jsx';
 import Login from '../authentication/Login/Login.jsx';
+import Profile from '../pages/Profile/Profile.jsx';
+import ProtectedRoute from '../component/ProtectedRoute/ProtectedRoute.jsx';
 import Activity from '../pages/Activity/Activity.jsx';
 import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 import Ai2Summit from '../pages/Ai2Summit/Ai2Summit.jsx'
@@ -53,10 +55,18 @@ const router = createBrowserRouter([
                 path: '/ai2summit',
                 element: <Ai2Summit />
             },
-            // {
-            //     path: '/login',
-            //     element: <Login />
-            // },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/profile',
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                )
+            },
             {
                 path: '*',
                 element: <Error />
