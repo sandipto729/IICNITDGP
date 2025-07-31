@@ -49,6 +49,15 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null
+  },
+  lastLogin: {
+    type: Date,
+    default: null
+  },
   lastLogin: {
     type: Date,
     default: Date.now

@@ -146,6 +146,152 @@ class ApiService {
     });
     return response.json();
   }
+
+  // User Profile Management
+  async getUserProfile() {
+    const response = await this.request('/user/profile');
+    const data = await response.json();
+    if (data.success) {
+      return data.user;
+    }
+    throw new Error(data.message || 'Failed to fetch profile');
+  }
+
+  async updateUserProfile(profileData) {
+    const response = await this.request('/user/profile', {
+      method: 'PUT',
+      body: JSON.stringify(profileData),
+    });
+    const data = await response.json();
+    if (data.success) {
+      // Update Redux store with new user data
+      store.dispatch({ type: 'auth/updateUser', payload: data.user });
+      return data.user;
+    }
+    throw new Error(data.message || 'Failed to update profile');
+  }
+
+  async changePassword(passwordData) {
+    const response = await this.request('/user/change-password', {
+      method: 'POST',
+      body: JSON.stringify(passwordData),
+    });
+    const data = await response.json();
+    if (data.success) {
+      return data;
+    }
+    throw new Error(data.message || 'Failed to change password');
+  }
+
+  // Admin User Management
+  async createUser(userData) {
+    const response = await this.request('/admin/users', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+    const data = await response.json();
+    if (data.success) {
+      return data;
+    }
+    throw new Error(data.message || 'Failed to create user');
+  }
+
+  async getAllUsers(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/admin/users?${queryString}` : '/admin/users';
+    const response = await this.request(url);
+    const data = await response.json();
+    if (data.success) {
+      return data;
+    }
+    throw new Error(data.message || 'Failed to fetch users');
+  }
+
+  async getUserById(userId) {
+    const response = await this.request(`/admin/users/${userId}`);
+    const data = await response.json();
+    if (data.success) {
+      return data.user;
+    }
+    throw new Error(data.message || 'Failed to fetch user');
+  }
+
+  async updateUser(userId, userData) {
+    const response = await this.request(`/admin/users/${userId}`, {
+      method: 'PUT',
+      body: JSON.stringify(userData),
+    });
+    const data = await response.json();
+    if (data.success) {
+      return data.user;
+    }
+    throw new Error(data.message || 'Failed to update user');
+  }
+
+  async deleteUser(userId) {
+    const response = await this.request(`/admin/users/${userId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    if (data.success) {
+      return data;
+    }
+    throw new Error(data.message || 'Failed to delete user');
+  }
+
+  // Webinar/Event Management (using Webinar schema)
+  async createWebinar(webinarData) {
+    const response = await this.request('/webinars', {
+      method: 'POST',
+      body: JSON.stringify(webinarData),
+    });
+    const data = await response.json();
+    if (data.webinar) {
+      return data.webinar;
+    }
+    throw new Error(data.message || 'Failed to create event');
+  }
+
+  async getAllWebinars(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    const url = queryString ? `/webinars?${queryString}` : '/webinars';
+    const response = await this.request(url);
+    // The webinar endpoint returns data directly, not wrapped in success object
+    return response.json();
+  }
+
+  async getWebinarById(webinarId) {
+    const response = await this.request(`/webinars/${webinarId}`);
+    return response.json();
+  }
+
+  async updateWebinar(webinarId, webinarData) {
+    const response = await this.request(`/webinars/${webinarId}`, {
+      method: 'PUT',
+      body: JSON.stringify(webinarData),
+    });
+    const data = await response.json();
+    if (data.webinar) {
+      return data.webinar;
+    }
+    throw new Error(data.message || 'Failed to update event');
+  }
+
+  async deleteWebinar(webinarId) {
+    const response = await this.request(`/webinars/${webinarId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    if (data.message) {
+      return data;
+    }
+    throw new Error(data.message || 'Failed to delete event');
+  }
+
+  async getWebinarCategories() {
+    const response = await this.request('/webinars/categories');
+    return response.json();
+  }
 }
 
 // Create singleton instance

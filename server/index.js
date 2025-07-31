@@ -21,8 +21,8 @@ app.use(cors({
 }));
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' })); // Increased limit for base64 images
+app.use(express.urlencoded({ extended: true, limit: '50mb' })); // Increased limit for form data
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
