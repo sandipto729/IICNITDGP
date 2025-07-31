@@ -6,6 +6,10 @@ const IdeaController=require('../Controller/Innovation')
 const WebinarController=require('../Controller/Webinar')
 const Website_countController=require('../Controller/Website_count')
 const EventRegistrationController=require('../Controller/EventRegistration')
+const authRoutes = require('./auth')
+
+// Authentication routes
+router.use('/auth', authRoutes);
 
 router.post("/enquirysubmission",EnquiryController.sendEnquiry);
 router.post("/ideasubmission",IdeaController.IdeaSubmission);
