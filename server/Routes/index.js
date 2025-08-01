@@ -25,8 +25,10 @@ router.post('/user/change-password', authMiddleware, UserController.changePasswo
 // Admin user management routes
 router.post('/admin/users', authMiddleware, UserController.createUser);
 router.get('/admin/users', authMiddleware, UserController.getAllUsers);
+router.get('/admin/users-management', authMiddleware, UserController.getUsersForManagement);
 router.get('/admin/users/:id', authMiddleware, UserController.getUserById);
 router.put('/admin/users/:id', authMiddleware, UserController.updateUser);
+router.put('/admin/users-management/:id', authMiddleware, UserController.updateUserManagement);
 router.delete('/admin/users/:id', authMiddleware, UserController.deleteUser);
 
 // Webinar/Event routes (using Webinar schema)
