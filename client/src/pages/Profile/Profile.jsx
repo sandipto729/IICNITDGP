@@ -7,6 +7,7 @@ import EditProfileModal from '../../components/EditProfileModal/EditProfileModal
 import AddUserModal from '../../components/AddUserModal/AddUserModal';
 import EventUploadModal from '../../components/EventUploadModal/EventUploadModal';
 import EventsManager from '../../components/EventsManager/EventsManager';
+import UserManagementModal from '../../components/UserManagementModal/UserManagementModal';
 import styles from './styles/profile.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
@@ -19,6 +20,7 @@ const Profile = () => {
   const [isAddUserModalOpen, setIsAddUserModalOpen] = useState(false);
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [isEditEventsModalOpen, setIsEditEventsModalOpen] = useState(false);
+  const [isUserManagementModalOpen, setIsUserManagementModalOpen] = useState(false);
 
   useEffect(() => {
     // Load user data from localStorage on component mount
@@ -256,6 +258,12 @@ const Profile = () => {
                 >
                   Edit Events
                 </button>
+                <button 
+                  className={styles.manageUsersButton}
+                  onClick={() => setIsUserManagementModalOpen(true)}
+                >
+                  Manage Users
+                </button>
               </div>
             </div>
           )}
@@ -286,6 +294,11 @@ const Profile = () => {
             isOpen={isEditEventsModalOpen}
             onClose={() => setIsEditEventsModalOpen(false)}
             onEventUpdated={handleEventUpdated}
+          />
+
+          <UserManagementModal
+            isOpen={isUserManagementModalOpen}
+            onClose={() => setIsUserManagementModalOpen(false)}
           />
         </>
       )}

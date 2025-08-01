@@ -433,6 +433,159 @@ exports.getTeamMembers = async (req, res) => {
   }
 };
 
+// Admin: Get users for management (simplified view)
+exports.getUsersForManagement = async (req, res) => {
+  try {
+    // Check if user is admin
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied. Admin privileges required.'
+      });
+    }
+
+    const {
+      page = 1,
+      limit = 20,
+      search,
+      role,
+      sortBy = 'createdAt',
+      sortOrder = 'desc'
+    } = req.query;
+
+    // Build query
+    const query = {};
+    
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } }
+      ];
+    }
+    
+    if (role && role !== 'all') {
+      query.role = role;
+    }
+
+    // Sort options
+    const sortOptions = {};
+    sortOptions[sortBy] = sortOrder === 'desc' ? -1 : 1;
+
+    // Calculate pagination
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    // Execute query - only get essential fields for management
+    const users = await User.find(query)
+      .select('_id name email role isActive createdAt lastLogin')
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    // Get total count for pagination
+    const totalUsers = await User.countDocuments(query);
+
+    res.json({
+      success: true,
+      users,
+      pagination: {
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(totalUsers / parseInt(limit)),
+        totalUsers,
+        usersPerPage: parseInt(limit)
+      }
+    });
+  } catch (error) {
+    console.error('Get users for management error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch users for management',
+      error: error.message
+    });
+  }
+};
+
+// Admin: Update user management (simplified update)
+exports.updateUserManagement = async (req, res) => {
+  try {
+    // Check if user is admin
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied. Admin privileges required.'
+      });
+    }
+
+    const { id } = req.params;
+    const { name, email, role, isActive } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !role) {
+      return res.status(400).json({
+        success: false,
+        message: 'Name, email, and role are required'
+      });
+    }
+
+    // Check if email is being changed and if it's already taken
+    if (email) {
+      const existingUser = await User.findOne({ 
+        email: email.toLowerCase(), 
+        _id: { $ne: id } 
+      });
+      
+      if (existingUser) {
+        return res.status(400).json({
+          success: false,
+          message: 'Email already in use by another account'
+        });
+      }
+    }
+
+    // Prevent admin from changing their own role to user
+    if (id === req.user.userId && role === 'user') {
+      return res.status(400).json({
+        success: false,
+        message: 'You cannot change your own role from admin to user'
+      });
+    }
+
+    // Prepare update object
+    const updateData = {
+      name: name.trim(),
+      email: email.toLowerCase().trim(),
+      role,
+      isActive: typeof isActive === 'boolean' ? isActive : true
+    };
+
+    // Update user
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true, runValidators: true }
+    ).select('_id name email role isActive createdAt lastLogin');
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'User updated successfully',
+      user: updatedUser
+    });
+  } catch (error) {
+    console.error('Update user management error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update user',
+      error: error.message
+    });
+  }
+};
+
 // Debug: Get all users for testing
 exports.getAllUsersDebug = async (req, res) => {
   try {
