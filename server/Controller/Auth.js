@@ -4,7 +4,7 @@ const { generateTokens, verifyRefreshToken } = require('../utils/jwt');
 // Register a new user (admin only in production)
 const register = async (req, res) => {
   try {
-    const { name, email, password, photo, address, phone } = req.body;
+    const { name, email, password, photo, address, phone, role } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -22,7 +22,8 @@ const register = async (req, res) => {
       password,
       photo: photo || 'https://via.placeholder.com/150',
       address: address || '',
-      phone: phone || ''
+      phone: phone || '',
+      role: role
     });
 
     await user.save();

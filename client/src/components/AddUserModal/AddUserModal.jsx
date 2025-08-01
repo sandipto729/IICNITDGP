@@ -99,7 +99,7 @@ const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
         photo: photoUrl,
         password: formData.phone // Password is mobile number
       };
-
+      
       // Register user via API
       const response = await apiService.register(userData);
       
