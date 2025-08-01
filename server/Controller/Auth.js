@@ -4,7 +4,7 @@ const { generateTokens, verifyRefreshToken } = require('../utils/jwt');
 // Register a new user (admin only in production)
 const register = async (req, res) => {
   try {
-    const { name, email, password, photo, address, phone, role } = req.body;
+    const { name, email, password, photo, address, phone, role, designation, type, extra } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -23,7 +23,10 @@ const register = async (req, res) => {
       photo: photo || 'https://via.placeholder.com/150',
       address: address || '',
       phone: phone || '',
-      role: role
+      role: role,
+      designation: designation || '',
+      type: type || 'Other',
+      extra: extra || { linkedin: '', github: '' }
     });
 
     await user.save();
@@ -221,11 +224,21 @@ const getProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const userId = req.user._id;
-    const { name, photo, address, phone } = req.body;
+    const { name, photo, address, phone, designation, type, extra } = req.body;
+
+    // Prepare update object
+    const updateData = {};
+    if (name) updateData.name = name;
+    if (photo) updateData.photo = photo;
+    if (address) updateData.address = address;
+    if (phone) updateData.phone = phone;
+    if (designation) updateData.designation = designation;
+    if (type) updateData.type = type;
+    if (extra) updateData.extra = extra;
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { name, photo, address, phone },
+      updateData,
       { new: true, runValidators: true }
     ).select('-password -refreshToken');
 

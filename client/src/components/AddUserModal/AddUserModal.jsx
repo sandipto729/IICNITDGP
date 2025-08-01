@@ -11,7 +11,13 @@ const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
     email: '',
     phone: '',
     address: '',
-    role: 'user'
+    role: 'user',
+    designation: '',
+    type: 'Other',
+    extra: {
+      linkedin: '',
+      github: ''
+    }
   });
   
   const [selectedFile, setSelectedFile] = useState(null);
@@ -23,10 +29,22 @@ const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    if (name.startsWith('extra.')) {
+      const fieldName = name.split('.')[1];
+      setFormData(prev => ({
+        ...prev,
+        extra: {
+          ...prev.extra,
+          [fieldName]: value
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleFileSelect = (e) => {
@@ -128,7 +146,13 @@ const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
       email: '',
       phone: '',
       address: '',
-      role: 'user'
+      role: 'user',
+      designation: '',
+      type: 'Other',
+      extra: {
+        linkedin: '',
+        github: ''
+      }
     });
     setSelectedFile(null);
     setPreviewUrl(null);
@@ -256,6 +280,63 @@ const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
                 placeholder="Enter address (optional)"
                 rows={3}
               />
+            </div>
+
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="designation">Designation</label>
+                <input
+                  type="text"
+                  id="designation"
+                  name="designation"
+                  value={formData.designation}
+                  onChange={handleInputChange}
+                  placeholder="Enter designation (optional)"
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="type">Type</label>
+                <select
+                  id="type"
+                  name="type"
+                  value={formData.type}
+                  onChange={handleInputChange}
+                >
+                  <option value="Other">Other</option>
+                  <option value="Faculty">Faculty</option>
+                  <option value="Student Volunteers">Student Volunteers</option>
+                  <option value="Student Council">Student Council</option>
+                  <option value="Advisor">Advisor</option>
+                  <option value="Mentor">Mentor</option>
+                </select>
+              </div>
+            </div>
+
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="linkedin">LinkedIn Profile</label>
+                <input
+                  type="url"
+                  id="linkedin"
+                  name="extra.linkedin"
+                  value={formData.extra.linkedin}
+                  onChange={handleInputChange}
+                  placeholder="https://linkedin.com/in/yourprofile (optional)"
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="github">GitHub Profile</label>
+                <input
+                  type="url"
+                  id="github"
+                  name="extra.github"
+                  value={formData.extra.github}
+                  onChange={handleInputChange}
+                  placeholder="https://github.com/yourusername (optional)"
+                />
+              </div>
             </div>
           </div>
 

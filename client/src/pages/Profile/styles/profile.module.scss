@@ -139,6 +139,22 @@
   font-weight: 600;
 }
 
+.statusInactive {
+  color: #dc3545 !important;
+  font-weight: 600;
+}
+
+.socialLink {
+  // color: $primary-color !important;
+  text-decoration: none;
+  word-break: break-all;
+  
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+}
+
 .tokenText {
   font-family: 'Courier New', monospace;
   font-size: 0.9rem !important;
