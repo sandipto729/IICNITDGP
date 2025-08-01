@@ -41,6 +41,25 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user'
   },
+  designation: {
+    type: String,
+    default: ''
+  },
+  type: {
+    type: String,
+    enum: ['Faculty', 'Student Volunteers', 'Student Council', 'Advisor', 'Mentor', 'Other'],
+    default: 'Other'
+  },
+  extra: {
+    linkedin: {
+      type: String,
+      default: ''
+    },
+    github: {
+      type: String,
+      default: ''
+    }
+  },
   refreshToken: {
     type: String,
     select: false // Don't include refresh token in queries by default
@@ -52,10 +71,6 @@ const userSchema = new mongoose.Schema({
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    default: null
-  },
-  lastLogin: {
-    type: Date,
     default: null
   },
   lastLogin: {

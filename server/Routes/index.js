@@ -13,6 +13,10 @@ const authMiddleware = require('../middleware/auth');
 // Authentication routes
 router.use('/auth', authRoutes);
 
+// Public routes
+router.get('/team-members', UserController.getTeamMembers);
+router.get('/debug-users', UserController.getAllUsersDebug);
+
 // User routes (protected)
 router.get('/user/profile', authMiddleware, UserController.getUserProfile);
 router.put('/user/profile', authMiddleware, UserController.updateUserProfile);

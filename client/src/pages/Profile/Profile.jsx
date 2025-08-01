@@ -108,8 +108,55 @@ const Profile = () => {
                 <label>Address</label>
                 <p>{user.address || 'Not provided'}</p>
               </div>
+              <div className={styles.detailItem}>
+                <label>Designation</label>
+                <p>{user.designation || 'Not provided'}</p>
+              </div>
+              <div className={styles.detailItem}>
+                <label>Type</label>
+                <p>{user.type || 'Other'}</p>
+              </div>
             </div>
           </div>
+
+          {/* Social Links Section */}
+          {(user.extra?.linkedin || user.extra?.github) && (
+            <div className={styles.detailSection}>
+              <h3><GradientText text="Social Links" /></h3>
+              <div className={styles.detailGrid}>
+                {user.extra?.linkedin && (
+                  <div className={styles.detailItem}>
+                    <label>LinkedIn</label>
+                    <p>
+                      <a 
+                        href={user.extra.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={styles.socialLink}
+                      >
+                        {user.extra.linkedin}
+                      </a>
+                    </p>
+                  </div>
+                )}
+                {user.extra?.github && (
+                  <div className={styles.detailItem}>
+                    <label>GitHub</label>
+                    <p>
+                      <a 
+                        href={user.extra.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={styles.socialLink}
+                      >
+                        {user.extra.github}
+                      </a>
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           <div className={styles.detailSection}>
             <h3><GradientText text="Account Information" /></h3>
@@ -126,11 +173,24 @@ const Profile = () => {
               </div>
               <div className={styles.detailItem}>
                 <label>Account Status</label>
-                <p className={styles.statusActive}>Active</p>
+                <p className={user.isActive ? styles.statusActive : styles.statusInactive}>
+                  {user.isActive ? 'Active' : 'Inactive'}
+                </p>
               </div>
               <div className={styles.detailItem}>
                 <label>Last Login</label>
-                <p>{user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : 'N/A'}</p>
+                <p>
+                  {user.lastLogin 
+                    ? new Date(user.lastLogin).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })
+                    : 'Never'
+                  }
+                </p>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@ exports.getUserProfile = async (req, res) => {
 // Update user profile
 exports.updateUserProfile = async (req, res) => {
   try {
-    const { name, email, phone, address, photo } = req.body;
+    const { name, email, phone, address, photo, designation, type, extra } = req.body;
     const userId = req.user.userId;
 
     // Check if email is being changed and if it's already taken
@@ -55,6 +55,9 @@ exports.updateUserProfile = async (req, res) => {
     if (phone) updateData.phone = phone;
     if (address) updateData.address = address;
     if (photo) updateData.photo = photo;
+    if (designation) updateData.designation = designation;
+    if (type) updateData.type = type;
+    if (extra) updateData.extra = extra;
 
     // Update user
     const updatedUser = await User.findByIdAndUpdate(
@@ -89,7 +92,7 @@ exports.createUser = async (req, res) => {
       });
     }
 
-    const { name, email, phone, address, role = 'user', photo } = req.body;
+    const { name, email, phone, address, role = 'user', photo, designation, type, extra } = req.body;
 
     // Validate required fields
     if (!name || !email || !phone) {
@@ -121,7 +124,10 @@ exports.createUser = async (req, res) => {
       address,
       role,
       photo,
-      createdBy: req.user.userId
+      createdBy: req.user.userId,
+      designation,
+      type,
+      extra
     });
 
     const savedUser = await newUser.save();
@@ -265,7 +271,7 @@ exports.updateUser = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { name, email, phone, address, role, photo } = req.body;
+    const { name, email, phone, address, role, photo, designation, type, extra, isActive } = req.body;
 
     // Check if email is being changed and if it's already taken
     if (email) {
@@ -290,6 +296,10 @@ exports.updateUser = async (req, res) => {
     if (address) updateData.address = address;
     if (role) updateData.role = role;
     if (photo) updateData.photo = photo;
+    if (designation) updateData.designation = designation;
+    if (type) updateData.type = type;
+    if (extra) updateData.extra = extra;
+    if (typeof isActive === 'boolean') updateData.isActive = isActive;
 
     // Update user
     const updatedUser = await User.findByIdAndUpdate(
@@ -359,6 +369,96 @@ exports.deleteUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to delete user',
+      error: error.message
+    });
+  }
+};
+
+// Public: Get team members (active users with type and designation)
+exports.getTeamMembers = async (req, res) => {
+  try {
+    const {
+      page = 1,
+      limit = 100,
+      type
+    } = req.query;
+
+    // First, let's see what users we have
+    const allUsers = await User.find({}).select('_id name photo designation type extra isActive');
+    console.log('All users in database:', allUsers.length);
+    console.log('Sample users:', allUsers.slice(0, 3));
+
+    // Build query for active users - make it less restrictive initially
+    const query = {
+      isActive: { $ne: false } // Include users where isActive is true or undefined
+    };
+    
+    if (type && type !== 'All') {
+      query.type = type;
+    }
+
+    // Calculate pagination
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    // Execute query
+    const users = await User.find(query)
+      .select('_id name photo designation type extra isActive')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    console.log('Filtered users:', users.length);
+    console.log('Filtered users sample:', users.slice(0, 2));
+
+    // Get total count for pagination
+    const totalUsers = await User.countDocuments(query);
+
+    res.json({
+      success: true,
+      users,
+      pagination: {
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(totalUsers / parseInt(limit)),
+        totalUsers,
+        usersPerPage: parseInt(limit)
+      }
+    });
+  } catch (error) {
+    console.error('Get team members error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch team members',
+      error: error.message
+    });
+  }
+};
+
+// Debug: Get all users for testing
+exports.getAllUsersDebug = async (req, res) => {
+  try {
+    const users = await User.find({})
+      .select('_id name email phone designation type extra isActive createdAt')
+      .limit(10);
+
+    res.json({
+      success: true,
+      count: users.length,
+      users: users.map(user => ({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        designation: user.designation,
+        type: user.type,
+        isActive: user.isActive,
+        hasExtra: !!user.extra,
+        extraFields: user.extra ? Object.keys(user.extra) : []
+      }))
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch users for debug',
       error: error.message
     });
   }
