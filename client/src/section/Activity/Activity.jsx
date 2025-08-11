@@ -77,7 +77,7 @@ const Activity = () => {
         <div className={styles.mainAcitivity} id="activity">
             <div className={styles.heading}>
                 <p className={styles.head}>
-                    IIC'S{" "}
+                    Technological Verticals{" "}
                     <span
                         style={{
                             background: "var(--primary)",
@@ -85,7 +85,7 @@ const Activity = () => {
                             color: "transparent",
                         }}
                     >
-                        Activity
+                        Of IIC
                     </span>
                 </p>
                 <div className={styles.bottomLine}></div>

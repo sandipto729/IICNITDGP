@@ -25,7 +25,8 @@ const NewsCard = ({ image, title, date, time, content }) => {
         return text.length > length ? text.slice(0, length) + "..." : text;
     };
 
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [cardImageLoaded, setCardImageLoaded] = useState(false);
+    const [modalImageLoaded, setModalImageLoaded] = useState(false);
 
     return (
         <div className={styles.newsCard}>
@@ -33,7 +34,7 @@ const NewsCard = ({ image, title, date, time, content }) => {
 
 
             <div className={styles.imageContainer}>
-                {!imageLoaded && (
+                {!cardImageLoaded && (
                     <Blurhash
                         hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj" // Replace with actual Blurhash
                         width="100%"
@@ -48,8 +49,8 @@ const NewsCard = ({ image, title, date, time, content }) => {
                     src={image}
                     alt={title}
                     className={styles.newsCardImage}
-                    onLoad={() => setImageLoaded(true)}
-                    style={{ display: imageLoaded ? "block" : "none" }} // Hide image until loaded
+                    onLoad={() => setCardImageLoaded(true)}
+                    style={{ display: cardImageLoaded ? "block" : "none" }} // Hide image until loaded
                 />
             </div>
             <div className={styles.newsCardContent}>
@@ -72,7 +73,7 @@ const NewsCard = ({ image, title, date, time, content }) => {
                     <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                         {/* Image at the top */}
                         <div className={styles.imageContainer}>
-                            {!imageLoaded && (
+                            {!modalImageLoaded && (
                                 <Blurhash
                                     hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj" // Replace with actual Blurhash
                                     width="100%"
@@ -87,8 +88,8 @@ const NewsCard = ({ image, title, date, time, content }) => {
                                 src={image}
                                 alt={title}
                                 className={styles.newsCardImage1}
-                                onLoad={() => setImageLoaded(true)}
-                                style={{ display: imageLoaded ? "block" : "none" }} // Hide image until loaded
+                                onLoad={() => setModalImageLoaded(true)}
+                                style={{ display: modalImageLoaded ? "block" : "none" }} // Hide image until loaded
                             />
                         </div>
 
