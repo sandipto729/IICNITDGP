@@ -82,6 +82,7 @@ const NewsEvent = () => {
         setLoading(true);
         setError(null);
         try {
+            console.log('Fetching from:', API.WebinarFetch.url);
             const response = await fetch(API.WebinarFetch.url, {
                 method: API.WebinarFetch.method,
                 mode: "cors",
@@ -96,11 +97,17 @@ const NewsEvent = () => {
                 const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setNewsList(sortedData);
             } else {
-                throw new Error("Failed to fetch events data");
+                const errorText = await response.text();
+                console.error('Response error:', response.status, errorText);
+                throw new Error(`Server error: ${response.status}`);
             }
         } catch (error) {
             console.error("Error fetching events:", error);
-            setError(error.message);
+            if (error.message.includes('fetch')) {
+                setError('Cannot connect to server. Make sure the backend is running on port 8000.');
+            } else {
+                setError(error.message);
+            }
         } finally {
             setLoading(false);
         }
@@ -175,12 +182,25 @@ const NewsEvent = () => {
     
     if (error) {
         return (
-            <div className={styles.errorContainer}>
-                <p>Error loading events: {error}</p>
-                <button onClick={fetchNewsData} className={styles.retryButton}>
-                    Retry
-                </button>
-            </div>
+            <>
+                <center className={styles.newsTitle}>
+                    <div>
+                        Our <span style={{
+                            background: "var(--primary)",
+                            WebkitBackgroundClip: "text",
+                            color: "transparent",
+                        }}>Events</span>
+                    </div>
+                    <div className={styles.bottomLine}></div>
+                </center>
+                <div className={styles.errorContainer}>
+                    <p>🔧 Events data is currently unavailable</p>
+                    <p className={styles.errorSubtext}>Backend server is not running. Events will be displayed once the server is connected.</p>
+                    <button onClick={fetchNewsData} className={styles.retryButton}>
+                        Retry Connection
+                    </button>
+                </div>
+            </>
         );
     }
 
