@@ -8,6 +8,8 @@ import AddUserModal from '../../components/AddUserModal/AddUserModal';
 import EventUploadModal from '../../components/EventUploadModal/EventUploadModal';
 import EventsManager from '../../components/EventsManager/EventsManager';
 import UserManagementModal from '../../components/UserManagementModal/UserManagementModal';
+import InnovationSubmissions from '../../components/InnovationSubmissions/InnovationSubmissions';
+import CarouselImageUpload from '../../components/CarouselImageUpload/CarouselImageUpload';
 import styles from './styles/profile.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
@@ -21,6 +23,8 @@ const Profile = () => {
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
   const [isEditEventsModalOpen, setIsEditEventsModalOpen] = useState(false);
   const [isUserManagementModalOpen, setIsUserManagementModalOpen] = useState(false);
+  const [isInnovationSubmissionsOpen, setIsInnovationSubmissionsOpen] = useState(false);
+  const [isCarouselUploadOpen, setIsCarouselUploadOpen] = useState(false);
 
   useEffect(() => {
     // Load user data from localStorage on component mount
@@ -58,6 +62,11 @@ const Profile = () => {
   const handleEventUpdated = () => {
     console.log('Event updated/deleted');
     // Additional logic can be added here if needed
+  };
+
+  const handleCarouselImageAdded = (newImage) => {
+    console.log('New carousel image added:', newImage);
+    // You can add logic here to refresh carousel or show notification
   };
 
   if (!isAuthenticated || !user) {
@@ -264,6 +273,18 @@ const Profile = () => {
                 >
                   Manage Users
                 </button>
+                <button 
+                  className={styles.innovationSubmissionsButton}
+                  onClick={() => setIsInnovationSubmissionsOpen(true)}
+                >
+                  View Submissions
+                </button>
+                <button 
+                  className={styles.carouselUploadButton}
+                  onClick={() => setIsCarouselUploadOpen(true)}
+                >
+                  Upload Carousel Image
+                </button>
               </div>
             </div>
           )}
@@ -299,6 +320,17 @@ const Profile = () => {
           <UserManagementModal
             isOpen={isUserManagementModalOpen}
             onClose={() => setIsUserManagementModalOpen(false)}
+          />
+
+          <InnovationSubmissions
+            isOpen={isInnovationSubmissionsOpen}
+            onClose={() => setIsInnovationSubmissionsOpen(false)}
+          />
+
+          <CarouselImageUpload
+            isOpen={isCarouselUploadOpen}
+            onClose={() => setIsCarouselUploadOpen(false)}
+            onImageAdded={handleCarouselImageAdded}
           />
         </>
       )}
