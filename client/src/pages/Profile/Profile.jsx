@@ -10,6 +10,7 @@ import EventsManager from '../../components/EventsManager/EventsManager';
 import UserManagementModal from '../../components/UserManagementModal/UserManagementModal';
 import InnovationSubmissions from '../../components/InnovationSubmissions/InnovationSubmissions';
 import CarouselImageUpload from '../../components/CarouselImageUpload/CarouselImageUpload';
+import GalleryImageUpload from '../../components/GalleryImageUpload/GalleryImageUpload';
 import styles from './styles/profile.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
@@ -25,6 +26,7 @@ const Profile = () => {
   const [isUserManagementModalOpen, setIsUserManagementModalOpen] = useState(false);
   const [isInnovationSubmissionsOpen, setIsInnovationSubmissionsOpen] = useState(false);
   const [isCarouselUploadOpen, setIsCarouselUploadOpen] = useState(false);
+  const [isGalleryUploadOpen, setIsGalleryUploadOpen] = useState(false);
 
   useEffect(() => {
     // Load user data from localStorage on component mount
@@ -67,6 +69,11 @@ const Profile = () => {
   const handleCarouselImageAdded = (newImage) => {
     console.log('New carousel image added:', newImage);
     // You can add logic here to refresh carousel or show notification
+  };
+
+  const handleGalleryImageAdded = (newImage) => {
+    console.log('New gallery image added:', newImage);
+    // You can add logic here to refresh gallery or show notification
   };
 
   if (!isAuthenticated || !user) {
@@ -285,6 +292,12 @@ const Profile = () => {
                 >
                   Upload Carousel Image
                 </button>
+                <button 
+                  className={styles.galleryUploadButton}
+                  onClick={() => setIsGalleryUploadOpen(true)}
+                >
+                  Upload Gallery Image
+                </button>
               </div>
             </div>
           )}
@@ -331,6 +344,12 @@ const Profile = () => {
             isOpen={isCarouselUploadOpen}
             onClose={() => setIsCarouselUploadOpen(false)}
             onImageAdded={handleCarouselImageAdded}
+          />
+
+          <GalleryImageUpload
+            isOpen={isGalleryUploadOpen}
+            onClose={() => setIsGalleryUploadOpen(false)}
+            onImageAdded={handleGalleryImageAdded}
           />
         </>
       )}

@@ -45,6 +45,14 @@ const Api={
     CarouselImageSubmit:{
         url:`${BASE_URL}/carousel-images`,
         method:"POST"
+    },
+    GalleryFetch:{
+        url:`${BASE_URL}/gallery`,
+        method:"GET"
+    },
+    GallerySubmit:{
+        url:`${BASE_URL}/gallery`,
+        method:"POST"
     }
 }
 

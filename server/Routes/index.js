@@ -7,6 +7,7 @@ const WebinarController=require('../Controller/Webinar')
 const Website_countController=require('../Controller/Website_count')
 const EventRegistrationController=require('../Controller/EventRegistration')
 const CarouselImage=require('../Controller/CarouselImage')
+const Gallery=require('../Controller/Gallery')
 const authRoutes = require('./auth')
 const UserController = require('../Controller/User')
 const authMiddleware = require('../middleware/auth');
@@ -38,6 +39,10 @@ router.get('/admin/innovations', authMiddleware, IdeaController.getAllInnovation
 //Carousel Image
 router.get('/carousel-images', CarouselImage.getCarouselImages);
 router.post('/carousel-images', authMiddleware, CarouselImage.submitCarouselImages);
+
+//Gallery
+router.get('/gallery', Gallery.getGallery);
+router.post('/gallery', authMiddleware, Gallery.submitGallery);
 
 // Webinar/Event routes (using Webinar schema)
 router.post('/webinars', authMiddleware, WebinarController.createWebinar);

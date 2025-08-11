@@ -21,19 +21,19 @@ const Team = () => {
                 const response = await apiService.request('/team-members?limit=100');
                 
                 const data = await response.json();
-                console.log('Backend team members response:', data);
-                console.log('Number of users from backend:', data.users?.length || 0);
+                // console.log('Backend team members response:', data);
+                // console.log('Number of users from backend:', data.users?.length || 0);
                 
                 let backendUsers = [];
                 if (data.success && data.users) {
                     // Transform backend users to match the expected format
                     // Don't filter here - let's see what we get and transform what we can
                     backendUsers = data.users.map(user => {
-                        console.log('Processing user:', user.name, {
-                            hasType: !!user.type,
-                            hasDesignation: !!user.designation,
-                            isActive: user.isActive
-                        });
+                        // console.log('Processing user:', user.name, {
+                        //     hasType: !!user.type,
+                        //     hasDesignation: !!user.designation,
+                        //     isActive: user.isActive
+                        // });
                         
                         return {
                             id: user._id,
@@ -52,9 +52,9 @@ const Team = () => {
 
                 // Combine JSON data with backend users
                 const combinedData = [...teamData, ...backendUsers];
-                console.log('Combined data length:', combinedData.length);
-                console.log('JSON data length:', teamData.length);
-                console.log('Backend users length:', backendUsers.length);
+                // console.log('Combined data length:', combinedData.length);
+                // console.log('JSON data length:', teamData.length);
+                // console.log('Backend users length:', backendUsers.length);
                 
                 // Remove duplicates based on name (prioritize backend data)
                 const uniqueMembers = combinedData.reduce((acc, current) => {
@@ -75,7 +75,7 @@ const Team = () => {
                     return acc;
                 }, []);
 
-                console.log('Final unique members length:', uniqueMembers.length);
+                // console.log('Final unique members length:', uniqueMembers.length);
                 setAllMembers(uniqueMembers);
             } catch (error) {
                 console.error('Error fetching team data:', error);
