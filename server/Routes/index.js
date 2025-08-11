@@ -6,6 +6,8 @@ const IdeaController=require('../Controller/Innovation')
 const WebinarController=require('../Controller/Webinar')
 const Website_countController=require('../Controller/Website_count')
 const EventRegistrationController=require('../Controller/EventRegistration')
+const CarouselImage=require('../Controller/CarouselImage')
+const Gallery=require('../Controller/Gallery')
 const authRoutes = require('./auth')
 const UserController = require('../Controller/User')
 const authMiddleware = require('../middleware/auth');
@@ -31,6 +33,17 @@ router.put('/admin/users/:id', authMiddleware, UserController.updateUser);
 router.put('/admin/users-management/:id', authMiddleware, UserController.updateUserManagement);
 router.delete('/admin/users/:id', authMiddleware, UserController.deleteUser);
 
+// Admin innovation management routes
+router.get('/admin/innovations', authMiddleware, IdeaController.getAllInnovations);
+
+//Carousel Image
+router.get('/carousel-images', CarouselImage.getCarouselImages);
+router.post('/carousel-images', authMiddleware, CarouselImage.submitCarouselImages);
+
+//Gallery
+router.get('/gallery', Gallery.getGallery);
+router.post('/gallery', authMiddleware, Gallery.submitGallery);
+
 // Webinar/Event routes (using Webinar schema)
 router.post('/webinars', authMiddleware, WebinarController.createWebinar);
 router.get('/webinars', WebinarController.WebinarFetch);
@@ -42,7 +55,6 @@ router.delete('/webinars/:id', authMiddleware, WebinarController.deleteWebinar);
 // Legacy routes
 router.post("/enquirysubmission",EnquiryController.sendEnquiry);
 router.post("/ideasubmission",IdeaController.IdeaSubmission);
-router.get("/webinardetails",WebinarController.WebinarFetch);
 router.get("/website_count",Website_countController.Website_count);
 router.get("/update_count",Website_countController.update_count);
 router.post("/eventregistration",EventRegistrationController.EventRegistration);

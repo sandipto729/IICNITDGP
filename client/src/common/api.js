@@ -14,7 +14,7 @@ const Api={
         method:"POST"
     },
     WebinarFetch:{
-        url:`${BASE_URL}/webinardetails`,
+        url:`${BASE_URL}/webinars`,
         method:"GET"
     },
     WebsiteVisit:{
@@ -37,6 +37,22 @@ const Api={
     WebinarDelete:{
         url:`${BASE_URL}/webinars/:id`,
         method:"DELETE"
+    },
+    CarouselImageFetch:{
+        url:`${BASE_URL}/carousel-images`,
+        method:"GET"
+    },
+    CarouselImageSubmit:{
+        url:`${BASE_URL}/carousel-images`,
+        method:"POST"
+    },
+    GalleryFetch:{
+        url:`${BASE_URL}/gallery`,
+        method:"GET"
+    },
+    GallerySubmit:{
+        url:`${BASE_URL}/gallery`,
+        method:"POST"
     }
 }
 
