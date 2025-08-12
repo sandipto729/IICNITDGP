@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loadUserFromStorage } from "../../store/slices/authSlice";
 import styles from './styles/footer.module.scss'; // Import SCSS styles
 import GradientText from "../../component/Core/TextStyle";
 import { motion } from "framer-motion";
@@ -8,6 +10,13 @@ import API from "../../common/api"
 
 const Footer = () => {
   const [website_Visit,setWebsite_Visit] = React.useState(0);
+  const dispatch = useDispatch();
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    // Load user data from localStorage on component mount
+    dispatch(loadUserFromStorage());
+  }, [dispatch]);
 
   const response = async () => {
     const res = await fetch(API.WebsiteVisit.url, {
@@ -70,6 +79,15 @@ const Footer = () => {
             <li><Link className={styles.footerLink} to="/team">Team</Link></li>
             {/* <li><Link className={styles.footerLink} to="/guidelines">Guidelines</Link></li> */}
             <li><HashLink smooth className={styles.footerLink} to="/#contact">Contact</HashLink></li>
+            {isAuthenticated ? (
+              <li>
+                <Link className={styles.footerLink} to="/profile">
+                  Profile ({user?.name})
+                </Link>
+              </li>
+            ) : (
+              <li><Link className={styles.footerLink} to="/login">Login</Link></li>
+            )}
             <li className={styles.web_visit}>Website Visit : <GradientText text={website_Visit}/></li>
           </ul>
 

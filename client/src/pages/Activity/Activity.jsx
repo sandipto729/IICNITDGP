@@ -1,6 +1,7 @@
 import React from 'react';
 import Internship from '../../section/Internship/Internship';
 import IdeathonEvent from '../../section/IdeathonEvent/IdeathonEvent';
+import EventSection from '../../section/Event/event';
 import styles from './styles/Activity.module.scss';
 
 const Activity = () => {
@@ -33,11 +34,18 @@ const Activity = () => {
                 >
                     Ideathon Event
                 </button>
+                <button
+                    className={activeTab === 'Events' ? styles.active : ''}
+                    onClick={() => setActiveTab('Events')}
+                >
+                    Events
+                </button>
             </div>
 
             <div className={styles.tabContent}>
                 {activeTab === 'Internship' && <Internship />}
                 {activeTab === 'IdeathonEvent' && <IdeathonEvent />}
+                {activeTab === 'Events' && <EventSection />}
             </div>
         </div>
     );

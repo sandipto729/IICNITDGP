@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles/Gallery.module.scss';
+import api from '../../common/api';
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
@@ -7,9 +8,24 @@ const PhotoGallery = () => {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const res = await fetch('/data/photos.json');
-      const data = await res.json();
-      setPhotos(data);
+      try {
+        const res = await fetch(api.GalleryFetch.url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        
+        const data = await res.json();
+        console.log('Gallery data fetched:', data);
+        setPhotos(data);
+      } catch (error) {
+        console.error('Error fetching gallery photos:', error);
+      }
     };
     fetchPhotos();
   }, []);
@@ -44,7 +60,7 @@ const PhotoGallery = () => {
         {photos.map((photo, index) => (
           <img
             key={index}
-            src={photo}
+            src={photo.images}
             alt={`Thumbnail ${index}`}
             onClick={() => setSelectedIndex(index)}
             className={styles.galleryThumb}
@@ -52,11 +68,11 @@ const PhotoGallery = () => {
         ))}
       </div>
 
-      {selectedIndex !== null && (
+      {selectedIndex !== null && photos.length > 0 && photos[selectedIndex] && (
         <div className={styles.lightbox}>
           <button className={`${styles.closeBtn}`} onClick={closeViewer}>×</button>
           <button className={`${styles.navBtn} ${styles.left}`} onClick={showPrev}>‹</button>
-          <img src={photos[selectedIndex]} alt={`Large ${selectedIndex}`} className={styles.lightboxImg} />
+          <img src={photos[selectedIndex].images} alt={`Large ${selectedIndex}`} className={styles.lightboxImg} />
           <button className={`${styles.navBtn} ${styles.right}`} onClick={showNext}>›</button>
         </div>
       )}

@@ -12,8 +12,14 @@
     justify-content: center;
     flex-direction: column;
   }
-  
-  
+
+.roleText {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--secondary-text);
+}
+
   .teamMemberImg {
     width: fit-content;
     border-radius: 10px 10px 0 0;

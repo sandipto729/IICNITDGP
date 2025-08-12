@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App.jsx';
-import Event from './../pages/Events/Events.jsx';
 import Home from './../pages/Home/Home.jsx';
 import Guidelines from './../pages/Guidelines/Guidelines.jsx';
 import Team from './../pages/Team/Team.jsx';
@@ -8,6 +7,8 @@ import FAQ from './../pages/FAQ/FAQ.jsx';
 import Error from './../layouts/Error/Error.jsx';
 import Gallery from '../pages/Gallery/Gallery.jsx';
 import Login from '../authentication/Login/Login.jsx';
+import Profile from '../pages/Profile/Profile.jsx';
+import ProtectedRoute from '../component/ProtectedRoute/ProtectedRoute.jsx';
 import Activity from '../pages/Activity/Activity.jsx';
 import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 import Ai2Summit from '../pages/Ai2Summit/Ai2Summit.jsx'
@@ -21,10 +22,7 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home />
             },
-            {
-                path: '/event',
-                element: <Event />
-            },
+
             {
                 path: '/guidelines',
                 element: <Guidelines />
@@ -53,10 +51,18 @@ const router = createBrowserRouter([
                 path: '/ai2summit',
                 element: <Ai2Summit />
             },
-            // {
-            //     path: '/login',
-            //     element: <Login />
-            // },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/profile',
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                )
+            },
             {
                 path: '*',
                 element: <Error />

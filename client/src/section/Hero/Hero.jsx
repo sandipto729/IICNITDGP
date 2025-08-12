@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/Hero.module.scss";
-import CarouselImg from "../../data/Carousel.json";
 import Carousel from "../../component/Carousel/Carousel";
 import { AnimatedBox } from "../../assets/animation/AnimatedBox";
+import api from '../../common/api';
 
 const titles = [
   "Creativity.",
@@ -24,6 +24,32 @@ function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [carouselImages, setCarouselImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch carousel images from backend
+  useEffect(() => {
+    const fetchCarouselImages = async () => {
+      try {
+        const response = await fetch(api.CarouselImageFetch.url, {
+          method: api.CarouselImageFetch.method,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setCarouselImages(data);
+      } catch (error) {
+        console.error('Error fetching carousel images:', error);
+        // Fallback to empty array if API fails
+        setCarouselImages([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCarouselImages();
+  }, []);
 
   useEffect(() => {
     const title = titles[titleIndex];
@@ -103,7 +129,7 @@ function Hero() {
           </AnimatedBox>
         </div>
         <div className={styles.heroCarousel}>
-          <Carousel images={CarouselImg} />
+          {!loading && <Carousel images={carouselImages} />}
         </div>
         <div className={styles.circle}></div>
       </div>

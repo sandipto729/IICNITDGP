@@ -7,6 +7,18 @@
   justify-content: center;
 }
 
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  
+  p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
 .teamTitle {
   font-size: 3rem;
   margin-bottom: 1.5rem;
@@ -51,7 +63,7 @@
   justify-content: center;
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   /* Prevents stretching too wide on large screens */
 }
 

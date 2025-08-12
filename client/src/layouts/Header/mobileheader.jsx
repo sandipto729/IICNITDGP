@@ -32,7 +32,6 @@ const MobileHeader = () => {
                     <li><Link to="/faq">FAQ</Link></li>
                     {/* <li><Link to="/program">Program</Link></li> */}
                     <li><Link to="/guidelines">Guidelines</Link></li>
-                    <li><Link to="/event">Events</Link></li>
                     <li><Link to="/activity">Activity</Link></li>
                     <li><Link to='/collaboration'>Collaboration</Link></li>
                     <li><Link to='/gallery'>Gallery</Link></li>
