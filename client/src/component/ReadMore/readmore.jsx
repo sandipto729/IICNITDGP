@@ -6,14 +6,40 @@ import GradientText from "../../component/Core/TextStyle";
 
 const NewsCard = ({ image, title, date, time, content }) => {
     const [showModal, setShowModal] = useState(false);
-    // useEffect(()=>{
-    //     console.log('date',date)
-    // },[])
 
-    // Toggle modal visibility
+    // Enhanced modal handlers with body scroll lock
     const handleReadMore = () => {
         setShowModal(!showModal);
+        if (!showModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
     };
+
+    const handleModalClose = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowModal(false);
+        document.body.style.overflow = 'unset';
+    };
+
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            handleModalClose(e);
+        }
+    };
+
+    const handleContentClick = (e) => {
+        e.stopPropagation();
+    };
+
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
 
     const stripHtml = (html) => {
         const doc = new DOMParser().parseFromString(html, "text/html");
@@ -69,8 +95,8 @@ const NewsCard = ({ image, title, date, time, content }) => {
 
             {/* Modal for full news/blog content */}
             {showModal && (
-                <div className={styles.modalOverlay} onClick={handleReadMore}>
-                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <div className={styles.modalOverlay} onClick={handleOverlayClick}>
+                    <div className={styles.modalContent} onClick={handleContentClick}>
                         {/* Image at the top */}
                         <div className={styles.imageContainer}>
                             {!modalImageLoaded && (
@@ -108,7 +134,7 @@ const NewsCard = ({ image, title, date, time, content }) => {
                             {date} - {time}
                         </p>
 
-                        <button className={styles.closeBtn} onClick={handleReadMore}>X</button>
+                        <button className={styles.closeBtn} onClick={handleModalClose}>X</button>
                     </div>
                 </div>
             )}
