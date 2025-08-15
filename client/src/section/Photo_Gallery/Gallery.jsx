@@ -7,10 +7,10 @@ const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // loading state
-  const [loadedCount, setLoadedCount] = useState(0); // image load tracking
 
   useEffect(() => {
     const fetchPhotos = async () => {
+      setIsLoading(true); // Start loading
       try {
         const res = await fetch(api.GalleryFetch.url, {
           method: 'GET',
@@ -26,23 +26,19 @@ const PhotoGallery = () => {
         const data = await res.json();
         console.log('Gallery data fetched:', data);
         setPhotos(data);
+        setIsLoading(false); // Stop loading when data is fetched
       } catch (error) {
         console.error('Error fetching gallery photos:', error);
+        setIsLoading(false); // Stop loading even if there's an error
       }
     };
 
     fetchPhotos();
   }, []);
 
-  // Once all images are loaded
-  useEffect(() => {
-    if (photos.length > 0 && loadedCount === photos.length) {
-      setIsLoading(false);
-    }
-  }, [loadedCount, photos.length]);
-
   const handleImageLoad = () => {
-    setLoadedCount((prev) => prev + 1);
+    // Optional: Can be used for individual image loading states if needed
+    console.log('Image loaded');
   };
 
   const showNext = () => {
