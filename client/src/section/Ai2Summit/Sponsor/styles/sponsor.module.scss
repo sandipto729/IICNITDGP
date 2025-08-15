@@ -2,7 +2,18 @@
   background-color: #0d0d0d;
   padding: 4rem 2rem;
   color: white;
-  
+  :global {
+    .swiper-pagination-bullet {
+      background-color: white !important;
+      opacity: 0.6;
+      margin: 0 6px; // 👈 Add horizontal spacing between bullets
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: white !important;
+      opacity: 1;
+    }
+  }
 }
 
 
@@ -191,6 +202,24 @@
   position: relative;
   display: flex;
   flex-direction: row;
+}
+
+
+// PAGENATION
+
+.customPagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+:global(.swiper-pagination-bullet) {
+  background-color: white !important;
+  opacity: 0.6;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: white !important;
+  opacity: 1;
 }
 
 
