@@ -7,7 +7,6 @@ const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // loading state
-  const [loadedCount, setLoadedCount] = useState(0); // Image load tracking
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -26,24 +25,15 @@ const PhotoGallery = () => {
         const data = await res.json();
         console.log('Gallery data fetched:', data);
         setPhotos(data);
+        setIsLoading(false); // Stop loader after data is fetched
       } catch (error) {
         console.error('Error fetching gallery photos:', error);
+        setIsLoading(false); // Stop loader even if there's an error
       }
     };
 
     fetchPhotos();
   }, []);
-
-  // Once all images are loaded
-  useEffect(() => {
-    if (photos.length > 0 && loadedCount === photos.length) {
-      setIsLoading(false);
-    }
-  }, [loadedCount, photos.length]);
-
-  const handleImageLoad = () => {
-    setLoadedCount((prev) => prev + 1);
-  };
 
   const showNext = () => {
     setSelectedIndex((prev) => (prev + 1) % photos.length);
@@ -82,7 +72,6 @@ const PhotoGallery = () => {
                 src={photo.images}
                 alt={`Thumbnail ${index}`}
                 onClick={() => setSelectedIndex(index)}
-                onLoad={handleImageLoad}
                 className={styles.galleryThumb}
               />
             ))}
