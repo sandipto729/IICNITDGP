@@ -1,0 +1,225 @@
+/* News Card Styles */
+.newsCard {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 10px;
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Ensure card doesn't interfere with modal */
+    z-index: 1;
+}
+
+.newsCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.newsCardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.newsCardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schoolName {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    font-weight: 500;
+}
+
+.newsTitle {
+    font-size: 18px;
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.newsDateTime {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+.newsDescription {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    color: #333;
+}
+
+.readMoreBtn {
+    background: var(--primary, #007bff);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.readMoreBtn:hover {
+    background: var(--primary-dark, #0056b3);
+}
+
+/* Simple Modal Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    /* Prevent any interaction with background */
+    pointer-events: auto;
+    /* Override any parent positioning */
+    transform: none !important;
+}
+
+.modalContent {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    /* Ensure modal content is interactive */
+    pointer-events: auto;
+    /* Prevent any transform issues */
+    transform: none !important;
+    /* Smooth appearance */
+    opacity: 1;
+    /* Ensure it's above everything */
+    z-index: 100000;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: background-color 0.2s ease;
+}
+
+.closeBtn:hover {
+    background: #ff3742;
+}
+
+.modalImage {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.modalImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modalBody {
+    padding: 30px;
+}
+
+.modalBody h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.modalDate {
+    color: #666;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+}
+
+.modalContent_text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.modalContent_text p {
+    margin-bottom: 15px;
+}
+
+.modalContent_text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.modalContent_text a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .newsCard {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .modalContent {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .modalBody {
+        padding: 20px;
+    }
+    
+    .modalBody h2 {
+        font-size: 20px;
+    }
+}
