@@ -10,6 +10,7 @@ const PhotoGallery = () => {
 
   useEffect(() => {
     const fetchPhotos = async () => {
+      setIsLoading(true); // Start loading
       try {
         const res = await fetch(api.GalleryFetch.url, {
           method: 'GET',
@@ -25,15 +26,20 @@ const PhotoGallery = () => {
         const data = await res.json();
         console.log('Gallery data fetched:', data);
         setPhotos(data);
-        setIsLoading(false); // Stop loader after data is fetched
+        setIsLoading(false); // Stop loading when data is fetched
       } catch (error) {
         console.error('Error fetching gallery photos:', error);
-        setIsLoading(false); // Stop loader even if there's an error
+        setIsLoading(false); // Stop loading even if there's an error
       }
     };
 
     fetchPhotos();
   }, []);
+
+  const handleImageLoad = () => {
+    // Optional: Can be used for individual image loading states if needed
+    console.log('Image loaded');
+  };
 
   const showNext = () => {
     setSelectedIndex((prev) => (prev + 1) % photos.length);
