@@ -1,19 +1,23 @@
 import React from 'react'
-import HackathonCard from '../../component/HackathonCard/HackathonCard'
+// import HackathonCard from '../../component/HackathonCard/HackathonCard'
 import styles from './styles/Hackathon.module.scss'
+import Card from '../../component/CollaborationCard/Card' // Reusing Card component
 
 const hackathons = [
     {
         name: "Smart India Hackathon",
-        link: "https://www.sih.gov.in/"
+        link: "https://www.sih.gov.in/",
+        photo:"https://i0.wp.com/opportunitycell.com/wp-content/uploads/2022/03/SIH2.png?fit=327%2C345&ssl=1"
     },
     {
         name: "MSME Idea Hackathon",
-        link: "https://my.msme.gov.in/inc/"
+        link: "https://my.msme.gov.in/inc/",
+        photo:"https://www.iimbginspire.com/wp-content/uploads/2022/03/MSME-IDEA-HACKATHON-Social-Media-Email-1-1024x1024.png"
     },
     {
         name: "Smart Bengal Hackathon",
-        link: "https://sbh.rcciit.org.in/"
+        link: "https://sbh.rcciit.org.in/",
+        photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGWbtNf8kZhtJXDn8DO7osFLAaHs2zjadEgA&s"
     }
 ];
 
@@ -37,7 +41,7 @@ const Hackathon = () => {
             </div>
             <div className={styles.grid}>
                 {hackathons.map((hackathon, index) => (
-                    <HackathonCard key={index} name={hackathon.name} link={hackathon.link} />
+                    <Card key={index} name={hackathon.name} link={hackathon.link} photo={hackathon.photo} />
                 ))}
             </div>
         </div>
