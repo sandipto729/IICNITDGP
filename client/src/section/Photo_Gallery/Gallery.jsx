@@ -7,7 +7,7 @@ const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // loading state
-  const [loadedCount, setLoadedCount] = useState(0); // image load tracking
+  const [loadedCount, setLoadedCount] = useState(0); // Image load tracking
 
   useEffect(() => {
     const fetchPhotos = async () => {
