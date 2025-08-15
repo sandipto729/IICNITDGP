@@ -12,6 +12,7 @@ import ProtectedRoute from '../component/ProtectedRoute/ProtectedRoute.jsx';
 import Activity from '../pages/Activity/Activity.jsx';
 import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 import Ai2Summit from '../pages/Ai2Summit/Ai2Summit.jsx'
+import Hackathon from '../pages/Hackathon/Hackathon.jsx';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: '/ai2summit',
                 element: <Ai2Summit />
+            },
+            {
+                path: '/hackathon',
+                element: <Hackathon />
             },
             {
                 path: '/login',
