@@ -5,7 +5,7 @@ import EventSection from '../../section/Event/event';
 import styles from './styles/Activity.module.scss';
 
 const Activity = () => {
-    const [activeTab, setActiveTab] = React.useState('Internship');
+    const [activeTab, setActiveTab] = React.useState('Events');
 
     return (
         <div className={styles.activityWrapper} id="activity">
@@ -23,6 +23,12 @@ const Activity = () => {
 
             <div className={styles.tabHeader}>
                 <button
+                    className={activeTab === 'Events' ? styles.active : ''}
+                    onClick={() => setActiveTab('Events')}
+                >
+                    Events
+                </button>
+                <button
                     className={activeTab === 'Internship' ? styles.active : ''}
                     onClick={() => setActiveTab('Internship')}
                 >
@@ -34,12 +40,7 @@ const Activity = () => {
                 >
                     Ideathon Event
                 </button>
-                <button
-                    className={activeTab === 'Events' ? styles.active : ''}
-                    onClick={() => setActiveTab('Events')}
-                >
-                    Events
-                </button>
+
             </div>
 
             <div className={styles.tabContent}>
