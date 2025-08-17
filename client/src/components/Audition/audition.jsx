@@ -41,16 +41,22 @@ const Audition = () => {
     console.log('Watched domains updated:', watchedDomains);
   }, [watchedDomains]);
 
-  const domainOptions = ['Technical', 'Management', 'Design', 'Content', 'Other'];
+  const domainOptions = [
+    'Web/App developer and social media handle',
+    'Content writing',
+    'Graphic design', 
+    'Video editing',
+    'Event management and anchoring'
+  ];
 
   // Domain color mapping
   const getDomainColor = (domain) => {
     const colors = {
-      'Technical': '#00bfff',
-      'Management': '#ff6b35',
-      'Design': '#8e44ad',
-      'Content': '#27ae60',
-      'Other': '#f39c12'
+      'Web/App developer and social media handle': '#00bfff',
+      'Content writing': '#27ae60',
+      'Graphic design': '#8e44ad',
+      'Video editing': '#ff6b35',
+      'Event management and anchoring': '#f39c12'
     };
     return colors[domain] || '#00bfff';
   };
