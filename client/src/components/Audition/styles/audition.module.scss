@@ -124,7 +124,8 @@
     input[type="email"],
     input[type="tel"],
     input[type="number"],
-    input[type="file"] {
+    input[type="file"],
+    select {
       width: 100%;
       padding: 1rem 1.25rem;
       margin-top: 0.5rem;
@@ -153,6 +154,16 @@
       &:hover {
         border-color: rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.07);
+      }
+    }
+    
+    select {
+      cursor: pointer;
+      
+      option {
+        background: #1a1a2e;
+        color: #ffffff;
+        padding: 0.5rem;
       }
     }
     
@@ -368,7 +379,8 @@
       input[type="email"],
       input[type="tel"],
       input[type="number"],
-      input[type="file"] {
+      input[type="file"],
+      select {
         padding: 0.9rem 1rem;
       }
     }

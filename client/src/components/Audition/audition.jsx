@@ -23,6 +23,11 @@ const Audition = () => {
   const [domainDropdownOpen, setDomainDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  // Debug: Monitor form.domain changes
+  useEffect(() => {
+    console.log('Form domain updated:', form.domain);
+  }, [form.domain]);
+
   const domainOptions = ['Technical', 'Management', 'Design', 'Content', 'Other'];
 
   // Domain color mapping
@@ -41,31 +46,57 @@ const Audition = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        console.log('Clicked outside dropdown, closing');
         setDomainDropdownOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && domainDropdownOpen) {
+        console.log('Escape key pressed, closing dropdown');
+        setDomainDropdownOpen(false);
+      }
+    };
+
+    if (domainDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [domainDropdownOpen]);
 
   const handleDomainToggle = (domain) => {
     console.log('Toggling domain:', domain);
     console.log('Current domains:', form.domain);
     
-    const newDomains = form.domain.includes(domain)
-      ? form.domain.filter(d => d !== domain)
-      : [...form.domain, domain];
-    
-    console.log('New domains:', newDomains);
-    setForm({ ...form, domain: newDomains });
+    setForm(prevForm => {
+      const currentDomains = [...prevForm.domain]; // Create a copy to avoid mutation
+      const isSelected = currentDomains.includes(domain);
+      
+      let newDomains;
+      if (isSelected) {
+        // Remove domain
+        newDomains = currentDomains.filter(d => d !== domain);
+      } else {
+        // Add domain
+        newDomains = [...currentDomains, domain];
+      }
+      
+      console.log('New domains:', newDomains);
+      return { ...prevForm, domain: newDomains };
+    });
   };
 
   const removeDomain = (domainToRemove) => {
     console.log('Removing domain:', domainToRemove);
-    setForm({ ...form, domain: form.domain.filter(d => d !== domainToRemove) });
+    setForm(prevForm => ({
+      ...prevForm,
+      domain: prevForm.domain.filter(d => d !== domainToRemove)
+    }));
   };
 
 
@@ -161,7 +192,9 @@ const Audition = () => {
           <div className={styles.customSelect} ref={dropdownRef}>
             <div 
               className={styles.selectHeader}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 console.log('Header clicked, current state:', domainDropdownOpen);
                 setDomainDropdownOpen(!domainDropdownOpen);
               }}
@@ -213,7 +246,11 @@ const Audition = () => {
                     {domain}
                     <button 
                       type="button" 
-                      onClick={() => removeDomain(domain)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        removeDomain(domain);
+                      }}
                       className={styles.removeChip}
                       style={{
                         background: 'none',
@@ -298,7 +335,13 @@ const Audition = () => {
         </label>
         <label>
           Year:
-          <input type="number" name="year" value={form.year} onChange={handleChange} min="1" max="5" required />
+          <select name="year" value={form.year} onChange={handleChange} required>
+            <option value="">Select Year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+          </select>
         </label>
         <label>
           Department:
