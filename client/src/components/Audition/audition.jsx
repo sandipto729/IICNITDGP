@@ -119,17 +119,27 @@ const Audition = () => {
   };
 
   return (
-    <div className={styles.auditionPage} style={{
-      maxWidth: '700px',
-      margin: '2rem auto',
-      padding: '2rem',
-      backgroundColor: '#1e1e1e',
-      borderRadius: '12px',
-      color: '#f1f1f1',
-      minHeight: '500px'
-    }}>
-      <h2 style={{ textAlign: 'center', color: '#f5f5f5' }}>Audition Application</h2>
-      <form className={styles.auditionForm} onSubmit={handleSubmit}>
+    <div className={styles.auditionPage}>
+      <div className={styles.auditionContainer}>
+        <div className={styles.headerSection}>
+          <p className={styles.head}>
+            JOIN OUR{" "}
+            <span
+              style={{
+                background: "var(--primary)",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              INNOVATION CLUB
+            </span>
+          </p>
+          <p className={styles.subtitle}>
+            Be part of the next generation of innovators and creators
+          </p>
+        </div>
+        
+        <form className={styles.auditionForm} onSubmit={handleSubmit}>
         <label>
           Name:
           <input type="text" name="name" value={form.name} onChange={handleChange} required />
@@ -298,8 +308,11 @@ const Audition = () => {
           Upload CV (PDF/DOC):
           <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} required />
         </label>
-        <button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Submit'}</button>
+        <button type="submit" disabled={loading} className={styles.submitButton}>
+          {loading ? 'Submitting...' : 'Submit Application'}
+        </button>
       </form>
+      </div>
     </div>
   );
 };

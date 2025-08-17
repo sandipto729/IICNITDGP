@@ -476,7 +476,7 @@ exports.getUsersForManagement = async (req, res) => {
 
     // Execute query - only get essential fields for management
     const users = await User.find(query)
-      .select('_id name email role isActive createdAt lastLogin')
+      .select('_id name email phone role isActive createdAt lastLogin')
       .sort(sortOptions)
       .skip(skip)
       .limit(parseInt(limit));
@@ -516,7 +516,7 @@ exports.updateUserManagement = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { name, email, role, isActive } = req.body;
+    const { name, email, phone, role, isActive } = req.body;
 
     // Validate required fields
     if (!name || !email || !role) {
@@ -553,6 +553,7 @@ exports.updateUserManagement = async (req, res) => {
     const updateData = {
       name: name.trim(),
       email: email.toLowerCase().trim(),
+      phone: phone || '',
       role,
       isActive: typeof isActive === 'boolean' ? isActive : true
     };
@@ -562,7 +563,7 @@ exports.updateUserManagement = async (req, res) => {
       id,
       updateData,
       { new: true, runValidators: true }
-    ).select('_id name email role isActive createdAt lastLogin');
+    ).select('_id name email phone role isActive createdAt lastLogin');
 
     if (!updatedUser) {
       return res.status(404).json({
