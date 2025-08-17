@@ -1,5 +1,7 @@
 const User = require('../model/User');
 const bcrypt = require('bcryptjs');
+const sendEmail = require('../utils/mail');
+const RedisClient = require('../config/redis');
 
 // Get user profile
 exports.getUserProfile = async (req, res) => {
@@ -152,6 +154,195 @@ exports.createUser = async (req, res) => {
     });
   }
 };
+
+
+// Forgot Password - Send OTP
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ success: false, message: 'Email is required' });
+        }
+
+        // Check if user exists
+        const user = await User.findOne({ email: email.toLowerCase() });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Generate 6-digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        
+        // Hash OTP for security
+        const hashedOtp = bcrypt.hashSync(otp, 10);
+        
+        // Store OTP in Redis with 10 minutes expiry
+        const redisKey = `forgot_password_otp_${email}`;
+        await RedisClient.setEx(redisKey, 600, hashedOtp); // 10 minutes expiry
+
+        // Send OTP via email
+        const emailContent = `
+            <h2>Password Reset OTP</h2>
+            <p>Hello ${user.name},</p>
+            <p>You have requested to reset your password. Please use the following OTP:</p>
+            <h3 style="color: #3b82f6; font-size: 24px; letter-spacing: 2px;">${otp}</h3>
+            <p>This OTP will expire in 10 minutes.</p>
+            <p>If you didn't request this, please ignore this email.</p>
+        `;
+
+        await sendEmail(email, 'Password Reset OTP', emailContent);
+
+        res.status(200).json({ 
+            success: true, 
+            message: 'OTP sent to your email successfully' 
+        });
+    } catch (err) {
+        console.error('Forgot password error:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Failed to send OTP', 
+            error: err.message 
+        });
+    }
+};
+
+// Verify OTP
+exports.verifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+
+        if (!email || !otp) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email and OTP are required' 
+            });
+        }
+
+        // Retrieve hashed OTP from Redis
+        const redisKey = `forgot_password_otp_${email}`;
+        const hashedOtp = await RedisClient.get(redisKey);
+        if (!hashedOtp) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'OTP expired or not found' 
+            });
+        }
+
+        // Compare provided OTP with hashed OTP
+        const isMatch = bcrypt.compareSync(otp, hashedOtp);
+        if (!isMatch) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Invalid OTP' 
+            });
+        }
+
+        // OTP verified successfully - don't delete it yet, 
+        // keep it for password reset validation
+        res.status(200).json({ 
+            success: true, 
+            message: 'OTP verified successfully' 
+        });
+    } catch (err) {
+        console.error('Verify OTP error:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Failed to verify OTP', 
+            error: err.message 
+        });
+    }
+};
+
+// Reset Password
+exports.resetPassword = async (req, res) => {
+    try {
+        const { email, otp, newPassword } = req.body;
+        
+        if (!email || !otp || !newPassword) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email, OTP, and new password are required' 
+            });
+        }
+
+        if (newPassword.length < 6) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Password must be at least 6 characters long' 
+            });
+        }
+
+        // Verify OTP again before password reset
+        const redisKey = `forgot_password_otp_${email}`;
+        const hashedOtp = await RedisClient.get(redisKey);
+        
+        if (!hashedOtp) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'OTP expired or not found' 
+            });
+        }
+
+        const isMatch = bcrypt.compareSync(otp, hashedOtp);
+        if (!isMatch) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Invalid OTP' 
+            });
+        }
+
+        // Find the user by email (explicitly include password field)
+        const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
+        if (!user) {
+            return res.status(404).json({ 
+                success: false, 
+                message: 'User not found' 
+            });
+        }
+
+        // Check if the new password is the same as the current password (only if user has a current password)
+        if (user.password) {
+            const isPasswordSame = bcrypt.compareSync(newPassword, user.password);
+            if (isPasswordSame) {
+                return res.status(400).json({ 
+                    success: false, 
+                    message: 'New password cannot be the same as the old password' 
+                });
+            }
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update the password in the database
+        await User.findOneAndUpdate(
+            { email: email.toLowerCase() }, 
+            { 
+                password: hashedPassword,
+                refreshToken: null // Invalidate refresh token to force re-login
+            }
+        );
+
+        // Delete OTP from Redis after successful password reset
+        await RedisClient.del(redisKey);
+
+        res.status(200).json({ 
+            success: true, 
+            message: 'Password reset successfully' 
+        });
+    } catch (err) {
+        console.error('Reset password error:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Failed to reset password', 
+            error: err.message 
+        });
+    }
+};
+
+
+
 
 // Admin: Get all users
 exports.getAllUsers = async (req, res) => {

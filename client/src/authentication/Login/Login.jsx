@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginStart, loginSuccess, loginFailure } from '../../store/slices/authSlice';
 import apiService from '../../services/apiService';
+import ResetPassword from '../../components/ResetPassword/ResetPassword';
 import styles from './styles/Login.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
@@ -15,6 +16,8 @@ const Login = () => {
     email: '',
     password: ''
   });
+
+  const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
 
   // Redirect to profile if already authenticated
   useEffect(() => {
@@ -87,6 +90,16 @@ const Login = () => {
             />
           </div>
 
+          <div className={styles.forgotPasswordContainer}>
+            <button
+              type="button"
+              className={styles.forgotPasswordLink}
+              onClick={() => setIsResetPasswordOpen(true)}
+            >
+              Forgot Password?
+            </button>
+          </div>
+
           {error && (
             <div className={styles.errorMessage}>
               {error}
@@ -106,6 +119,12 @@ const Login = () => {
           <p>Don't have an account? Contact admin for registration.</p>
         </div>
       </div>
+
+      {/* Reset Password Modal */}
+      <ResetPassword 
+        isOpen={isResetPasswordOpen}
+        onClose={() => setIsResetPasswordOpen(false)}
+      />
     </div>
   );
 };

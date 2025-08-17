@@ -12,6 +12,7 @@ import InnovationSubmissions from '../../components/InnovationSubmissions/Innova
 import AuditionManagement from '../../components/AuditionManagement/AuditionManagement';
 import CarouselImageUpload from '../../components/CarouselImageUpload/CarouselImageUpload';
 import GalleryImageUpload from '../../components/GalleryImageUpload/GalleryImageUpload';
+import ResetPassword from '../../components/ResetPassword/ResetPassword';
 import styles from './styles/profile.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 
@@ -29,6 +30,7 @@ const Profile = () => {
   const [isAuditionManagementOpen, setIsAuditionManagementOpen] = useState(false);
   const [isCarouselUploadOpen, setIsCarouselUploadOpen] = useState(false);
   const [isGalleryUploadOpen, setIsGalleryUploadOpen] = useState(false);
+  const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
 
   useEffect(() => {
     // Load user data from localStorage on component mount
@@ -262,6 +264,12 @@ const Profile = () => {
               Edit Profile
             </button>
             <button 
+              className={styles.resetPasswordButton}
+              onClick={() => setIsResetPasswordOpen(true)}
+            >
+              Reset Password
+            </button>
+            <button 
               className={styles.logoutButton}
               onClick={handleLogout}
             >
@@ -382,6 +390,12 @@ const Profile = () => {
           />
         </>
       )}
+
+      {/* Reset Password Modal */}
+      <ResetPassword 
+        isOpen={isResetPasswordOpen}
+        onClose={() => setIsResetPasswordOpen(false)}
+      />
     </div>
   );
 };

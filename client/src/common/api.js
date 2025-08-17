@@ -65,6 +65,19 @@ const Api={
     GallerySubmit:{
         url:`${BASE_URL}/gallery`,
         method:"POST"
+    },
+    // Password Reset endpoints
+    ForgotPassword:{
+        url:`${BASE_URL}/auth/forgot-password`,
+        method:"POST"
+    },
+    VerifyOTP:{
+        url:`${BASE_URL}/auth/verify-otp`,
+        method:"POST"
+    },
+    ResetPassword:{
+        url:`${BASE_URL}/auth/reset-password`,
+        method:"POST"
     }
 }
 
