@@ -5,6 +5,18 @@ console.log("BACKENDURI:", BACKENDURI);
 console.log("BASE_URL:", BASE_URL);
 
 const Api={
+    AuditionSubmit: {
+        url: `${BASE_URL}/audition`,
+        method: "POST"
+    },
+    AuditionFetch: {
+        url: `${BASE_URL}/audition`,
+        method: "GET"
+    },
+    AuditionUpdateStatus: {
+        url: `${BASE_URL}/audition/:id`,
+        method: "PUT"
+    },
     IdeaSubmission:{
         url:`${BASE_URL}/ideasubmission`,
         method:"POST"
@@ -52,6 +64,19 @@ const Api={
     },
     GallerySubmit:{
         url:`${BASE_URL}/gallery`,
+        method:"POST"
+    },
+    // Password Reset endpoints
+    ForgotPassword:{
+        url:`${BASE_URL}/auth/forgot-password`,
+        method:"POST"
+    },
+    VerifyOTP:{
+        url:`${BASE_URL}/auth/verify-otp`,
+        method:"POST"
+    },
+    ResetPassword:{
+        url:`${BASE_URL}/auth/reset-password`,
         method:"POST"
     }
 }
