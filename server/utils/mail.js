@@ -12,12 +12,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = async (to, subject, text, attachments = []) => {
+const sendEmail = async (to, subject, content, attachments = []) => {
+  // Determine if content is HTML or plain text
+  const isHTML = content.includes('<') && content.includes('>');
+  
   const mailOptions = {
     from: 'iifnitdgp@gmail.com',
     to: to,
     subject: subject,
-    text: text,
+    ...(isHTML ? { html: content } : { text: content }),
     attachments: attachments, 
   };
 
