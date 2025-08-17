@@ -183,12 +183,46 @@ exports.forgotPassword = async (req, res) => {
 
         // Send OTP via email
         const emailContent = `
-            <h2>Password Reset OTP</h2>
-            <p>Hello ${user.name},</p>
-            <p>You have requested to reset your password. Please use the following OTP:</p>
-            <h3 style="color: #3b82f6; font-size: 24px; letter-spacing: 2px;">${otp}</h3>
-            <p>This OTP will expire in 10 minutes.</p>
-            <p>If you didn't request this, please ignore this email.</p>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Password Reset OTP</title>
+            </head>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h2 style="color: #333; margin-bottom: 10px;">Password Reset Request</h2>
+                        <div style="width: 50px; height: 3px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); margin: 0 auto;"></div>
+                    </div>
+                    
+                    <p style="color: #555; margin-bottom: 20px;">Hello <strong>${user.name}</strong>,</p>
+                    
+                    <p style="color: #555; margin-bottom: 25px;">You have requested to reset your password. Please use the following One-Time Password (OTP) to proceed:</p>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <div style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 15px 25px; border-radius: 8px; font-size: 24px; font-weight: bold; letter-spacing: 3px;">
+                            ${otp}
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                        <p style="color: #666; margin: 0; font-size: 14px;">
+                            <strong>⏰ Important:</strong> This OTP will expire in <strong>10 minutes</strong> for security reasons.
+                        </p>
+                    </div>
+                    
+                    <p style="color: #555; margin-bottom: 20px;">If you didn't request this password reset, please ignore this email and your account will remain secure.</p>
+                    
+                    <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; text-align: center;">
+                        <p style="color: #999; font-size: 12px; margin: 0;">
+                            This is an automated message from IIC NIT Durgapur. Please do not reply to this email.
+                        </p>
+                    </div>
+                </div>
+            </body>
+            </html>
         `;
 
         await sendEmail(email, 'Password Reset OTP', emailContent);
