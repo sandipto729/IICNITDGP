@@ -1,157 +1,195 @@
-import { BlobServiceClient } from '@azure/storage-blob';
-import { azureConfig, isAzureConfigured, getConnectionString } from '../config/azureConfig';
+import { Buffer } from 'buffer';
+import { azureConfig } from '../config/azureConfig';
+
+// Make Buffer available globally
+window.Buffer = window.Buffer || Buffer;
 
 class AzureBlobService {
   constructor() {
-    // These will be set later when credentials are provided
-    this.blobServiceClient = null;
     this.containerName = azureConfig.containerName || 'uploads';
-    
-    // Try to initialize if credentials are available
     this.tryInitialize();
   }
 
-  // Try to initialize automatically if credentials are available
   tryInitialize() {
-    if (isAzureConfigured()) {
-      const connectionString = getConnectionString();
-      if (connectionString) {
-        this.initialize(connectionString, azureConfig.containerName);
-      }
-    }
+    console.log('Azure Blob Service - Backend Upload Mode');
+    console.log('Files will be uploaded via backend API to Azure storage');
   }
 
-  // Initialize the service with credentials
-  initialize(connectionString, containerName = 'uploads') {
-    try {
-      this.blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
-      this.containerName = containerName;
-      return true;
-    } catch (error) {
-      console.error('Failed to initialize Azure Blob Service:', error);
-      return false;
-    }
+  initialize() {
+    // Backend will handle Azure initialization
+    console.log('Using backend API for Azure uploads');
+    return true;
   }
 
-  // Upload a file to Azure Blob Storage
-  async uploadFile(file, fileName = null) {
-    // Fallback mode: if Azure is not configured, use a placeholder or base64
-    if (!this.blobServiceClient) {
-      console.warn('Azure Blob Service not initialized. Using fallback method.');
-      return this.fallbackUpload(file, fileName);
-    }
-
+  async uploadFile(file, fileName) {
     try {
+      console.log(`Uploading file via backend: ${fileName || file.name}`);
+      
       // Generate unique filename if not provided
-      const blobName = fileName || `${Date.now()}-${file.name}`;
+      const finalFileName = fileName || this.generateUniqueFileName(file.name);
       
-      // Get container client
-      const containerClient = this.blobServiceClient.getContainerClient(this.containerName);
-      
-      // Create container if it doesn't exist
-      await containerClient.createIfNotExists({
-        access: 'blob' // Public read access for images
+      // Create FormData to send file to backend
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileName', finalFileName);
+      formData.append('containerName', this.containerName);
+
+      // Send file to backend for Azure upload
+      const backendUrl = import.meta.env.VITE_BACKEND_URI || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/azure/upload`, {
+        method: 'POST',
+        body: formData,
       });
 
-      // Get blob client
-      const blobClient = containerClient.getBlockBlobClient(blobName);
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Upload failed: ${response.statusText} - ${errorText}`);
+      }
 
-      // Set content type based on file type
-      const options = {
-        blobHTTPHeaders: {
-          blobContentType: file.type
-        }
-      };
-
-      // Upload the file
-      const uploadResponse = await blobClient.uploadData(file, options);
-
-      return {
-        success: true,
-        url: blobClient.url,
-        blobName: blobName,
-        uploadResponse
-      };
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('File uploaded successfully via backend:', result.url);
+        return {
+          success: true,
+          url: result.url,
+          fileName: result.fileName,
+          message: result.message
+        };
+      } else {
+        throw new Error(result.message || 'Upload failed');
+      }
+      
     } catch (error) {
-      console.error('Upload failed:', error);
+      console.error('Error uploading file via backend:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
+        url: null
       };
     }
   }
 
-  // Delete a file from Azure Blob Storage
-  async deleteFile(blobName) {
-    if (!this.blobServiceClient) {
-      throw new Error('Azure Blob Service not initialized');
-    }
+  fallbackUpload(file, fileName) {
+    console.log('Using fallback upload method (Base64)');
+    
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        resolve(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
 
+  async testConnection() {
     try {
-      const containerClient = this.blobServiceClient.getContainerClient(this.containerName);
-      const blobClient = containerClient.getBlockBlobClient(blobName);
-      
-      await blobClient.delete();
-      return { success: true };
+      const backendUrl = import.meta.env.VITE_BACKEND_URI || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/azure/test`);
+      const result = await response.json();
+      return result;
     } catch (error) {
-      console.error('Delete failed:', error);
       return { success: false, error: error.message };
     }
   }
 
-  // Get file URL
-  getFileUrl(blobName) {
-    if (!this.blobServiceClient) {
-      return null;
-    }
-
-    const containerClient = this.blobServiceClient.getContainerClient(this.containerName);
-    const blobClient = containerClient.getBlockBlobClient(blobName);
-    return blobClient.url;
+  isInitialized() {
+    return true; // Backend handles initialization
   }
 
-  // Fallback upload method when Azure is not configured
-  async fallbackUpload(file, fileName = null) {
+  async reinitialize() {
+    return true; // Backend handles reinitialization
+  }
+
+  // Additional utility methods for file validation
+  isValidFileType(file) {
+    const allowedTypes = [
+      // Document types
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'text/plain',
+      // Image types
+      'image/jpeg',
+      'image/jpg', 
+      'image/png',
+      'image/gif',
+      'image/webp'
+    ];
+    return allowedTypes.includes(file.type);
+  }
+
+  isValidFileSize(file, maxSizeMB = 10) {
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+    return file.size <= maxSizeBytes;
+  }
+
+  validateFile(file) {
+    const errors = [];
+    
+    if (!this.isValidFileType(file)) {
+      errors.push('Invalid file type. Only PDF, DOC, DOCX, TXT, JPG, JPEG, PNG, GIF, and WEBP files are allowed.');
+    }
+    
+    if (!this.isValidFileSize(file)) {
+      errors.push('File size too large. Maximum size is 10MB.');
+    }
+    
+    return {
+      isValid: errors.length === 0,
+      errors
+    };
+  }
+
+  generateUniqueFileName(originalName) {
+    const timestamp = new Date().getTime();
+    const randomString = Math.random().toString(36).substring(2, 15);
+    const extension = originalName.split('.').pop();
+    return `cv_${timestamp}_${randomString}.${extension}`;
+  }
+
+  // Method to upload with validation
+  async uploadFileWithValidation(file, customFileName = null) {
     try {
-      // Convert file to base64 data URL for temporary use
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const base64Url = e.target.result;
-          
-          // For now, we'll return the base64 URL
-          // In production, you might want to send this to your backend
-          resolve({
-            success: true,
-            url: base64Url,
-            fileName: fileName || `${Date.now()}-${file.name}`,
-            message: 'Photo uploaded using fallback method (base64). Configure Azure for cloud storage.'
-          });
+      // Validate file first
+      const validation = this.validateFile(file);
+      if (!validation.isValid) {
+        return {
+          success: false,
+          error: validation.errors.join(' '),
+          url: null
         };
-        reader.onerror = (error) => {
-          reject({
-            success: false,
-            error: 'Failed to process image'
-          });
-        };
-        reader.readAsDataURL(file);
-      });
+      }
+
+      // Generate unique filename if not provided
+      const fileName = customFileName || this.generateUniqueFileName(file.name);
+      
+      // Upload the file
+      const result = await this.uploadFile(file, fileName);
+      return result;
+      
     } catch (error) {
-      console.error('Fallback upload failed:', error);
+      console.error('File upload validation failed:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
+        url: null
       };
     }
   }
 
-  // Check if Azure is properly configured
-  isConfigured() {
-    return !!this.blobServiceClient;
+  // Method to get file info
+  getFileInfo(file) {
+    return {
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      lastModified: file.lastModified,
+      sizeInMB: (file.size / (1024 * 1024)).toFixed(2)
+    };
   }
 }
 
-// Create singleton instance
 const azureBlobService = new AzureBlobService();
 
 export default azureBlobService;

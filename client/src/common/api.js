@@ -5,6 +5,14 @@ console.log("BACKENDURI:", BACKENDURI);
 console.log("BASE_URL:", BASE_URL);
 
 const Api={
+    AuditionSubmit: {
+        url: `${BASE_URL}/audition`,
+        method: "POST"
+    },
+    AuditionFetch: {
+        url: `${BASE_URL}/audition`,
+        method: "GET"
+    },
     IdeaSubmission:{
         url:`${BASE_URL}/ideasubmission`,
         method:"POST"

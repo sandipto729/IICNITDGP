@@ -8,6 +8,8 @@ const Website_countController=require('../Controller/Website_count')
 const EventRegistrationController=require('../Controller/EventRegistration')
 const CarouselImage=require('../Controller/CarouselImage')
 const Gallery=require('../Controller/Gallery')
+const Audition=require('../Controller/audition')
+const Azure=require('../Controller/Azure')
 const authRoutes = require('./auth')
 const UserController = require('../Controller/User')
 const authMiddleware = require('../middleware/auth');
@@ -58,5 +60,15 @@ router.post("/ideasubmission",IdeaController.IdeaSubmission);
 router.get("/website_count",Website_countController.Website_count);
 router.get("/update_count",Website_countController.update_count);
 router.post("/eventregistration",EventRegistrationController.EventRegistration);
+
+
+// Audition routes
+router.post("/audition", Audition.createAudition);
+router.get("/audition", authMiddleware, Audition.getAllAuditions);
+router.put("/audition/:id", authMiddleware, Audition.updateStatus);
+
+// Azure file upload routes
+router.post('/azure/upload', Azure.upload.single('file'), Azure.uploadToAzure);
+router.get('/azure/test', Azure.testAzureConnection);
 
 module.exports=router

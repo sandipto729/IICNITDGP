@@ -65,7 +65,7 @@ const Footer = () => {
           <h3><GradientText text={"Contact Us"} /></h3>
           <p className={styles.footerText}>Email: <a href="mailto:iic@nitdgp.ac.in" style={{ color: "var(--primary)", textDecoration: "none" }}>iic@nitdgp.ac.in</a></p>
           <p className={styles.footerText}>Phone: <a href="tel:+91 9434788150" style={{ color: "var(--primary)", textDecoration: "none" }}>+91 9434788150</a></p>
-          <HashLink to="/#contact" style={{ marginTop: "3rem" ,paddingTop: '2rem'}}>
+          <HashLink to="/audition" style={{ marginTop: "3rem" ,paddingTop: '2rem'}}>
             <button className={styles.joinBtn}>Join Us</button>
           </HashLink>
 

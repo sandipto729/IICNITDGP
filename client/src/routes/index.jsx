@@ -13,6 +13,7 @@ import Activity from '../pages/Activity/Activity.jsx';
 import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 import Ai2Summit from '../pages/Ai2Summit/Ai2Summit.jsx'
 import Hackathon from '../pages/Hackathon/Hackathon.jsx';
+import Audition from '../components/Audition/audition.jsx';
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
                         <Profile />
                     </ProtectedRoute>
                 )
+            },
+            {
+                path: '/audition',
+                element: <Audition />
             },
             {
                 path: '*',
