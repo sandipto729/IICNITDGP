@@ -424,7 +424,7 @@ const Audition = () => {
         </label>
         
         <label>
-          Other Clubs (if any):
+          Clubs (if any):
           <div className={styles.otherClubsContainer}>
             {fields.map((field, index) => (
               <div key={field.id} className={styles.clubInputContainer} style={{

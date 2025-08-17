@@ -307,7 +307,7 @@ const AuditionManagement = ({ isOpen, onClose }) => {
                       </div>
 
                       <div className={styles.infoRow}>
-                        <label>Other Clubs:</label>
+                        <label>Clubs:</label>
                         <div className={styles.otherClubsContainer}>
                           {audition.otherClub && audition.otherClub.length > 0 ? (
                             audition.otherClub.filter(club => club.trim()).map((club, index) => (
