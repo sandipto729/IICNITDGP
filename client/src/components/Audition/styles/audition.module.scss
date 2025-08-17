@@ -647,6 +647,103 @@
   font-weight: bold;
 }
 
+// New styles for additional form fields
+.otherClubsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.clubInputContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.removeClubButton {
+  background: #ff4757 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 0.75rem !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+  min-width: auto !important;
+  
+  &:hover {
+    background: #ff3742 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(255, 71, 87, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.addClubButton {
+  background: linear-gradient(135deg, #00bfff, #0080ff) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  margin-top: 0.5rem !important;
+  transition: all 0.2s !important;
+  box-shadow: 0 2px 4px rgba(0, 191, 255, 0.3) !important;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 191, 255, 0.4) !important;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Enhanced textarea styles
+textarea {
+  min-height: 100px !important;
+  resize: vertical !important;
+  padding: 0.75rem !important;
+  border: 1px solid #444 !important;
+  border-radius: 8px !important;
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  
+  &:focus {
+    outline: none !important;
+    border-color: #00bfff !important;
+    box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.2) !important;
+  }
+  
+  &::placeholder {
+    color: #888 !important;
+  }
+}
+
+// Error styles for React Hook Form
+.error {
+  color: #ff4757;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-style: italic;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .auditionPage {

@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect, useRef } from 'react';
+import { useForm, useFieldArray, useFormContext } from 'react-hook-form';
 import Api from '../../common/api';
 import azureBlobService from '../../services/azureBlobService';
 import styles from './styles/audition.module.scss';
@@ -8,25 +8,38 @@ import { toast } from 'react-toastify';
 const Audition = () => {
   console.log('Audition component is rendering');
   
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    rollno: '',
-    domain: [],
-    year: '',
-    department: '',
-    status: 'pending'
+  const { register, handleSubmit: onSubmit, control, reset, watch, setValue, formState: { errors } } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      mobile: '',
+      rollno: '',
+      domain: [],
+      year: '',
+      department: '',
+      description: '',
+      reason: '',
+      otherClub: [{ value: '' }], // Start with one empty club field
+      status: 'pending'
+    }
   });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "otherClub"
+  });
+
   const [cvFile, setCvFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [domainDropdownOpen, setDomainDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Debug: Monitor form.domain changes
+  const watchedDomains = watch('domain');
+
+  // Debug: Monitor domain changes
   useEffect(() => {
-    console.log('Form domain updated:', form.domain);
-  }, [form.domain]);
+    console.log('Watched domains updated:', watchedDomains);
+  }, [watchedDomains]);
 
   const domainOptions = ['Technical', 'Management', 'Design', 'Content', 'Other'];
 
@@ -71,52 +84,34 @@ const Audition = () => {
 
   const handleDomainToggle = (domain) => {
     console.log('Toggling domain:', domain);
-    console.log('Current domains:', form.domain);
+    console.log('Current domains:', watchedDomains);
     
-    setForm(prevForm => {
-      const currentDomains = [...prevForm.domain]; // Create a copy to avoid mutation
-      const isSelected = currentDomains.includes(domain);
-      
-      let newDomains;
-      if (isSelected) {
-        // Remove domain
-        newDomains = currentDomains.filter(d => d !== domain);
-      } else {
-        // Add domain
-        newDomains = [...currentDomains, domain];
-      }
-      
-      console.log('New domains:', newDomains);
-      return { ...prevForm, domain: newDomains };
-    });
+    const currentDomains = [...(watchedDomains || [])];
+    const isSelected = currentDomains.includes(domain);
+    
+    let newDomains;
+    if (isSelected) {
+      newDomains = currentDomains.filter(d => d !== domain);
+    } else {
+      newDomains = [...currentDomains, domain];
+    }
+    
+    console.log('New domains:', newDomains);
+    setValue('domain', newDomains);
   };
 
   const removeDomain = (domainToRemove) => {
     console.log('Removing domain:', domainToRemove);
-    setForm(prevForm => ({
-      ...prevForm,
-      domain: prevForm.domain.filter(d => d !== domainToRemove)
-    }));
+    const newDomains = (watchedDomains || []).filter(d => d !== domainToRemove);
+    setValue('domain', newDomains);
   };
 
-
-  const handleChange = (e) => {
-    const { name, value, type, options } = e.target;
-    if (name === 'domain') {
-      // Multi-select
-      const selected = Array.from(options).filter(o => o.selected).map(o => o.value);
-      setForm({ ...form, domain: selected });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-  };
 
   const handleFileChange = (e) => {
     setCvFile(e.target.files[0]);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async (data) => {
     setLoading(true);
     let cvUrl = '';
     try {
@@ -130,7 +125,9 @@ const Audition = () => {
           return;
         }
       }
-      const payload = { ...form, cv: cvUrl };
+      // Filter out empty clubs before submitting
+      const filteredOtherClub = data.otherClub.filter(club => club.value && club.value.trim() !== '').map(club => club.value);
+      const payload = { ...data, otherClub: filteredOtherClub, cv: cvUrl };
       const response = await fetch(Api.AuditionSubmit.url, {
         method: Api.AuditionSubmit.method,
         headers: { 'Content-Type': 'application/json' },
@@ -138,8 +135,8 @@ const Audition = () => {
       });
       if (response.ok) {
         toast.success('Audition submitted successfully!');
-  setForm({ name: '', email: '', mobile: '', rollno: '', domain: [], year: '', department: '', status: 'pending' });
-  setCvFile(null);
+        reset();
+        setCvFile(null);
       } else {
         toast.error('Submission failed.');
       }
@@ -148,6 +145,13 @@ const Audition = () => {
     }
     setLoading(false);
   };
+
+  // Ensure at least one club field is always present
+  useEffect(() => {
+    if (fields.length === 0) {
+      append({ value: '' });
+    }
+  }, [fields.length, append]);
 
   return (
     <div className={styles.auditionPage}>
@@ -170,22 +174,38 @@ const Audition = () => {
           </p>
         </div>
         
-        <form className={styles.auditionForm} onSubmit={handleSubmit}>
+        <form className={styles.auditionForm} onSubmit={onSubmit(handleFormSubmit)}>
         <label>
           Name:
-          <input type="text" name="name" value={form.name} onChange={handleChange} required />
+          <input 
+            type="text" 
+            {...register('name', { required: 'Name is required' })} 
+          />
+          {errors.name && <span className={styles.error}>{errors.name.message}</span>}
         </label>
         <label>
           Email:
-          <input type="email" name="email" value={form.email} onChange={handleChange} required />
+          <input 
+            type="email" 
+            {...register('email', { required: 'Email is required' })} 
+          />
+          {errors.email && <span className={styles.error}>{errors.email.message}</span>}
         </label>
         <label>
           Mobile:
-          <input type="tel" name="mobile" value={form.mobile} onChange={handleChange} required />
+          <input 
+            type="tel" 
+            {...register('mobile', { required: 'Mobile is required' })} 
+          />
+          {errors.mobile && <span className={styles.error}>{errors.mobile.message}</span>}
         </label>
         <label>
           Roll Number:
-          <input type="text" name="rollno" value={form.rollno} onChange={handleChange} required />
+          <input 
+            type="text" 
+            {...register('rollno', { required: 'Roll number is required' })} 
+          />
+          {errors.rollno && <span className={styles.error}>{errors.rollno.message}</span>}
         </label>
         <label>
           Domain (select one or more):
@@ -198,24 +218,22 @@ const Audition = () => {
                 console.log('Header clicked, current state:', domainDropdownOpen);
                 setDomainDropdownOpen(!domainDropdownOpen);
               }}
-              style={{
-                padding: '0.75rem 1rem',
-                border: '1px solid #444',
-                borderRadius: '8px',
-                backgroundColor: '#2a2a2a',
-                color: '#ffffff',
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}
-            >
-              <span>{form.domain.length > 0 ? `${form.domain.length} selected` : 'Select domains'}</span>
-              <span className={styles.arrow}>{domainDropdownOpen ? '▲' : '▼'}</span>
-            </div>
-            
-            {/* Selected domains as chips */}
-            {form.domain.length > 0 && (
+                style={{
+                  padding: '0.75rem 1rem',
+                  border: '1px solid #444',
+                  borderRadius: '8px',
+                  backgroundColor: '#2a2a2a',
+                  color: '#ffffff',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}
+              >
+                <span>{watchedDomains && watchedDomains.length > 0 ? `${watchedDomains.length} selected` : 'Select domains'}</span>
+                <span className={styles.arrow}>{domainDropdownOpen ? '▲' : '▼'}</span>
+              </div>            {/* Selected domains as chips */}
+            {watchedDomains && watchedDomains.length > 0 && (
               <div 
                 className={styles.selectedDomains}
                 style={{
@@ -225,7 +243,7 @@ const Audition = () => {
                   marginTop: '0.5rem'
                 }}
               >
-                {form.domain.map(domain => (
+                {watchedDomains.map(domain => (
                   <span 
                     key={domain} 
                     className={styles.domainChip}
@@ -301,7 +319,7 @@ const Audition = () => {
                 {domainOptions.map(domain => (
                   <div 
                     key={domain}
-                    className={`${styles.selectOption} ${form.domain.includes(domain) ? styles.selected : ''}`}
+                    className={`${styles.selectOption} ${(watchedDomains || []).includes(domain) ? styles.selected : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -314,12 +332,12 @@ const Audition = () => {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      backgroundColor: form.domain.includes(domain) ? '#00bfff' : 'transparent',
-                      color: form.domain.includes(domain) ? 'white' : '#ffffff'
+                      backgroundColor: (watchedDomains || []).includes(domain) ? '#00bfff' : 'transparent',
+                      color: (watchedDomains || []).includes(domain) ? 'white' : '#ffffff'
                     }}
                   >
                     <span>{domain}</span>
-                    {form.domain.includes(domain) && <span className={styles.checkmark}>✓</span>}
+                    {(watchedDomains || []).includes(domain) && <span className={styles.checkmark}>✓</span>}
                   </div>
                 ))}
               </div>
@@ -328,29 +346,158 @@ const Audition = () => {
           {/* Hidden input for form validation */}
           <input 
             type="hidden" 
-            name="domain" 
-            value={form.domain.join(',')} 
-            required={form.domain.length === 0}
+            {...register('domain', { required: 'At least one domain must be selected' })}
+            value={(watchedDomains || []).join(',')} 
           />
+          {errors.domain && <span className={styles.error}>{errors.domain.message}</span>}
         </label>
         <label>
           Year:
-          <select name="year" value={form.year} onChange={handleChange} required>
+          <select {...register('year', { required: 'Year is required' })}>
             <option value="">Select Year</option>
             <option value="1">1st Year</option>
             <option value="2">2nd Year</option>
             <option value="3">3rd Year</option>
             <option value="4">4th Year</option>
           </select>
+          {errors.year && <span className={styles.error}>{errors.year.message}</span>}
         </label>
         <label>
           Department:
-          <input type="text" name="department" value={form.department} onChange={handleChange} required />
+          <input 
+            type="text" 
+            {...register('department', { required: 'Department is required' })} 
+          />
+          {errors.department && <span className={styles.error}>{errors.department.message}</span>}
         </label>
         <label>
-          Upload CV (PDF/DOC):
-          <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} required />
+          Upload CV (PDF/DOC) - Optional:
+          <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
         </label>
+        
+        <label>
+          Previous Projects in Your Domain:
+          <textarea 
+            {...register('description', { required: 'Description is required' })} 
+            placeholder="Describe your previous projects, provide project links, or showcase any relevant work in your domain..."
+            rows="4"
+            style={{
+              minHeight: '100px',
+              resize: 'vertical',
+              padding: '0.75rem',
+              border: '1px solid #444',
+              borderRadius: '8px',
+              backgroundColor: '#2a2a2a',
+              color: '#ffffff',
+              fontFamily: 'inherit',
+              fontSize: '1rem'
+            }}
+          />
+          {errors.description && <span className={styles.error}>{errors.description.message}</span>}
+        </label>
+        
+        <label>
+          Why do you want to join IIC?
+          <textarea 
+            {...register('reason', { required: 'Reason is required' })} 
+            placeholder="Explain why you want to join the Innovation Club and how you can contribute to IIC..."
+            rows="4"
+            style={{
+              minHeight: '100px',
+              resize: 'vertical',
+              padding: '0.75rem',
+              border: '1px solid #444',
+              borderRadius: '8px',
+              backgroundColor: '#2a2a2a',
+              color: '#ffffff',
+              fontFamily: 'inherit',
+              fontSize: '1rem'
+            }}
+          />
+          {errors.reason && <span className={styles.error}>{errors.reason.message}</span>}
+        </label>
+        
+        <label>
+          Other Clubs (if any):
+          <div className={styles.otherClubsContainer}>
+            {fields.map((field, index) => (
+              <div key={field.id} className={styles.clubInputContainer} style={{
+                display: 'flex',
+                gap: '0.5rem',
+                marginBottom: '0.5rem',
+                alignItems: 'center'
+              }}>
+                <input
+                  type="text"
+                  {...register(`otherClub.${index}.value`)}
+                  placeholder={`Club ${index + 1} name (leave empty if none)`}
+                  style={{
+                    flex: 1,
+                    padding: '0.75rem',
+                    border: '1px solid #444',
+                    borderRadius: '8px',
+                    backgroundColor: '#2a2a2a',
+                    color: '#ffffff'
+                  }}
+                />
+                {fields.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => remove(index)}
+                    className={styles.removeClubButton}
+                    style={{
+                      background: '#ff4757',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '0.5rem 0.75rem',
+                      cursor: 'pointer',
+                      fontSize: '0.9rem',
+                      fontWeight: '500',
+                      minWidth: 'auto',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => append({ value: '' })}
+              className={styles.addClubButton}
+              style={{
+                background: 'linear-gradient(135deg, #00bfff, #0080ff)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '0.75rem 1rem',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginTop: '0.5rem',
+                transition: 'all 0.2s',
+                boxShadow: '0 2px 4px rgba(0, 191, 255, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 4px 8px rgba(0, 191, 255, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 2px 4px rgba(0, 191, 255, 0.3)';
+              }}
+            >
+              <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>+</span>
+              Add Club
+            </button>
+          </div>
+        </label>
+        
         <button type="submit" disabled={loading} className={styles.submitButton}>
           {loading ? 'Submitting...' : 'Submit Application'}
         </button>
