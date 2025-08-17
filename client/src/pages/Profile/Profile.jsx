@@ -9,6 +9,7 @@ import EventUploadModal from '../../components/EventUploadModal/EventUploadModal
 import EventsManager from '../../components/EventsManager/EventsManager';
 import UserManagementModal from '../../components/UserManagementModal/UserManagementModal';
 import InnovationSubmissions from '../../components/InnovationSubmissions/InnovationSubmissions';
+import AuditionManagement from '../../components/AuditionManagement/AuditionManagement';
 import CarouselImageUpload from '../../components/CarouselImageUpload/CarouselImageUpload';
 import GalleryImageUpload from '../../components/GalleryImageUpload/GalleryImageUpload';
 import styles from './styles/profile.module.scss';
@@ -25,6 +26,7 @@ const Profile = () => {
   const [isEditEventsModalOpen, setIsEditEventsModalOpen] = useState(false);
   const [isUserManagementModalOpen, setIsUserManagementModalOpen] = useState(false);
   const [isInnovationSubmissionsOpen, setIsInnovationSubmissionsOpen] = useState(false);
+  const [isAuditionManagementOpen, setIsAuditionManagementOpen] = useState(false);
   const [isCarouselUploadOpen, setIsCarouselUploadOpen] = useState(false);
   const [isGalleryUploadOpen, setIsGalleryUploadOpen] = useState(false);
 
@@ -74,6 +76,22 @@ const Profile = () => {
   const handleGalleryImageAdded = (newImage) => {
     console.log('New gallery image added:', newImage);
     // You can add logic here to refresh gallery or show notification
+  };
+
+  const handleAuditionManagementOpen = () => {
+    // Check if user has valid authentication before opening
+    if (!isAuthenticated || !accessToken || !user) {
+      console.log('Authentication required for audition management');
+      navigate('/login');
+      return;
+    }
+    
+    if (user.role !== 'admin') {
+      alert('Access denied. Admin privileges required.');
+      return;
+    }
+    
+    setIsAuditionManagementOpen(true);
   };
 
   if (!isAuthenticated || !user) {
@@ -255,7 +273,7 @@ const Profile = () => {
           {isAdmin && (
             <div className={styles.adminActions}>
               <h4><GradientText text="Admin Actions" /></h4>
-              <div className={styles.actionRow}>
+              <div className={styles.adminButtonsGrid}>
                 <button 
                   className={styles.addUserButton}
                   onClick={() => setIsAddUserModalOpen(true)}
@@ -285,6 +303,12 @@ const Profile = () => {
                   onClick={() => setIsInnovationSubmissionsOpen(true)}
                 >
                   View Submissions
+                </button>
+                <button 
+                  className={styles.auditionManagementButton}
+                  onClick={handleAuditionManagementOpen}
+                >
+                  Manage Auditions
                 </button>
                 <button 
                   className={styles.carouselUploadButton}
@@ -338,6 +362,11 @@ const Profile = () => {
           <InnovationSubmissions
             isOpen={isInnovationSubmissionsOpen}
             onClose={() => setIsInnovationSubmissionsOpen(false)}
+          />
+
+          <AuditionManagement
+            isOpen={isAuditionManagementOpen}
+            onClose={() => setIsAuditionManagementOpen(false)}
           />
 
           <CarouselImageUpload

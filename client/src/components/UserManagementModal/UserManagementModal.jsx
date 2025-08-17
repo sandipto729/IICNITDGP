@@ -79,6 +79,7 @@ const UserManagementModal = ({ isOpen, onClose }) => {
         body: JSON.stringify({
           name: editingUser.name,
           email: editingUser.email,
+          phone: editingUser.phone,
           role: editingUser.role,
           isActive: editingUser.isActive
         })
@@ -203,6 +204,7 @@ const UserManagementModal = ({ isOpen, onClose }) => {
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Phone</th>
                   <th>Role</th>
                   <th>Status</th>
                   <th>Last Login</th>
@@ -234,6 +236,19 @@ const UserManagementModal = ({ isOpen, onClose }) => {
                         />
                       ) : (
                         user.email
+                      )}
+                    </td>
+                    <td>
+                      {editingUser && editingUser._id === user._id ? (
+                        <input
+                          type="tel"
+                          value={editingUser.phone || ''}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                          className={styles.editInput}
+                          placeholder="Phone number"
+                        />
+                      ) : (
+                        user.phone || 'Not provided'
                       )}
                     </td>
                     <td>

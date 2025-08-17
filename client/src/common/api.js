@@ -13,6 +13,10 @@ const Api={
         url: `${BASE_URL}/audition`,
         method: "GET"
     },
+    AuditionUpdateStatus: {
+        url: `${BASE_URL}/audition/:id`,
+        method: "PUT"
+    },
     IdeaSubmission:{
         url:`${BASE_URL}/ideasubmission`,
         method:"POST"

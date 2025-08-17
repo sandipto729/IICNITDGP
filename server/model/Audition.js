@@ -38,6 +38,8 @@ const auditionSchema=new mongoose.Schema({
         enum:['pending','approved','rejected'],
         default:'pending'
     }
+},{
+    timestamps:true
 });
 
 module.exports=mongoose.model('Audition',auditionSchema);
