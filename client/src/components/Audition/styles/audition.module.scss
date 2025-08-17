@@ -1,0 +1,263 @@
+.auditionPage {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  color: #f1f1f1;
+}
+
+.auditionPage h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+.auditionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.auditionForm label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #dddddd;
+}
+
+.auditionForm input[type="text"],
+.auditionForm input[type="email"],
+.auditionForm input[type="tel"],
+.auditionForm input[type="number"],
+.auditionForm textarea,
+.auditionForm input[type="file"],
+.auditionForm select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  margin-top: 0.5rem;
+  transition: border 0.3s;
+  outline: none;
+}
+
+.auditionForm input[type="text"]::placeholder,
+.auditionForm input[type="email"]::placeholder,
+.auditionForm input[type="tel"]::placeholder,
+.auditionForm input[type="number"]::placeholder,
+.auditionForm textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.auditionForm input[type="text"]:focus,
+.auditionForm input[type="email"]:focus,
+.auditionForm input[type="tel"]:focus,
+.auditionForm input[type="number"]:focus,
+.auditionForm textarea:focus,
+.auditionForm select:focus {
+  border-color: #00bfff;
+}
+
+.auditionForm select[multiple] {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.auditionForm select[multiple] option {
+  padding: 0.5rem;
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.auditionForm select[multiple] option:checked {
+  background-color: #00bfff;
+  color: #ffffff;
+}
+
+.auditionForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.auditionForm button {
+  align-self: center;
+  background-color: #00bfff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+
+.auditionForm button:hover:not(:disabled) {
+  background-color: #0099cc;
+}
+
+.auditionForm button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Custom scrollbar for select and textarea */
+.auditionForm select,
+.auditionForm textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #00bfff #2a2a2a;
+}
+
+.auditionForm select::-webkit-scrollbar,
+.auditionForm textarea::-webkit-scrollbar {
+  width: 8px;
+  background: #2a2a2a;
+}
+
+.auditionForm select::-webkit-scrollbar-thumb,
+.auditionForm textarea::-webkit-scrollbar-thumb {
+  background: #00bfff;
+  border-radius: 4px;
+}
+
+/* Custom Multi-Select Styles */
+.customSelect {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.selectHeader {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border 0.3s;
+}
+
+.selectHeader:hover {
+  border-color: #00bfff;
+}
+
+.arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.selectedDomains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.domainChip {
+  background: linear-gradient(135deg, #00bfff 0%, #0099cc 100%);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #0099cc;
+  box-shadow: 0 2px 4px rgba(0, 191, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.domainChip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 191, 255, 0.3);
+}
+
+.removeChip {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  margin-left: 0.2rem;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.removeChip:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.selectOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.selectOption {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.selectOption:hover {
+  background-color: #333;
+}
+
+.selectOption.selected {
+  background-color: #00bfff;
+  color: white;
+}
+
+.checkmark {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .auditionPage {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .auditionPage h2 {
+    font-size: 1.75rem;
+  }
+  
+  .auditionForm {
+    gap: 1.25rem;
+  }
+}
