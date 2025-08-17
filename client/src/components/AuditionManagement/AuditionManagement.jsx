@@ -292,6 +292,35 @@ const AuditionManagement = ({ isOpen, onClose }) => {
                         </div>
                       </div>
 
+                      <div className={styles.infoRow}>
+                        <label>Previous Projects:</label>
+                        <div className={styles.descriptionText}>
+                          {audition.description || 'No description provided'}
+                        </div>
+                      </div>
+
+                      <div className={styles.infoRow}>
+                        <label>Reason for Joining:</label>
+                        <div className={styles.reasonText}>
+                          {audition.reason || 'No reason provided'}
+                        </div>
+                      </div>
+
+                      <div className={styles.infoRow}>
+                        <label>Other Clubs:</label>
+                        <div className={styles.otherClubsContainer}>
+                          {audition.otherClub && audition.otherClub.length > 0 ? (
+                            audition.otherClub.filter(club => club.trim()).map((club, index) => (
+                              <span key={index} className={styles.clubChip}>
+                                {club}
+                              </span>
+                            ))
+                          ) : (
+                            <span className={styles.noClubs}>No other clubs</span>
+                          )}
+                        </div>
+                      </div>
+
                       {audition.cv && (
                         <div className={styles.infoRow}>
                           <label>CV:</label>
@@ -303,6 +332,13 @@ const AuditionManagement = ({ isOpen, onClose }) => {
                           >
                             View CV
                           </a>
+                        </div>
+                      )}
+
+                      {!audition.cv && (
+                        <div className={styles.infoRow}>
+                          <label>CV:</label>
+                          <span className={styles.noCv}>No CV uploaded</span>
                         </div>
                       )}
 

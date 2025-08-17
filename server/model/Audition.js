@@ -31,6 +31,18 @@ const auditionSchema=new mongoose.Schema({
     },
     cv:{
         type:String,
+        // required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    reason:{
+        type:String,
+        required:true
+    },
+    otherClub:{
+        type:Array,
         required:true
     },
     status:{
