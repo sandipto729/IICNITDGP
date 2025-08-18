@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './layouts/Footer/Footer.jsx';
 import Loading from './layouts/Loading/Loading.jsx';
 import API from './common/api.js';
-import Headroom from 'react-headroom';
 import './styles/globalStars.scss';
 
 const App = () => {
@@ -67,9 +66,9 @@ const App = () => {
         <div>
           <ToastContainer />
           {/* <TopHeader /> */}
-          <Headroom>
+          <div className="sticky-header">
             <Header />
-          </Headroom>
+          </div>
           <Outlet />
           <Footer />
         </div>
