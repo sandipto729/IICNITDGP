@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './layouts/Footer/Footer.jsx';
 import Loading from './layouts/Loading/Loading.jsx';
 import API from './common/api.js';
+import Headroom from 'react-headroom';
+import './styles/globalStars.scss';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,13 +58,18 @@ const App = () => {
 
   return (
     <div>
+      {/* Global subtle star background */}
+      <div className="global-stars-container"></div>
+      
       {isLoading ? (
         <Loading />
       ) : (
         <div>
           <ToastContainer />
           {/* <TopHeader /> */}
-          <Header />
+          <Headroom>
+            <Header />
+          </Headroom>
           <Outlet />
           <Footer />
         </div>

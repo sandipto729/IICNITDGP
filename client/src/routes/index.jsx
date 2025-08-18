@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App.jsx';
+import Headroom from "react-headroom";
 import Home from './../pages/Home/Home.jsx';
 import Guidelines from './../pages/Guidelines/Guidelines.jsx';
 import Team from './../pages/Team/Team.jsx';
@@ -14,11 +15,12 @@ import Collaboration from '../pages/Collaboration/Collaboration.jsx';
 import Ai2Summit from '../pages/Ai2Summit/Ai2Summit.jsx'
 import Hackathon from '../pages/Hackathon/Hackathon.jsx';
 import Audition from '../components/Audition/audition.jsx';
+import ScrollToTop from '../helper/ScrollToTop';
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <ScrollToTop><App /></ScrollToTop>,
         children: [
             {
                 path: '/',
