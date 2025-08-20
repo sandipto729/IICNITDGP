@@ -94,9 +94,11 @@ const EditEventModal = ({ isOpen, onClose, event, onEventEdited }) => {
   const uploadImage = async (file) => {
     try {
       // Try Azure Blob Storage first
-      const azureUrl = await azureBlobService.uploadImage(file, 'events');
-      if (azureUrl) {
-        return azureUrl;
+      const result = await azureBlobService.uploadFileWithValidation(file);
+      if (result.success && result.url) {
+        return result.url;
+      } else {
+        throw new Error(result.error || 'Upload failed');
       }
     } catch (error) {
       console.warn('Azure upload failed, using base64 fallback:', error);
