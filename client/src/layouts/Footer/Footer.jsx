@@ -94,6 +94,11 @@ const Footer = () => {
         </div>
       </motion.div>
 
+      {/* VPN Notice */}
+      <div className={styles.vpnNotice}>
+        ⚠️ If the website is not working properly, please try using a VPN service.
+      </div>
+
       {/* Copyright Section */}
       <div className={styles.footerCopyright}>
         <p>&copy; 2025 IIC NIT DURGAPUR. All rights reserved.</p>
