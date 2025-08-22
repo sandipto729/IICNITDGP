@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles/Gallery.module.scss';
 import api from '../../common/api';
-import Loader from './Loader/Loader'; // import the loader
+import Loader from './../../layouts/Loader/Loader'; // import the loader
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);

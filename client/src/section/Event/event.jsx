@@ -71,6 +71,7 @@ import styles from './styles/events.module.scss';
 import GradientText from '../../component/Core/TextStyle';
 import API from '../../common/api';
 import PageLoading from '../../layouts/PageLoading/Loading';
+import Loader from './../../layouts/Loader/Loader'; // Import the loader component
 
 const NewsEvent = () => {
     const [newsList, setNewsList] = useState([]);
@@ -178,7 +179,7 @@ const NewsEvent = () => {
         }
     };
 
-    if (loading) return <PageLoading />;
+    if (loading) return <Loader />;
     
     if (error) {
         return (
