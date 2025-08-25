@@ -6,6 +6,65 @@ import GradientText from "../../component/Core/TextStyle";
 import apiService from "../../services/apiService";
 
 const Team = () => {
+        // Designation order for sorting within each group
+    // Designation order for sorting within each group (exact matches first, then keyword matches)
+    const designationOrder = [
+        // Exact matches (these always come first)
+        "president",
+        "convenor",
+        "treasurer",
+        "assistent treasurer",
+        "student convener",
+        "innovation coordinator",
+        "internship coordinator",
+        "start-up coordinator",
+        "ipr coordinator",
+        "website coordinator",
+        "content head",
+        "social media head",
+        // Keyword matches (these come after all exact matches)
+        "web", // anything related to website/web development
+        "graphic", // anything related to graphic design
+        "video",   // anything related to video
+        "content"  // anything related to content
+    ];
+
+    // Helper: returns [orderIndex, isExactMatch] for sorting
+    // Types that should always come last if not a defined designation/keyword
+    const alwaysLastRegex = [
+        /\bfaculty\b/i,
+        /assistant professor/i,
+        /student council/i,
+        /student volunteer/i,
+        /advisor/i,
+        /mentor/i,
+        /\bother\b/i,
+        /\bmember\b/i
+    ];
+
+    function getDesignationOrder(designation = "", type = "") {
+        // 0. If both designation and type are empty/undefined, put at the very end
+        if (!designation && !type) return [20000, false];
+        // 1. Check for exact match (highest priority)
+        const lower = (designation || "").trim().toLowerCase();
+        for (let i = 0; i < 12; i++) {
+            if (lower === designationOrder[i]) return [i, true];
+        }
+        // 2. Check for keyword/regex match (lower priority)
+        const regexMap = [
+            /web(\s|$|site|dev|developer|development|team|member)/i,
+            /graphic(\s|$|design|designer|designing|team|member)/i,
+            /video(\s|$|edit|editor|editing|production|team|member)?/i,
+            /content(\s|$|writer|creation|creator|manager|team|member)?/i
+        ];
+        for (let j = 0; j < regexMap.length; j++) {
+            if (regexMap[j].test(designation)) return [12 + j, false];
+        }
+        // 3. If designation or type matches any alwaysLastRegex, put after all designations/keywords and unknowns
+        if (alwaysLastRegex.some(rgx => rgx.test(designation) || rgx.test(type))) return [10000, false];
+        // 4. If not found, put at the end (but before alwaysLastTypes and truly undefined)
+        return [999, false];
+    }
     const [selectedType, setSelectedType] = useState("All");
     const [showFilters] = useState(true); // State for showing filters
     const [allMembers, setAllMembers] = useState([]);
@@ -148,7 +207,7 @@ const Team = () => {
                 </div>
             )}
 
-            {/* Display team members based on selected type */}
+            {/* Display team members based on selected type, sorted by designation order */}
             {orderedTypes.map((type) => (
                 (selectedType === "All" || selectedType === type) && (
                     <div key={type} className={styles.teamSection}>
@@ -160,9 +219,22 @@ const Team = () => {
                             }}>{type}</span>
                         </h3>
                         <div className={styles.teamGrid}>
-                            {groupedMembers[type].map((member) => (
-                                <TeamCard key={member.id} member={member} />
-                            ))}
+                                                        {groupedMembers[type]
+                                                            .slice() // avoid mutating original
+                                                            .sort((a, b) => {
+                                                                const [aIdx, aExact] = getDesignationOrder(a.extra?.designation || a.role || "", a.type || "");
+                                                                const [bIdx, bExact] = getDesignationOrder(b.extra?.designation || b.role || "", b.type || "");
+                                                                // Exact matches always come before keyword matches at the same index
+                                                                if (aIdx === bIdx) {
+                                                                    if (aExact && !bExact) return -1;
+                                                                    if (!aExact && bExact) return 1;
+                                                                    return 0;
+                                                                }
+                                                                return aIdx - bIdx;
+                                                            })
+                                                            .map((member) => (
+                                                                <TeamCard key={member.id} member={member} />
+                                                        ))}
                         </div>
                     </div>
                 )
