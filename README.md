@@ -475,5 +475,5 @@ For support and queries:
 <p align="center">
   <a href="https://nitdgp.ac.in">NIT Durgapur</a> •
   <a href="https://github.com/sandipto729/IICNITDGP">GitHub Repository</a> •
-  <a href="https://iic-nitdgp.vercel.app">Live Demo</a>
+  <a href="https://www.iicnitdgp.in">Live Demo</a>
 </p>
