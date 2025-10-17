@@ -1,0 +1,239 @@
+@import '../../../index.scss';
+
+.registrationContainer {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-color;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(230, 126, 34, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(243, 156, 18, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.contentWrapper {
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.titleSection {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  .title {
+    font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  /*text-transform: uppercase;*/
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  }
+  
+  .bottomLine {
+    width: 8rem;
+    height: 4px;
+    background: linear-gradient(90deg, #e67e22, #f39c12);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+}
+
+.registrationContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .registrationImage {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.instructionsContainer {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  
+  .instructionsTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #b8c2cc;
+    line-height: 1.6;
+  }
+}
+
+.instructionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  
+  .instructionItem {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(230, 126, 34, 0.3);
+      transform: translateX(8px);
+    }
+    
+    strong {
+      color: #e67e22;
+      font-weight: 600;
+    }
+  }
+}
+
+.documentLink {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(230, 126, 34, 0.2);
+  border: 1px solid rgba(230, 126, 34, 0.4);
+  border-radius: 8px;
+  color: #f39c12;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(230, 126, 34, 0.3);
+    border-color: rgba(230, 126, 34, 0.6);
+    color: #f1c40f;
+    transform: translateY(-2px);
+  }
+}
+
+.actionSection {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  
+  .helpText {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.registrationButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #e67e22, #f39c12);
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(230, 126, 34, 0.3);
+  
+  &:hover {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(230, 126, 34, 0.4);
+    color: #ffffff;
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .registrationContainer {
+    padding: 2rem 1rem;
+  }
+  
+  .titleSection .title {
+    font-size: 2.5rem;
+  }
+  
+  .instructionsContainer {
+    padding: 2rem;
+  }
+  
+  .instructionItem {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .registrationButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleSection .title {
+    font-size: 2rem;
+  }
+  
+  .instructionsContainer {
+    padding: 1.5rem;
+  }
+  
+  .registrationButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
