@@ -26,33 +26,45 @@ const Schedules = () => {
                                 WebkitBackgroundClip: "text",
                                 color: "transparent",
                             }}>Schedule</span> </h1>
+                            
+                            {/* October 23 - timings changed to 12-hour AM/PM */}
                             <div className={styles.day}>
                               <h3 className={styles.title}>Pre-Event (October 23, 2025) – <i>Idea Pitch &amp; Prototype Demonstration</i></h3>
-                              <h4 className={styles.header}> 09:00–09:30 <span className={styles.desc}>Registration</span></h4>
-                              <h4 className={styles.header}> 09:30–12:30 <span className={styles.desc}>Idea Pitch (Theme-based challenges)</span></h4>
-                              <h4 className={styles.header}> 12:30–14:00 <span className={styles.desc}>Lunch</span></h4>
-                              <h4 className={styles.header}> 14:00–17:00 <span className={styles.desc}>Prototype Demonstrations &amp; Judging</span></h4>
-                              <h4 className={styles.header}> 17:00–17:30 <span className={styles.desc}>Winner Announcements</span></h4>
+                              <h4 className={styles.header}> 9:00 AM–9:30 AM <span className={styles.desc}>Registration</span></h4>
+                              <h4 className={styles.header}> 9:30 AM–12:30 PM <span className={styles.desc}>Idea Pitch (Theme-based challenges)</span></h4>
+                              <h4 className={styles.header}> 12:30 PM–2:00 PM <span className={styles.desc}>Lunch</span></h4>
+                              <h4 className={styles.header}> 2:00 PM–5:00 PM <span className={styles.desc}>Prototype Demonstrations &amp; Judging</span></h4>
+                              <h4 className={styles.header}> 5:00 PM–5:30 PM <span className={styles.desc}>Winner Announcements</span></h4>
                             </div>
+
+                            {/* Updated October 24 */}
                             <div className={styles.day}>
                               <h3 className={styles.title}>Day 1 (October 24, 2025) – <i>Partnerships &amp; Innovation Launchpad</i></h3>
-                              <h4 className={styles.header}> 09:00–09:30 <span className={styles.desc}>Registration</span></h4>
-                              <h4 className={styles.header}> 09:30–10:30 <span className={styles.desc}>Inauguration Ceremony &amp; Keynote (Director &amp; Chief Guest)</span></h4>
-                              <h4 className={styles.header}> 10:30–11:00 <span className={styles.desc}>Tea Break</span></h4>
-                              <h4 className={styles.header}> 11:00–12:30 <span className={styles.desc}>Addresses by Dignitaries</span></h4>
-                              <h4 className={styles.header}> 12:30–13:00 <span className={styles.desc}>Panel Discussion I</span></h4>
-                              <h4 className={styles.header}> 13:00–14:30 <span className={styles.desc}>Lunch</span></h4>
-                              <h4 className={styles.header}> 14:30–17:30 <span className={styles.desc}>Panel Discussion II</span></h4>
-                              <h4 className={styles.header}> 19:30 onwards <span className={styles.desc}>Cultural Evening &amp; Networking 
-Dinner</span></h4>
+                              <h4 className={styles.header}> 09:30 AM <span className={styles.desc}>Registration &amp; Tea</span></h4>
+                              <h4 className={styles.header}> 10:30 AM <span className={styles.desc}>Inauguration Ceremony</span></h4>
+                              <h4 className={styles.header}> 10:50 AM <span className={styles.desc}>Address from the Chief Guest</span></h4>
+                              <h4 className={styles.header}> 11:15 AM <span className={styles.desc}>Alumni Entrepreneur Felicitation &amp; MoU Signing</span></h4>
+                              <h4 className={styles.header}> 11:40 AM <span className={styles.desc}>Special Address by Eminent Alumni</span></h4>
+                              <h4 className={styles.header}> 11:55 AM <span className={styles.desc}>Visionary Talk by Dignitaries</span></h4>
+                              <h4 className={styles.header}> 2:30 PM <span className={styles.desc}>Prototype Demonstration &amp; Stall Visit</span></h4>
+                              <h4 className={styles.header}> 3:30 PM <span className={styles.desc}>Panel Discussion-1 (Industry 4.0, Robotics, AI/ML)</span></h4>
+                              <h4 className={styles.header}> 4:45 PM <span className={styles.desc}>StartUp Pitch Competition</span></h4>
+                              <h4 className={styles.header}> 7:00 PM <span className={styles.desc}>Cultural Evening</span></h4>
+                              <h4 className={styles.header}> 8:00 PM <span className={styles.desc}>Networking Dinner</span></h4>
                             </div>
+
+                            {/* Updated October 25 */}
                             <div className={styles.day}>
                               <h3 className={styles.title}>Day 2 (October 25, 2025) – <i>Insights &amp; Action on Industry 4.0</i></h3>
-                              <h4 className={styles.header}> 09:30–10:30 <span className={styles.desc}>Industry 4.0 Keynote </span></h4>
-                              <h4 className={styles.header}> 10:30–12:30 <span className={styles.desc}>Panel Discussion</span></h4>
-                              <h4 className={styles.header}> 12:30–14:00 <span className={styles.desc}>Lunch &amp; Networking</span></h4>
-                              <h4 className={styles.header}> 14:00–16:00 <span className={styles.desc}> Roundtable on R&amp;D, Tech Transfer &amp; Industry Needs</span></h4>
-                              <h4 className={styles.header}> 16:00–16:30 <span className={styles.desc}>Valedictory Ceremony &amp; Motivational Talk</span></h4>
+                              <h4 className={styles.header}> 9:30 AM <span className={styles.desc}>Presentation of IIC NIT Durgapur &amp; MSME</span></h4>
+                              <h4 className={styles.header}> 9:45 AM <span className={styles.desc}>Panel Discussion-II (IoT, Semiconductor, Quantum Innovation)</span></h4>
+                              <h4 className={styles.header}> 11:00 AM <span className={styles.desc}>Plenary Talk by Industrialists</span></h4>
+                              <h4 className={styles.header}> 12:05 PM <span className={styles.desc}>Panel Discussion- III (e-mobility and Green Energy)</span></h4>
+                              <h4 className={styles.header}> 2:30 PM <span className={styles.desc}>Panel Discussion-IV (MSME &amp; Viksit Bharat)</span></h4>
+                              <h4 className={styles.header}> 3:45 PM <span className={styles.desc}>Student, Alumni &amp; Faculty Interaction</span></h4>
+                              <h4 className={styles.header}> 4:45 PM <span className={styles.desc}>Valedictory</span></h4>
+                              <h4 className={styles.header}> 6:00 PM <span className={styles.desc}>Cultural Evening</span></h4>
+                              <h4 className={styles.header}> 7:00 PM <span className={styles.desc}>Alumni Dinner</span></h4>
                             </div>
                         </div>
 
@@ -66,4 +78,3 @@ Dinner</span></h4>
 }
 
 export default Schedules
-
