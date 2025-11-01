@@ -33,6 +33,9 @@ const Audition = () => {
   const [loading, setLoading] = useState(false);
   const [domainDropdownOpen, setDomainDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [auditionOpen, setAuditionOpen] = useState(true);
+  const [auditionMessage, setAuditionMessage] = useState('');
+  const [configLoading, setConfigLoading] = useState(true);
 
   const watchedDomains = watch('domain');
 
@@ -119,6 +122,23 @@ const Audition = () => {
 
   const handleFormSubmit = async (data) => {
     setLoading(true);
+    // Re-check config just before submit to avoid stale state
+    try {
+      const cfgResp = await fetch(Api.AuditionConfigGet.url, { method: Api.AuditionConfigGet.method });
+      if (cfgResp.ok) {
+        const cfg = await cfgResp.json();
+        if (cfg && cfg.isOpen === false) {
+          setAuditionOpen(false);
+          setAuditionMessage(cfg.message || 'Auditions are currently closed.');
+          toast.warn(cfg.message || 'Auditions are currently closed.');
+          setLoading(false);
+          return;
+        }
+      }
+    } catch (e) {
+      // If config fetch fails, proceed to server which will enforce; just log it.
+      console.warn('Failed to re-check audition config before submit', e);
+    }
     let cvUrl = '';
     try {
       if (cvFile) {
@@ -144,7 +164,14 @@ const Audition = () => {
         reset();
         setCvFile(null);
       } else {
-        toast.error('Submission failed.');
+        if (response.status === 403) {
+          const err = await response.json().catch(() => ({ message: 'Auditions are closed.' }));
+          setAuditionOpen(false);
+          setAuditionMessage(err.message || 'Auditions are closed.');
+          toast.warn(err.message || 'Auditions are closed.');
+        } else {
+          toast.error('Submission failed.');
+        }
       }
     } catch (err) {
       toast.error('Error: ' + err.message);
@@ -158,6 +185,29 @@ const Audition = () => {
       append({ value: '' });
     }
   }, [fields.length, append]);
+
+  // Fetch audition config on mount
+  useEffect(() => {
+    const loadConfig = async () => {
+      setConfigLoading(true);
+      try {
+        const resp = await fetch(Api.AuditionConfigGet.url, { method: Api.AuditionConfigGet.method });
+        if (resp.ok) {
+          const cfg = await resp.json();
+          setAuditionOpen(cfg?.isOpen !== false);
+          setAuditionMessage(cfg?.message || '');
+        } else {
+          // If cannot fetch, default to open (server will still enforce)
+          setAuditionOpen(true);
+        }
+      } catch (e) {
+        setAuditionOpen(true);
+      } finally {
+        setConfigLoading(false);
+      }
+    };
+    loadConfig();
+  }, []);
 
   return (
     <div className={styles.auditionPage}>
@@ -179,13 +229,33 @@ const Audition = () => {
             Be part of the next generation of innovators and creators
           </p>
         </div>
+        {!configLoading && auditionOpen === false && (
+          <div
+            style={{
+              background: '#2a2a2a',
+              border: '1px solid #444',
+              borderRadius: '10px',
+              padding: '1rem',
+              marginBottom: '1rem',
+              color: '#f1c40f',
+            }}
+          >
+            {auditionMessage || 'Auditions are currently closed.'}
+          </div>
+        )}
         
         <form className={styles.auditionForm} onSubmit={onSubmit(handleFormSubmit)}>
+        {auditionOpen === false && (
+          <div style={{ marginBottom: '1rem', color: '#bbb' }}>
+            The form is disabled while auditions are closed.
+          </div>
+        )}
         <label>
           Name:
           <input 
             type="text" 
             {...register('name', { required: 'Name is required' })} 
+            disabled={auditionOpen === false}
           />
           {errors.name && <span className={styles.error}>{errors.name.message}</span>}
         </label>
@@ -194,6 +264,7 @@ const Audition = () => {
           <input 
             type="email" 
             {...register('email', { required: 'Email is required' })} 
+            disabled={auditionOpen === false}
           />
           {errors.email && <span className={styles.error}>{errors.email.message}</span>}
         </label>
@@ -202,6 +273,7 @@ const Audition = () => {
           <input 
             type="tel" 
             {...register('mobile', { required: 'Mobile is required' })} 
+            disabled={auditionOpen === false}
           />
           {errors.mobile && <span className={styles.error}>{errors.mobile.message}</span>}
         </label>
@@ -210,6 +282,7 @@ const Audition = () => {
           <input 
             type="text" 
             {...register('rollno', { required: 'Roll number is required' })} 
+            disabled={auditionOpen === false}
           />
           {errors.rollno && <span className={styles.error}>{errors.rollno.message}</span>}
         </label>
@@ -222,6 +295,7 @@ const Audition = () => {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log('Header clicked, current state:', domainDropdownOpen);
+                if (auditionOpen === false) return; 
                 setDomainDropdownOpen(!domainDropdownOpen);
               }}
                 style={{
@@ -273,6 +347,7 @@ const Audition = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
+                        if (auditionOpen === false) return;
                         removeDomain(domain);
                       }}
                       className={styles.removeChip}
@@ -330,6 +405,7 @@ const Audition = () => {
                       e.preventDefault();
                       e.stopPropagation();
                       console.log('Clicked on domain:', domain);
+                      if (auditionOpen === false) return;
                       handleDomainToggle(domain);
                     }}
                     style={{
@@ -359,7 +435,7 @@ const Audition = () => {
         </label>
         <label>
           Year:
-          <select {...register('year', { required: 'Year is required' })}>
+          <select {...register('year', { required: 'Year is required' })} disabled={auditionOpen === false}>
             <option value="">Select Year</option>
             <option value="1">1st Year</option>
             <option value="2">2nd Year</option>
@@ -373,12 +449,13 @@ const Audition = () => {
           <input 
             type="text" 
             {...register('department', { required: 'Department is required' })} 
+            disabled={auditionOpen === false}
           />
           {errors.department && <span className={styles.error}>{errors.department.message}</span>}
         </label>
         <label>
           Upload CV (PDF/DOC) - Optional:
-          <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
+          <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} disabled={auditionOpen === false} />
         </label>
         
         <label>
@@ -398,6 +475,7 @@ const Audition = () => {
               fontFamily: 'inherit',
               fontSize: '1rem'
             }}
+            disabled={auditionOpen === false}
           />
           {errors.description && <span className={styles.error}>{errors.description.message}</span>}
         </label>
@@ -419,6 +497,7 @@ const Audition = () => {
               fontFamily: 'inherit',
               fontSize: '1rem'
             }}
+            disabled={auditionOpen === false}
           />
           {errors.reason && <span className={styles.error}>{errors.reason.message}</span>}
         </label>
@@ -445,11 +524,12 @@ const Audition = () => {
                     backgroundColor: '#2a2a2a',
                     color: '#ffffff'
                   }}
+                  disabled={auditionOpen === false}
                 />
                 {fields.length > 1 && (
                   <button
                     type="button"
-                    onClick={() => remove(index)}
+                    onClick={() => (auditionOpen === false ? null : remove(index))}
                     className={styles.removeClubButton}
                     style={{
                       background: '#ff4757',
@@ -463,6 +543,7 @@ const Audition = () => {
                       minWidth: 'auto',
                       transition: 'all 0.2s'
                     }}
+                    disabled={auditionOpen === false}
                   >
                     Remove
                   </button>
@@ -471,7 +552,7 @@ const Audition = () => {
             ))}
             <button
               type="button"
-              onClick={() => append({ value: '' })}
+              onClick={() => (auditionOpen === false ? null : append({ value: '' }))}
               className={styles.addClubButton}
               style={{
                 background: 'linear-gradient(135deg, #00bfff, #0080ff)',
@@ -497,6 +578,7 @@ const Audition = () => {
                 e.target.style.transform = 'translateY(0)';
                 e.target.style.boxShadow = '0 2px 4px rgba(0, 191, 255, 0.3)';
               }}
+              disabled={auditionOpen === false}
             >
               <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>+</span>
               Add Club
@@ -504,7 +586,7 @@ const Audition = () => {
           </div>
         </label>
         
-        <button type="submit" disabled={loading} className={styles.submitButton}>
+        <button type="submit" disabled={loading || auditionOpen === false} className={styles.submitButton}>
           {loading ? 'Submitting...' : 'Submit Application'}
         </button>
       </form>

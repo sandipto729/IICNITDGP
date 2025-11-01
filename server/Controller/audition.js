@@ -1,8 +1,17 @@
 const AuditionModel = require('../model/Audition');
+const AuditionConfig = require('../model/AuditionConfig');
 const sendEmail = require('../utils/mail');
 
 const createAudition = async (req, res) => {
     try {
+        // Check audition feature toggle before allowing submission
+        const cfg = await AuditionConfig.findOne();
+        if (cfg && cfg.isOpen === false) {
+            return res.status(403).json({
+                message: cfg.message || 'Auditions are currently closed. Please try again later.'
+            });
+        }
+
         const audition = new AuditionModel(req.body);
         await audition.save();
         
