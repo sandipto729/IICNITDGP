@@ -135,6 +135,106 @@
   }
 }
 
+// Config section styles
+.configSection {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.configHeader {
+  margin-bottom: 12px;
+  h3 {
+    margin: 0 0 4px 0;
+  }
+  p {
+    margin: 0;
+    color: #a0aec0;
+    font-size: 0.9rem;
+  }
+}
+
+.configControls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.configRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.configRowColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.configLabel {
+  color: #ecf0f1;
+  font-weight: 600;
+}
+
+.switchLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ecf0f1;
+  font-weight: 500;
+}
+
+.switchText {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.configTextarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.configActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveButton {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.configDivider {
+  margin: 12px 0 0 0;
+  border-color: #333;
+}
+
 .auditionsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));

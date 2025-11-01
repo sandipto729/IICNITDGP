@@ -11,6 +11,10 @@ const AuditionManagement = ({ isOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState({});
+  const [configLoading, setConfigLoading] = useState(false);
+  const [auditionOpen, setAuditionOpen] = useState(true);
+  const [auditionMessage, setAuditionMessage] = useState('');
+  const [savingConfig, setSavingConfig] = useState(false);
   const { accessToken, isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +36,7 @@ const AuditionManagement = ({ isOpen, onClose }) => {
       }
       
       fetchAuditions();
+      fetchAuditionConfig();
     }
   }, [isOpen, isAuthenticated, accessToken, user]);
 
@@ -105,6 +110,53 @@ const AuditionManagement = ({ isOpen, onClose }) => {
       setAuditions([]); // Reset auditions on error
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchAuditionConfig = async () => {
+    setConfigLoading(true);
+    try {
+      const resp = await fetch(Api.AuditionConfigGet.url, {
+        method: Api.AuditionConfigGet.method,
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (resp.ok) {
+        const cfg = await resp.json();
+        setAuditionOpen(cfg?.isOpen !== false);
+        setAuditionMessage(cfg?.message || '');
+      }
+    } catch (e) {
+      // ignore, default remains
+    } finally {
+      setConfigLoading(false);
+    }
+  };
+
+  const saveAuditionConfig = async () => {
+    if (!accessToken) {
+      handleAuthError();
+      return;
+    }
+    setSavingConfig(true);
+    try {
+      const resp = await fetch(Api.AuditionConfigUpdate.url, {
+        method: Api.AuditionConfigUpdate.method,
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isOpen: !!auditionOpen, message: auditionMessage }),
+      });
+      if (!resp.ok) {
+        const t = await resp.text();
+        throw new Error(`Failed to save config: ${resp.status} ${t}`);
+      }
+      await fetchAuditionConfig();
+      alert('Audition settings updated');
+    } catch (e) {
+      alert(e.message);
+    } finally {
+      setSavingConfig(false);
     }
   };
 
@@ -208,6 +260,51 @@ const AuditionManagement = ({ isOpen, onClose }) => {
         </div>
 
         <div className={styles.content}>
+          {/* Audition feature toggle controls */}
+          <div className={styles.configSection}>
+            <div className={styles.configHeader}>
+              <h3>Audition Settings</h3>
+              <p>Control whether new audition submissions are allowed.</p>
+            </div>
+            {configLoading ? (
+              <p>Loading settings...</p>
+            ) : (
+              <div className={styles.configControls}>
+                <div className={styles.configRow}>
+                  <div className={styles.configLabel}>Open for submissions</div>
+                  <label className={styles.switchLabel}>
+                    <input
+                      type="checkbox"
+                      checked={!!auditionOpen}
+                      onChange={(e) => setAuditionOpen(e.target.checked)}
+                    />
+                    <span className={styles.switchText}>{auditionOpen ? 'Open' : 'Closed'}</span>
+                  </label>
+                </div>
+
+                {!auditionOpen && (
+                  <div className={styles.configRowColumn}>
+                    <div className={styles.configLabel}>Closed Message</div>
+                    <textarea
+                      className={styles.configTextarea}
+                      value={auditionMessage}
+                      onChange={(e) => setAuditionMessage(e.target.value)}
+                      rows={3}
+                      placeholder="Auditions are currently closed. Please check back later or follow our announcements for updates."
+                    />
+                  </div>
+                )}
+
+                <div className={styles.configActions}>
+                  <button className={styles.saveButton} onClick={saveAuditionConfig} disabled={savingConfig}>
+                    {savingConfig ? 'Saving...' : 'Save Settings'}
+                  </button>
+                </div>
+              </div>
+            )}
+            <hr className={styles.configDivider} />
+          </div>
+
           {/* Show authentication warning */}
           {(!isAuthenticated || !accessToken) && (
             <div className={styles.authError}>

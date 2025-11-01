@@ -9,6 +9,7 @@ const EventRegistrationController=require('../Controller/EventRegistration')
 const CarouselImage=require('../Controller/CarouselImage')
 const Gallery=require('../Controller/Gallery')
 const Audition=require('../Controller/audition')
+const AuditionConfig=require('../Controller/AuditionConfig')
 const Azure=require('../Controller/Azure')
 const authRoutes = require('./auth')
 const UserController = require('../Controller/User')
@@ -61,6 +62,10 @@ router.get("/website_count",Website_countController.Website_count);
 router.get("/update_count",Website_countController.update_count);
 router.post("/eventregistration",EventRegistrationController.EventRegistration);
 
+
+// Audition config routes (feature toggle) - place BEFORE parameterized routes
+router.get('/audition/config', AuditionConfig.getConfig);
+router.put('/audition/config', authMiddleware, AuditionConfig.updateConfig);
 
 // Audition routes
 router.post("/audition", Audition.createAudition);

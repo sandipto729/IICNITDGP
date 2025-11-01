@@ -17,6 +17,14 @@ const Api={
         url: `${BASE_URL}/audition/:id`,
         method: "PUT"
     },
+    AuditionConfigGet: {
+        url: `${BASE_URL}/audition/config`,
+        method: "GET"
+    },
+    AuditionConfigUpdate: {
+        url: `${BASE_URL}/audition/config`,
+        method: "PUT"
+    },
     IdeaSubmission:{
         url:`${BASE_URL}/ideasubmission`,
         method:"POST"
